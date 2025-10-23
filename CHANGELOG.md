@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.4...v0.0.5) (2025-10-23)
+
+
+### Features
+
+* Automated version bumping ([09f5e10](https://github.com/Evanlab02/HomePortalV2/commit/09f5e10c8c88f27120c933eea227c3059502f95d))
+
 ## [0.0.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.3...v0.0.4) (2025-10-23)
 
 
