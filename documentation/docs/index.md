@@ -35,3 +35,13 @@ docker compose -f compose.prod.yaml build
 # You can run just the below command, the previous commands are just good to run after each pull to ensure everything is up to date.
 docker compose -f compose.prod.yaml up 
 ```
+
+## Enabling Maintenance Mode
+
+Doing some updates, fixes or just breaking the server? Got you covered, run the following command which will prevent people from accessing the server and display a page indicating the server is not available right now:
+
+```bash
+make maintenance
+```
+
+**NOTE: This is still runnning through docker so if you are updating something related to docker that causes your containers to stop well this page will not work, just keep that in mind.**

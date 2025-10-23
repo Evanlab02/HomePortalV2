@@ -15,9 +15,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Build Caddy Image
+      - name: Build Images
         run: |
           docker build -f Dockerfile -t hp2-caddy:latest .
-      - name: Build Documentation Development Image
-        run: |
+          docker build -f Dockerfile.dev -t hp2-caddy:latest .
           docker build -f documentation/Dockerfile.dev -t hp2-documentation-dev:latest documentation/

@@ -45,3 +45,13 @@ prod:
 .PHONY: prod-down
 prod-down:
 	docker compose -f compose.prod.yaml down
+
+.PHONY: maintenance
+maintenance:
+	docker compose -f compose.maintenance.yaml pull
+	docker compose -f compose.maintenance.yaml build
+	docker compose -f compose.maintenance.yaml up
+
+.PHONY: maintenance-down
+maintenance-down:
+	docker compose -f compose.maintenance.yaml down
