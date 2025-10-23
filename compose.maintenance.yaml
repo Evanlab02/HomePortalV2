@@ -9,12 +9,12 @@ services:
     ports:
       - 80:80
     volumes:
-      - caddy-data:/data
+      - maintenance-data:/data
     networks:
       - hp-network
 
 volumes:
-  caddy-data:
+  maintenance-data:
     external: false
 
 networks:
