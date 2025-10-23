@@ -3,6 +3,10 @@
     "always-update": true,
     "bump-minor-pre-major": true,
     "bump-patch-for-minor-pre-major": true,
+    "extra-files": [
+        "compose.maintenance.yaml",
+        "compose.prod.yaml"
+    ],
     "changelog-sections": [
         {
             "type": "feat",
