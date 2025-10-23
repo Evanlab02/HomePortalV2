@@ -35,3 +35,13 @@ staging:
 .PHONY: staging-down
 staging-down:
 	docker compose -f compose.staging.yaml down
+
+.PHONY: prod
+prod:
+	docker compose -f compose.prod.yaml pull
+	docker compose -f compose.prod.yaml build
+	docker compose -f compose.prod.yaml up
+
+.PHONY: prod-down
+prod-down:
+	docker compose -f compose.prod.yaml down

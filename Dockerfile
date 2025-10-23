@@ -1,6 +1,6 @@
 FROM python:3.14.0-alpine3.22 AS docs
 
-ENV UV_SYSTEM_PYTHON 1
+ENV UV_SYSTEM_PYTHON=1
 COPY --from=ghcr.io/astral-sh/uv:0.9.5 /uv /uvx /bin/
 WORKDIR /build
 COPY ./documentation/requirements.txt ./requirements.txt
@@ -11,9 +11,9 @@ RUN mkdocs build
 
 FROM caddy:2.10.2-alpine AS final
 
-LABEL org.opencontainers.image.title "Home Portal V2 Caddy - Development"
-LABEL org.opencontainers.image.version "DEV"
-LABEL org.opencontainers.image.licenses "MIT"
+LABEL org.opencontainers.image.title="Home Portal V2 Caddy - Development"
+LABEL org.opencontainers.image.version="DEV"
+LABEL org.opencontainers.image.licenses="MIT"
 
 EXPOSE 80 443
 

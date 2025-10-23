@@ -1,0 +1,23 @@
+name: build
+
+permissions: write-all
+
+on:
+  pull_request:
+    branches: [trunk]
+  push:
+    branches: [trunk]
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build Caddy Image
+        run: |
+          docker build -f Dockerfile -t hp2-caddy:latest .
+      - name: Build Documentation Development Image
+        run: |
+          docker build -f documentation/Dockerfile.dev -t hp2-documentation-dev:latest documentation/
