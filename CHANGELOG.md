@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.0.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.3...v0.0.4) (2025-10-23)
+
+
+### Features
+
+* **Maintenance:** Add naintenance mode and commands ([2b4f8d5](https://github.com/Evanlab02/HomePortalV2/commit/2b4f8d5a74cfb30ea0660dc5fe585892b9bbb521))
+
+
+### Miscellaneous Chores
+
+* Fix small volume issue in maintenance compose file ([3afb37c](https://github.com/Evanlab02/HomePortalV2/commit/3afb37c4a3880623a1eab04a0c54abfc1a3d8229))
+
+
+### Continuous Integration
+
+* Add more image build commands to build workflows ([4ec21a0](https://github.com/Evanlab02/HomePortalV2/commit/4ec21a0bd759ce5d439bd21963e77d4e381244e6))
+
 ## [0.0.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.2...v0.0.3) (2025-10-23)
 
 
