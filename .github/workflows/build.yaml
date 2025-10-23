@@ -20,4 +20,4 @@ jobs:
           docker build -f Dockerfile -t hp2-caddy:latest .
       - name: Build Documentation Development Image
         run: |
-          docker build -f documentation/Dockerfile.dev -t hp2-documentation-dev:latest .
+          docker build -f documentation/Dockerfile.dev -t hp2-documentation-dev:latest documentation/
