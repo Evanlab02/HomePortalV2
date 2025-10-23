@@ -1,0 +1,28 @@
+name: hp
+
+services:
+  caddy:
+    container_name: caddy
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - hp-network
+
+  documentation:
+    container_name: documentation
+    restart: unless-stopped
+    build:
+      context: documentation
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8000:8000
+    networks:
+      - hp-network
+
+networks:
+  hp-network:
+    driver: bridge
