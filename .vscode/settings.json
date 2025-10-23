@@ -6,6 +6,8 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "documentation/.venv": true,
-        "documentation/site": true
+        "documentation/site": true,
+        "**/node_modules": true,
+        "apps/maintenance/dist": true
     }
 }

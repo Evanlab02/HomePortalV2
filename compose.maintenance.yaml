@@ -1,10 +1,11 @@
 name: hp
 
 services:
-  caddy:
-    container_name: caddy
+  maintenance:
+    container_name: maintenance
     restart: unless-stopped
     image: ghcr.io/evanlab02/hp2-caddy:0.0.3  # x-release-please-version
+    command: "run --config /etc/caddy/maintenance/Caddyfile --adapter caddyfile"
     ports:
       - 80:80
     volumes:

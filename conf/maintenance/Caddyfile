@@ -1,0 +1,6 @@
+:80 {
+	handle_path /* {
+		root * /var/www/html/maintenance/
+		file_server
+	}
+}
