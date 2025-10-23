@@ -1,0 +1,23 @@
+name: hp
+
+services:
+  caddy:
+    container_name: caddy
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - staging-caddy-data:/data
+    networks:
+      - hp-network
+
+volumes:
+  staging-caddy-data:
+    external: false
+
+networks:
+  hp-network:
+    driver: bridge
