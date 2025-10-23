@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Home Portal V2","text":"<p>My updated home lab setup to account for all the things I did not think of when doing it the first time.</p>"},{"location":"#pre-requisites","title":"Pre-requisites","text":""}]}
