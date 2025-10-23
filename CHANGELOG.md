@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.5...v0.0.6) (2025-10-23)
+
+
+### Bug Fixes
+
+* Actually copy maintenance frontend assets for production caddy containers ([a577422](https://github.com/Evanlab02/HomePortalV2/commit/a577422f4cb4413c6933fd2d606d27b2631c3b54))
+
 ## [0.0.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.4...v0.0.5) (2025-10-23)
 
 
