@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.2...v0.1.3) (2025-10-24)
+
+
+### Bug Fixes
+
+* Fix CSRF issue in django app ([5e7b6ec](https://github.com/Evanlab02/HomePortalV2/commit/5e7b6ecb566615ed671292242c108b1afa1a285a))
+
 ## [0.1.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.1...v0.1.2) (2025-10-24)
 
 
