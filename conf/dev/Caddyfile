@@ -1,6 +1,0 @@
-:80 {
-	handle_path /HomePortalV2/* {
-		root * /var/www/html/docs/
-		file_server
-	}
-}

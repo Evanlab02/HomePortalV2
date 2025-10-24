@@ -12,6 +12,24 @@ services:
     networks:
       - hp-network
 
+  app:
+    container_name: app
+    restart: unless-stopped
+    image: ghcr.io/evanlab02/hp2-app:0.0.7  # x-release-please-version
+    env_file:
+      - .env
+    networks:
+      - hp-network
+
+  admin:
+    container_name: admin
+    restart: unless-stopped
+    image: ghcr.io/evanlab02/hp2-admin:0.0.7  # x-release-please-version
+    env_file:
+      - .env
+    networks:
+      - hp-network
+
 volumes:
   caddy-data:
     external: false

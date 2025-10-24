@@ -1,4 +1,6 @@
-:80 {
+api.labuschagne.xyz,
+app.labuschagne.xyz,
+docs.labuschagne.xyz {
 	handle_path /* {
 		root * /var/www/html/maintenance/
 		file_server
