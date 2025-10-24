@@ -1,0 +1,12 @@
+[run]
+branch = False
+omit =
+    ./tests/*
+    ./shoppingapp/config/*
+    ./shoppingapp/schemas/*
+    ./shoppingapp/settings/*
+    ./manage.py
+    ./**/tests/*
+    ./setup.py
+    ./conftest.py
+    ./**/migrations/*.py
