@@ -38,8 +38,8 @@ jobs:
       - name: Build App Image
         run: |
           docker build -f Dockerfile -t hp2-caddy:latest .
-          docker build -f apps/homeportal/docker/admin/Dockerfile hp2-admin:latest apps/homeportal/
-          docker build -f apps/homeportal/docker/app/Dockerfile hp2-app:latest apps/homeportal/
+          docker build -f apps/homeportal/docker/admin/Dockerfile -t hp2-admin:latest apps/homeportal/
+          docker build -f apps/homeportal/docker/app/Dockerfile -t hp2-app:latest apps/homeportal/
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Create Tags
