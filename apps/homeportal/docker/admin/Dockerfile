@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.licenses="MIT"
 EXPOSE 8000
 
 ENV UV_SYSTEM_PYTHON=1
-ENV DJANGO_SETTINGS_MODULE=app.admin.settings
+ENV DJANGO_SETTINGS_MODULE=app.settings.admin.settings
 
 RUN apk add --no-cache bash
 
