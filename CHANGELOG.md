@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.0.7](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.6...v0.0.7) (2025-10-24)
+
+
+### Features
+
+* **Django:** Add django app to HomePortalV2 ([90e2c3e](https://github.com/Evanlab02/HomePortalV2/commit/90e2c3eb61de48dfd00890036c1480dfc73444a7))
+
+
+### Miscellaneous Chores
+
+* Additional files release please ([ec813a5](https://github.com/Evanlab02/HomePortalV2/commit/ec813a588577564cb9409f9ede6f79219e34bb9d))
+* Fix admin dockerfile issue ([94f0880](https://github.com/Evanlab02/HomePortalV2/commit/94f08800f46c18ac91bf85a33bfb40a4fd75e990))
+
+
+### Continuous Integration
+
+* Fix docker build issues ([e5c9336](https://github.com/Evanlab02/HomePortalV2/commit/e5c9336d6a84f5fcdcafd4fdce1ab0b822063320))
+
 ## [0.0.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.5...v0.0.6) (2025-10-23)
 
 
