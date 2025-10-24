@@ -30,7 +30,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ALLOWED_HOSTS = ["localhost"]
 if HOSTS:
     ALLOWED_HOSTS += HOSTS
-    CSRF_TRUSTED_ORIGINS = HOSTS
+    CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in HOSTS]
 
 THIRD_PARTY_APPS = ["import_export", "guardian", "simple_history", "constance"]
 
