@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.0...v0.1.1) (2025-10-24)
+
+
+### Bug Fixes
+
+* Add missing compose and caddyfile configuration ([79a4e36](https://github.com/Evanlab02/HomePortalV2/commit/79a4e362f906eb5854a9a2eb541ce9162a9b4557))
+
+
+### Miscellaneous Chores
+
+* Add some hosts to maintenance file ([fc29d6f](https://github.com/Evanlab02/HomePortalV2/commit/fc29d6fc14d667caa07ddd0e0f39168c7c0754c3))
+* Makefile commands ([34dab63](https://github.com/Evanlab02/HomePortalV2/commit/34dab639dcbbfcb5c8aa4e2aff6c4becc4a88620))
+
 ## [0.1.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.8...v0.1.0) (2025-10-24)
 
 
