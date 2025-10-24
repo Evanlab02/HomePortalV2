@@ -1,0 +1,11 @@
+django
+django-import-export
+django-guardian
+django-simple-history
+django-constance
+django-unfold
+django-money
+django-ninja
+psycopg[binary, pool]
+argon2-cffi
+gunicorn

@@ -38,16 +38,26 @@ jobs:
       - name: Build App Image
         run: |
           docker build -f Dockerfile -t hp2-caddy:latest .
+          docker build -f apps/homeportal/docker/admin/Dockerfile -t hp2-admin:latest apps/homeportal/
+          docker build -f apps/homeportal/docker/app/Dockerfile -t hp2-app:latest apps/homeportal/
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Create Tags
         run: |
           docker tag hp2-caddy:latest ghcr.io/evanlab02/hp2-caddy:latest
           docker tag hp2-caddy:latest ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          docker tag hp2-admin:latest ghcr.io/evanlab02/hp2-admin:latest
+          docker tag hp2-admin:latest ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          docker tag hp2-app:latest ghcr.io/evanlab02/hp2-app:latest
+          docker tag hp2-app:latest ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
       - name: Push Tags
         run: |
           docker push ghcr.io/evanlab02/hp2-caddy:latest
           docker push ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          docker push ghcr.io/evanlab02/hp2-adminlatest
+          docker push ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          docker push ghcr.io/evanlab02/hp2-app:latest
+          docker push ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
 
   docs:
     runs-on: ubuntu-latest

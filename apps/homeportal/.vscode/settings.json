@@ -11,6 +11,6 @@
         "**/__pycache__": true,
         "**/db.sqlite3": true,
         "documentation/site": true,
-        "apps/maintenance/dist": true,
+        "apps/maintenance/dist": true
     }
 }
