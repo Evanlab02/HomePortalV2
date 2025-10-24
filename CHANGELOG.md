@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.1.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.8...v0.1.0) (2025-10-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* Integrate django app and start utilizing fixed hosts in caddy
+
+### Features
+
+* Integrate django app and start utilizing fixed hosts in caddy ([123215a](https://github.com/Evanlab02/HomePortalV2/commit/123215a411835b90cdee58e1221812aa12893f8a))
+
+
+### Bug Fixes
+
+* Add static files from django ([f36f3d5](https://github.com/Evanlab02/HomePortalV2/commit/f36f3d5d8b0882233e384da5da8ff0c9bf2888d7))
+
+
+### Miscellaneous Chores
+
+* Add static files to caddyfile ([17ee5f6](https://github.com/Evanlab02/HomePortalV2/commit/17ee5f6330fa3edc6ddbb735a49133c33d3f262b))
+
+
+### Continuous Integration
+
+* Remove build steps for dockerfiles that no longer exist ([3d304d4](https://github.com/Evanlab02/HomePortalV2/commit/3d304d412ab653f5fe578f4a7d16ff60a726840a))
+
 ## [0.0.8](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.7...v0.0.8) (2025-10-24)
 
 
