@@ -1,5 +1,11 @@
+(inttls) {
+	tls /certs/fullchain.cer /certs/labuschagne.xyz.key
+}
+
 app.labuschagne.xyz,
 api.labuschagne.xyz {
+	import inttls
+
 	handle_path /* {
 		reverse_proxy app:80
 	}
@@ -11,6 +17,8 @@ api.labuschagne.xyz {
 }
 
 admin.labuschagne.xyz {
+	import inttls
+
 	handle_path /* {
 		reverse_proxy admin:80
 	}
@@ -22,6 +30,8 @@ admin.labuschagne.xyz {
 }
 
 docs.labuschagne.xyz {
+	import inttls
+
 	handle_path /HomePortalV2/* {
 		root * /var/www/html/docs/
 		file_server

@@ -1,6 +1,13 @@
+(inttls) {
+	tls /certs/fullchain.cer /certs/labuschagne.xyz.key
+}
+
 api.labuschagne.xyz,
 app.labuschagne.xyz,
+admin.labuschagne.xyz,
 docs.labuschagne.xyz {
+	import inttls
+
 	handle_path /* {
 		root * /var/www/html/maintenance/
 		file_server

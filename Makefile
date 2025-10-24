@@ -27,16 +27,6 @@ caddy-fmt:
 	docker run --rm -v `pwd`/conf/maintenance/Caddyfile:/etc/caddy/Caddyfile caddy:2.10.2-alpine caddy fmt /etc/caddy/Caddyfile --overwrite
 	docker run --rm -v `pwd`/conf/release/Caddyfile:/etc/caddy/Caddyfile caddy:2.10.2-alpine caddy fmt /etc/caddy/Caddyfile --overwrite
 
-.PHONY: staging
-staging:
-	docker compose -f compose.staging.yaml pull
-	docker compose -f compose.staging.yaml build
-	docker compose -f compose.staging.yaml up
-
-.PHONY: staging-down
-staging-down:
-	docker compose -f compose.staging.yaml down
-
 .PHONY: prod
 prod:
 	docker compose -f compose.prod.yaml pull
@@ -56,3 +46,12 @@ maintenance:
 .PHONY: maintenance-down
 maintenance-down:
 	docker compose -f compose.maintenance.yaml down
+
+.PHONY: env
+env:
+	cp .env.template .env
+
+.PHONY: dangerous-clean-volumes
+dangerous-clean-volumes:
+	docker volume rm hp_caddy-data
+	docker volume rm hp_maintenance-data
