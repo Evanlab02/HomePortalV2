@@ -7,8 +7,10 @@ services:
     image: ghcr.io/evanlab02/hp2-caddy:0.1.1  # x-release-please-version
     command: "run --config /etc/caddy/maintenance/Caddyfile --adapter caddyfile"
     ports:
+      - 443:443
       - 80:80
     volumes:
+      - ./conf/certs/:/certs
       - maintenance-data:/data
     networks:
       - hp-network

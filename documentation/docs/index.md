@@ -13,7 +13,9 @@ NOTE: Please ensure you read the acme.sh documentation as this will tell you how
 
 ## Installation Process
 
-Feel free to fork the repo and then clone it to your local as you might want to make some changes and adjust it to your liking as this is really probably best for a starting point for you to setup your home server.
+**NOTE: Home Portal V2 is still very early in development, so use with caution and pull with caution. It is not designed to run on just any configuration just yet so keep that in mind.**
+
+Feel free to fork the repo and then clone it to your local as you might want to make some changes and adjust it to your liking as this is really probably best as a starting point for you to setup your home server instead of a guideline.
 
 Otherwise just clone the repo as is and ensure to git pull every now and then for the latest updates.
 
@@ -25,7 +27,41 @@ git clone https://github.com/Evanlab02/HomePortalV2.git
 gh repo clone Evanlab02/HomePortalV2
 ```
 
-**NOTE: Home Portal V2 is still very early in development, so use with caution and pull with caution**
+### Env Vars
+
+You will need to setup your .env file, to get the template .env file, run the following command:
+
+```bash
+make env
+```
+
+After this you should have .env file that looks like the following:
+
+```txt
+DB_USERNAME=
+DB_DATABASE=
+DB_PASSWORD=
+DJANGO_SECRET_KEY=
+# DJANGO_HOSTS=
+DJANGO_DB_NAME=
+DJANGO_DB_USER=
+DJANGO_DB_PASSWORD=
+DJANGO_DB_HOST=
+# DJANGO_DB_PORT=
+DJANGO_CACHE_HOST=
+# DJANGO_CACHE_PORT=
+```
+
+Fill in these details before moving forward.
+
+### Certificates
+
+Remember [acme.sh](./dependencies/acme.md), copy over the following files into the conf/certs directory:
+
+- fullchain.cer
+- labuschagne.xyz.key
+
+### Start the compose project
 
 To start the compose project, you can use the following commands:
 

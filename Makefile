@@ -57,3 +57,7 @@ dangerous-clean-volumes:
 	docker volume rm hp_valkey-data
 	docker volume rm hp_postgres-data
 	docker volume rm hp_maintenance-data
+
+.PHONY: superuser
+superuser:
+	docker compose exec admin python manage.py createsuperuser
