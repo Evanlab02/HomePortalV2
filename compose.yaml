@@ -1,17 +1,6 @@
 name: hp
 
 services:
-  caddy:
-    container_name: caddy
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - 80:80
-    networks:
-      - hp-network
-
   maintenance:
     container_name: maintenance
     restart: unless-stopped
@@ -20,7 +9,7 @@ services:
       dockerfile: Dockerfile.dev
     command: "run --config /etc/caddy/maintenance/Caddyfile --adapter caddyfile"
     ports:
-      - 81:80
+      - 80:80
     networks:
       - hp-network
 
@@ -31,7 +20,7 @@ services:
       context: documentation
       dockerfile: Dockerfile.dev
     ports:
-      - 82:8000
+      - 81:8000
     networks:
       - hp-network
 

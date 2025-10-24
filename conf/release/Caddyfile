@@ -1,4 +1,17 @@
-:80 {
+app.labuschagne.xyz,
+api.labuschagne.xyz {
+	handle_path /* {
+		reverse_proxy app:80
+	}
+}
+
+admin.labuschagne.xyz {
+	handle_path /* {
+		reverse_proxy admin:80
+	}
+}
+
+docs.labuschagne.xyz {
 	handle_path /HomePortalV2/* {
 		root * /var/www/html/docs/
 		file_server
