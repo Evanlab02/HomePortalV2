@@ -22,7 +22,7 @@ COPY ./manage.py ./manage.py
 COPY ./api ./api
 COPY ./app ./app
 COPY ./utils ./utils
-COPY ./scripts/server.start.sh ./server.start.sh
+COPY ./scripts/admin.start.sh ./admin.start.sh
 
 RUN chmod +x /app/admin.start.sh
 
