@@ -3,11 +3,21 @@ api.labuschagne.xyz {
 	handle_path /* {
 		reverse_proxy app:80
 	}
+
+	handle_path /static/* {
+		root * /var/www/html/homeportal/static/
+		file_server
+	}
 }
 
 admin.labuschagne.xyz {
 	handle_path /* {
 		reverse_proxy admin:80
+	}
+
+	handle_path /static/* {
+		root * /var/www/html/homeportal/static/
+		file_server
 	}
 }
 
