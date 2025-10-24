@@ -9,3 +9,4 @@ django-ninja
 psycopg[binary, pool]
 argon2-cffi
 gunicorn
+redis[hiredis]

@@ -54,7 +54,7 @@ jobs:
         run: |
           docker push ghcr.io/evanlab02/hp2-caddy:latest
           docker push ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker push ghcr.io/evanlab02/hp2-adminlatest
+          docker push ghcr.io/evanlab02/hp2-admin:latest
           docker push ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
           docker push ghcr.io/evanlab02/hp2-app:latest
           docker push ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}

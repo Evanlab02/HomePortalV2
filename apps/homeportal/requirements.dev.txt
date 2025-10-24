@@ -75,6 +75,8 @@ flake8-docstrings==1.7.0
     # via -r requirements.dev.in
 gunicorn==23.0.0
     # via -r requirements.txt
+hiredis==3.3.0
+    # via -r requirements.txt
 iniconfig==2.3.0
     # via pytest
 isort==7.0.0
@@ -149,6 +151,8 @@ pytest-sugar==1.1.1
     # via -r requirements.dev.in
 pytokens==0.2.0
     # via black
+redis==7.0.0
+    # via -r requirements.txt
 setuptools==80.9.0
     # via
     #   -r requirements.txt

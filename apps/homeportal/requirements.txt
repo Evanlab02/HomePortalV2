@@ -39,6 +39,8 @@ django-unfold==0.68.0
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
+hiredis==3.3.0
+    # via redis
 packaging==25.0
     # via gunicorn
 psycopg==3.2.11
@@ -55,6 +57,8 @@ pydantic==2.12.3
     # via django-ninja
 pydantic-core==2.41.4
     # via pydantic
+redis==7.0.0
+    # via -r requirements.in
 setuptools==80.9.0
     # via django-money
 sqlparse==0.5.3
