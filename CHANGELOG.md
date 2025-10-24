@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.1...v0.1.2) (2025-10-24)
+
+
+### Bug Fixes
+
+* Various docker, script and compose issues ([b6e6b83](https://github.com/Evanlab02/HomePortalV2/commit/b6e6b839bbd0560217a83ddbb3084a87d0087c95))
+
 ## [0.1.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.0...v0.1.1) (2025-10-24)
 
 
