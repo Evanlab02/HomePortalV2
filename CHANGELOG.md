@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.0.8](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.7...v0.0.8) (2025-10-24)
+
+
+### Bug Fixes
+
+* Add redis to packages to homeportal app packages ([13f5c77](https://github.com/Evanlab02/HomePortalV2/commit/13f5c7736bc5ddd6284c338f310c5fd06bfc0876))
+* Remove expected timeline from maintenance page ([dd6fa91](https://github.com/Evanlab02/HomePortalV2/commit/dd6fa912f051b98dc1fc6743301014d023c789c0))
+
+
+### Continuous Integration
+
+* Add linting workflows ([8b02acb](https://github.com/Evanlab02/HomePortalV2/commit/8b02acbb68db8e6fb22396bc192c47bfbb3ad5ee))
+* Fix a release please workflow typo ([a52acd4](https://github.com/Evanlab02/HomePortalV2/commit/a52acd49e727b5b1c5ac9cf992b40336abade072))
+
 ## [0.0.7](https://github.com/Evanlab02/HomePortalV2/compare/v0.0.6...v0.0.7) (2025-10-24)
 
 
