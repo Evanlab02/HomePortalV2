@@ -8,7 +8,7 @@ from ninja import NinjaAPI, Schema
 
 api = NinjaAPI(
     title="Home Portal V2 API", 
-    version="0.0.7",  # x-release-please-version
+    version="0.0.8",  # x-release-please-version
 )
 
 class HealthCheck(Schema):
