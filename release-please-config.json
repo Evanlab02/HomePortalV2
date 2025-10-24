@@ -5,7 +5,8 @@
     "bump-patch-for-minor-pre-major": true,
     "extra-files": [
         "compose.maintenance.yaml",
-        "compose.prod.yaml"
+        "compose.prod.yaml",
+        "apps/homeportal/api/urls.py"
     ],
     "changelog-sections": [
         {
