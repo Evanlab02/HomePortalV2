@@ -72,6 +72,20 @@ docker compose -f compose.prod.yaml build
 docker compose -f compose.prod.yaml up 
 ```
 
+### Create your superuser
+
+You can use this command to create your superuser:
+
+```bash
+make superuser
+```
+
+You will now be able to access the following urls with this user:
+
+- https://api.labuschagne.xyz
+- https://app.labuschagne.xyz
+- https://admin.labuschagne.xyz
+
 ## Enabling Maintenance Mode
 
 Doing some updates, fixes or just breaking the server? Got you covered, run the following command which will prevent people from accessing the server and display a page indicating the server is not available right now:
