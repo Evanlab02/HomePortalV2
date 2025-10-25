@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.3.0...v0.3.1) (2025-10-25)
+
+
+### Bug Fixes
+
+* Small setup and compose fixes ([6e44554](https://github.com/Evanlab02/HomePortalV2/commit/6e44554cd8b345d76364256353b8c8dd5545424d))
+
 ## [0.3.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.2.1...v0.3.0) (2025-10-25)
 
 
