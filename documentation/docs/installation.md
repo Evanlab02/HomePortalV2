@@ -78,12 +78,30 @@ docker compose down
 
 ### Starting and setting up home portal superuser
 
-Run the following commands to get it all up and running, you will be prompted for some details to set up your superuser for the home portal app.
+Run the following commands to get it all up and running, you will be prompted for some details to set up your superuser for the home portal app. (Remember your credentials for later as these will be unique and different to your other creds).
 
 ```bash
 docker compose up -d
 make superuser
 ```
+
+### Logging into authentik and setting up
+
+You will now need to login into authentik after waiting a few minutes (Authentik takes a while to set up).
+
+You will use the credentials you have setup in your .env file.
+
+Once you are in, you will need to start configuring your apps via the admin interface.
+
+Please familiarize yourself with authentik for this step.
+
+You will be using the proxy authentication if you get it confused.
+
+### All done
+
+You should now be able to access all apps with your authentik credentials (perhaps with another login screen for the app specfiic credentials which will likely in your env vars or have been setup with make superuser).
+
+**HINT: a good starting point is portal.<your_domain>**
 
 ### Maintenance mode
 
