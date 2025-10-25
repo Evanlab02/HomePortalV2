@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.3...v0.1.4) (2025-10-25)
+
+
+### Features
+
+* Simplified the setup process signifcantly ([f934ca1](https://github.com/Evanlab02/HomePortalV2/commit/f934ca132e37fc4c372cb2cfacb14f1a420b548b))
+
+
+### Miscellaneous Chores
+
+* Fix release please config issue ([50957a3](https://github.com/Evanlab02/HomePortalV2/commit/50957a3c07a2549ec16c36785f2dce1c79684fcb))
+* Fix some linting issues ([068f984](https://github.com/Evanlab02/HomePortalV2/commit/068f9847b5fb4103fd7be18f724153300e41e816))
+
+
+### Continuous Integration
+
+* Removed some old build steps ([bab3ee7](https://github.com/Evanlab02/HomePortalV2/commit/bab3ee711ef514b55cf11fc61b13e8f7a2b05add))
+
 ## [0.1.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.2...v0.1.3) (2025-10-24)
 
 
