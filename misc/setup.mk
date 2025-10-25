@@ -23,6 +23,8 @@ env:
 	@echo "ℹ️ Your Immich env file: modules/immich/.env"
 	@cp modules/pgadmin/.env.template modules/pgadmin/.env
 	@echo "ℹ️ Your PgAdmin env file: modules/pgadmin/.env"
+	@cp modules/servarr/.env.template modules/servarr/.env
+	@echo "ℹ️ Your Servarr env file: modules/servarr/.env"
 	@echo "✅ Created .env files"
 
 	@echo "⚙️ Generating passwords (But you are welcome to change them)"
@@ -56,7 +58,7 @@ env:
 	@echo "📢 ==> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com"
 	@echo "📢 ==> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com"
 	@echo "📢 ==> PGADMIN_DEFAULT_EMAIL (modules/pgadmin/.env) : eg. example@gmail.com"
-	@echo "📢 ==> WIREGUARD_PRIVATE_KEY (modules/servarr/compose.ext.yml) : Key from ProtonVPN"
+	@echo "📢 ==> WIREGUARD_PRIVATE_KEY (modules/servarr/.env) : Key from ProtonVPN"
 	@echo ""
 	@echo "----------------------------------------- DOMAIN CONFIGURATION ----------------------------------------------------------"
 	@echo ""
