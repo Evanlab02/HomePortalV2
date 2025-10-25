@@ -7,19 +7,22 @@ from django.urls import path
 from ninja import NinjaAPI, Schema
 
 api = NinjaAPI(
-    title="Home Portal V2 API", 
+    title="Home Portal V2 API",
     version="0.1.3",  # x-release-please-version
 )
+
 
 class HealthCheck(Schema):
     """Health check schema for the API."""
 
     status: Literal["ok"]
 
+
 @api.get("/health", response={200: HealthCheck})
 def health(request: HttpRequest) -> HealthCheck:
     """Health Check."""
     return HealthCheck(status="ok")
+
 
 urlpatterns = [
     path("", api.urls),
