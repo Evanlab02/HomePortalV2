@@ -45,4 +45,4 @@ theme:
 
 nav:
   - Home Portal: index.md
-  - Roadmap: roadmap.md
+  - Getting started: installation.md

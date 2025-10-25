@@ -33,7 +33,7 @@ RUN apk add --no-cache bash
 COPY --from=docs /build/site /var/www/html/docs/
 COPY --from=maintenance /build/dist /var/www/html/maintenance/
 COPY apps/homeportal/static/ /var/www/html/homeportal/static/
-COPY conf/release/Caddyfile /etc/caddy/Caddyfile
+COPY conf/live/Caddyfile /etc/caddy/Caddyfile
 COPY conf/maintenance/Caddyfile /etc/caddy/maintenance/Caddyfile
 
 ENTRYPOINT [ "caddy" ]

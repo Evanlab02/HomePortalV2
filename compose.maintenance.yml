@@ -11,6 +11,7 @@ services:
       - 80:80
     volumes:
       - ./conf/certs/:/certs
+      - ./conf/custom/:/etc/caddy
       - maintenance-data:/data
     networks:
       - hp-network
