@@ -212,3 +212,9 @@ dist/
 
 # Documentation Exclusions
 documentation/site/
+
+# Custom Files Exclusions
+.env
+compose.yml
+conf/custom/Caddyfile
+conf/custom/maintenance/Caddyfile

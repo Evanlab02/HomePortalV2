@@ -15,16 +15,14 @@ admin.site.unregister(Group)
 
 
 class BaseAppAdminMixin(SimpleHistoryAdmin, ModelAdmin, ImportExportModelAdmin):
-    """Base application admin mixin"""
+    """Base application admin mixin."""
 
     pass
 
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin, BaseAppAdminMixin):
-    """
-    Unfold user admin config.
-    """
+    """Unfold user admin config."""
 
     import_form_class = ImportForm
     export_form_class = SelectableFieldsExportForm
@@ -36,9 +34,7 @@ class UserAdmin(BaseUserAdmin, BaseAppAdminMixin):
 
 @admin.register(Group)
 class GroupAdmin(BaseGroupAdmin, BaseAppAdminMixin):
-    """
-    Unfold group admin config.
-    """
+    """Unfold group admin config."""
 
     import_form_class = ImportForm
     export_form_class = SelectableFieldsExportForm

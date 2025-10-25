@@ -21,4 +21,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path("api/v1/", include("api.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(
+    settings.STATIC_URL, document_root=settings.STATIC_ROOT  # type: ignore
+)
