@@ -4,8 +4,8 @@
     "bump-minor-pre-major": true,
     "bump-patch-for-minor-pre-major": true,
     "extra-files": [
-        "compose.maintenance.yaml",
-        "compose.prod.yaml",
+        "compose.maintenance.yml",
+        "compose.prod.yml",
         "apps/homeportal/api/urls.py"
     ],
     "changelog-sections": [
