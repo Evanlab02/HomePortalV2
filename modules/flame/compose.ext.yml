@@ -1,0 +1,16 @@
+services:
+  flame:
+    container_name: flame
+    restart: unless-stopped
+    image: pawelmalak/flame:2.3.1
+    env_file:
+      - .env
+    volumes:
+      - flame-data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - hp-network
+
+volumes:
+  flame-data:
+    external: false
