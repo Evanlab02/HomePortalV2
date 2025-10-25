@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.2.1...v0.3.0) (2025-10-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add all modules to home portal
+
+### Features
+
+* Add all modules to home portal ([2f42bfc](https://github.com/Evanlab02/HomePortalV2/commit/2f42bfc0237690bcfd3fcd7855c540ce9874df06))
+
+
+### Miscellaneous Chores
+
+* Add modules from previous HomePortal ([9135be3](https://github.com/Evanlab02/HomePortalV2/commit/9135be3d9c5e726a6c762f7a98d34ba45d955c98))
+* Fix some setup mk issues ([b979ec3](https://github.com/Evanlab02/HomePortalV2/commit/b979ec3f52b4c753910eb6660399896990a89486))
+
 ## [0.2.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.2.0...v0.2.1) (2025-10-25)
 
 
