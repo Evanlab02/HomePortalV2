@@ -19,6 +19,102 @@ docs.labuschagne.xyz {
 	}
 }
 
+manage.labuschagne.xyz {
+	import inttls
+
+	handle_path /* {
+		reverse_proxy yacht:8000
+	}
+}
+
+jelly.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy http://192.168.50.2:8096 {
+			header_up Host jelly.labuschagne.xyz
+		}
+	}
+}
+
+seerr.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy seerr:5055
+	}
+}
+
+prowlarr.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy prowlarr:9696
+	}
+}
+
+radarr.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy radarr:7878
+	}
+}
+
+sonarr.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy sonarr:8989
+	}
+}
+
+torrent.labuschagne.xyz {
+	import inttls
+
+	forward_auth hp-authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy gluetun:8080 {
+			header_up Host torrent.labuschagne.xyz
+		}
+	}
+}
+
 app.labuschagne.xyz,
 api.labuschagne.xyz {
 	import inttls
@@ -121,5 +217,52 @@ portal.labuschagne.xyz {
 
 	handle_path /* {
 		reverse_proxy flame:5005
+	}
+}
+
+images.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy immich-server:2283
+	}
+}
+
+pgadmin.labuschagne.xyz {
+	import inttls
+
+	# Bypass auth for static assets
+	@static path /static/*
+	handle @static {
+		reverse_proxy pgadmin:80 {
+			header_up Host pgadmin.labuschagne.xyz
+			header_up X-Real-IP {remote_host}
+			header_up X-Forwarded-For {remote_host}
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Forwarded-Host {host}
+		}
+	}
+
+	# Auth required for everything else
+	handle {
+		forward_auth authentik-server:9000 {
+			uri /outpost.goauthentik.io/auth/caddy
+			copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+			trusted_proxies private_ranges
+		}
+
+		reverse_proxy pgadmin:80 {
+			header_up Host pgadmin.labuschagne.xyz
+			header_up X-Real-IP {remote_host}
+			header_up X-Forwarded-For {remote_host}
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Forwarded-Host {host}
+		}
 	}
 }

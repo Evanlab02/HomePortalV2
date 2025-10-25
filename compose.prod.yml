@@ -5,6 +5,10 @@ include:
   - modules/dns/compose.ext.yml
   - modules/files/compose.ext.yml
   - modules/flame/compose.ext.yml
+  - modules/immich/compose.ext.yml
+  - modules/pgadmin/compose.ext.yml
+  - modules/yacht/compose.ext.yml
+  - modules/servarr/compose.ext.yml
 
 services:
   caddy:

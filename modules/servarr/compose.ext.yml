@@ -1,0 +1,162 @@
+services:
+  gluetun:
+    container_name: gluetun
+    restart: unless-stopped
+    image: qmcgaw/gluetun:latest
+    ports:
+      - "8080:8080"
+      - "8191:8191"
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - VPN_PORT_FORWARDING=on
+      - PORT_FORWARD_ONLY=on
+      - DOT=off
+      - DNS_ADDRESS=1.1.1.1
+    volumes:
+      - gluetun-data:/gluetun
+      - ./gluetun/:/tmp/gluetun/
+    networks:
+      - hp-network
+
+  qbittorrent:
+    container_name: qbittorrent
+    restart: unless-stopped
+    image: lscr.io/linuxserver/qbittorrent:latest
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - WEBUI_PORT=8080
+    network_mode: "service:gluetun"
+    volumes:
+      - qbittorrent-config:/config
+      - SETTOLOCATION:/downloads
+    labels:
+      - flame.type=application
+      - flame.name=qBittorrent
+      - flame.url=https://torrent.labuschagne.xyz
+      - flame.icon=download
+
+  byparr:
+    container_name: byparr
+    restart: unless-stopped
+    image: ghcr.io/thephaseless/byparr:2.0.1
+    init: true
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+
+  seerr:
+    container_name: seerr
+    restart: unless-stopped
+    image: ghcr.io/fallenbagel/jellyseerr:latest
+    init: true
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Africa/Johannesburg
+      - PORT=5055
+    ports:
+      - 9997:5055
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    volumes:
+      - seerr-config:/app/config
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Seerr
+      - flame.url=https://seerr.labuschagne.xyz
+      - flame.icon=movie-open
+
+  prowlarr:
+    container_name: prowlarr
+    restart: unless-stopped
+    image: lscr.io/linuxserver/prowlarr:latest
+    ports:
+      - 9696:9696
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - prowlarr-config:/config
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Prowlarr
+      - flame.url=https://prowlarr.labuschagne.xyz
+      - flame.icon=download
+  
+  radarr:
+    container_name: radarr
+    restart: unless-stopped
+    image: lscr.io/linuxserver/radarr:latest
+    ports:
+      - 7878:7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - radarr-config:/config
+      - SETTOLOCATION:/movies/int1
+      - SETTOLOCATION:/movies/ext1
+      - SETTOLOCATION:/downloads
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Radarr
+      - flame.url=https://radarr.labuschagne.xyz
+      - flame.icon=movie-open
+
+  sonarr:
+    container_name: sonarr
+    restart: unless-stopped
+    image: lscr.io/linuxserver/sonarr:latest
+    ports:
+      - 8989:8989
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - sonarr-config:/config
+      - SETTOLOCATION:/tv/int1
+      - SETTOLOCATION:/tv/ext1
+      - SETTOLOCATION:/downloads
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=sonarr
+      - flame.url=https://sonarr.labuschagne.xyz
+      - flame.icon=movie-open
+
+volumes:
+  gluetun-data:
+    external: false
+  qbittorrent-config:
+    external: false
+  seerr-config:
+    external: false
+  prowlarr-config:
+    external: false
+  radarr-config:
+    external: false
+  sonarr-config:
+    external: false
