@@ -39,9 +39,9 @@ env:
 	@echo "⚙️ Generating passwords for modules/flame/.env"
 	@sed -i "s|^PASSWORD=.*|PASSWORD=$$(openssl rand -base64 32)|" modules/flame/.env
 	@echo "⚙️ Generating passwords for modules/immich/.env"
-	@sed -i "s|^IMMICH_DB_PASSWORD=.*|IMMICH_DB_PASSWORD=$$(openssl rand -base64 32)|" modules/immich/.env"
+	@sed -i "s|^IMMICH_DB_PASSWORD=.*|IMMICH_DB_PASSWORD=$$(openssl rand -base64 32)|" modules/immich/.env
 	@echo "⚙️ Generating passwords for modules/pgadmin/.env"
-	@sed -i "s|^PGADMIN_DEFAULT_PASSWORD=.*|PGADMIN_DEFAULT_PASSWORD=$$(openssl rand -base64 32)|" modules/pgadmin/.env"
+	@sed -i "s|^PGADMIN_DEFAULT_PASSWORD=.*|PGADMIN_DEFAULT_PASSWORD=$$(openssl rand -base64 32)|" modules/pgadmin/.env
 	@echo "✅ Generated passwords"
 
 	@echo ""
