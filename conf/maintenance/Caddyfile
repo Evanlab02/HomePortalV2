@@ -6,9 +6,19 @@ auth.labuschagne.xyz,
 api.labuschagne.xyz,
 app.labuschagne.xyz,
 admin.labuschagne.xyz,
+budget.labuschagne.xyz,
 docs.labuschagne.xyz,
+dns.labuschagne.xyz,
+files.labuschagne.xyz,
+images.labuschagne.xyz,
+pgadmin.labuschagne.xyz,
+manage.labuschagne.xyz,
+portal.labuschagne.xyz,
 jelly.labuschagne.xyz,
-portal.labuschagne.xyz {
+seerr.labuschagne.xyz,
+radarr.labuschagne.xyz,
+sonarr.labuschagne.xyz,
+prowlarr.labuschagne.xyz {
 	import inttls
 
 	handle_path /* {

@@ -1,0 +1,17 @@
+services:
+  dufs:
+    container_name: dufs
+    restart: unless-stopped
+    image: sigoden/dufs:v0.45.0
+    command: /data -A
+    ports:
+      - 9999:5000
+    volumes:
+      - ./data:/data
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=DUFS
+      - flame.url=https://files.labuschagne.xyz
+      - flame.icon=folder-open

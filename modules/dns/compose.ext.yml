@@ -1,0 +1,27 @@
+services:
+  pihole:
+    container_name: pihole
+    restart: unless-stopped
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      TZ: 'Africa/Johannesburg'
+      FTLCONF_webserver_api_password: ${PIHOLE_PASSWORD}
+      FTLCONF_dns_listeningMode: 'all'
+    env_file:
+      - .env
+    volumes:
+      - 'pihole-data:/etc/pihole'
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Pihole
+      - flame.url=https://dns.labuschagne.xyz/admin/
+      - flame.icon=network
+
+volumes:
+  pihole-data:
+    external: false

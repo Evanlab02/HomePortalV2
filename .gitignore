@@ -220,3 +220,5 @@ conf/custom/Caddyfile
 conf/custom/maintenance/Caddyfile
 conf/certs/fullchain.cer
 conf/certs/*.key
+custom/*
+!custom/.gitkeep

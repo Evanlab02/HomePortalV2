@@ -99,9 +99,7 @@ You will be using the proxy authentication if you get it confused.
 
 ### All done
 
-You should now be able to access all apps with your authentik credentials (perhaps with another login screen for the app specfiic credentials which will likely in your env vars or have been setup with make superuser).
-
-**HINT: a good starting point is portal.<your_domain>**
+You should now be able to access all apps with your authentik credentials (perhaps with another login screen for the app specfiic credentials which will likely be in your env vars or have been setup with make superuser).
 
 ### Maintenance mode
 

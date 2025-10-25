@@ -1,5 +1,15 @@
 name: hp
 
+include:
+  - modules/actual/compose.ext.yml
+  - modules/dns/compose.ext.yml
+  - modules/files/compose.ext.yml
+  - modules/flame/compose.ext.yml
+  - modules/immich/compose.ext.yml
+  - modules/pgadmin/compose.ext.yml
+  - modules/yacht/compose.ext.yml
+  - modules/servarr/compose.ext.yml
+
 services:
   caddy:
     container_name: caddy
@@ -14,6 +24,11 @@ services:
       - caddy-data:/data
     networks:
       - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=HomePortalV2 Documentation
+      - flame.url=https://docs.labuschagne.xyz//HomePortalV2/
+      - flame.icon=folder-open
 
   app:
     container_name: app
@@ -23,6 +38,11 @@ services:
       - .env
     networks:
       - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=HomePortalV2 App/API
+      - flame.url=https://app.labuschagne.xyz/api/v1/docs
+      - flame.icon=folder-open
 
   admin:
     container_name: admin
@@ -32,6 +52,11 @@ services:
       - .env
     networks:
       - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=HomePortalV2 Administration
+      - flame.url=https://admin.labuschagne.xyz/admin/
+      - flame.icon=folder-open
 
   valkey:
     image: valkey/valkey:8.1.4-alpine3.22
@@ -89,6 +114,11 @@ services:
       - valkey
     networks:
       - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Authentik
+      - flame.url=https://auth.labuschagne.xyz
+      - flame.icon=shield-lock
 
   authentik-worker:
     container_name: authentik-worker

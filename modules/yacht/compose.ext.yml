@@ -1,0 +1,19 @@
+services:
+  yacht:
+    container_name: yacht
+    restart: unless-stopped
+    image: selfhostedpro/yacht:latest
+    volumes:
+      - yacht-data:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Yacht
+      - flame.url=https://manage.labuschagne.xyz
+      - flame.icon=docker
+
+volumes:
+  yacht-data:
+    external: false
