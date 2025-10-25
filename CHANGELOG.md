@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.2.0...v0.2.1) (2025-10-25)
+
+
+### Bug Fixes
+
+* Authentik versions in compose reference file ([6ddb730](https://github.com/Evanlab02/HomePortalV2/commit/6ddb730a4d015abd6f9e410b04e0fdbbcd61497b))
+
+
+### Documentation
+
+* Updated documentation guide for setup with authentik ([3e92880](https://github.com/Evanlab02/HomePortalV2/commit/3e9288033eee005c0bd91018afdc9d4bed1031bd))
+
 ## [0.2.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.4...v0.2.0) (2025-10-25)
 
 
