@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.4...v0.2.0) (2025-10-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Authentik:** Authentik integration into home portal
+
+### Features
+
+* **Authentik:** Authentik integration into home portal ([e117c27](https://github.com/Evanlab02/HomePortalV2/commit/e117c278014cf4284710e9454490f6d4875781c5))
+
+
+### Miscellaneous Chores
+
+* Small typo fixes ([a770a86](https://github.com/Evanlab02/HomePortalV2/commit/a770a86c73c6bfa9d8cb6bca686b568a3c90ccb8))
+
 ## [0.1.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.1.3...v0.1.4) (2025-10-25)
 
 
