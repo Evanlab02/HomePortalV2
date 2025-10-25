@@ -24,10 +24,10 @@ debug:
 
 .PHONY: maintenance
 maintenance:
-	docker compose -f compose.maintenance.yaml pull
-	docker compose -f compose.maintenance.yaml build
-	docker compose -f compose.maintenance.yaml up
+	docker compose -f compose.maintenance.yml pull
+	docker compose -f compose.maintenance.yml build
+	docker compose -f compose.maintenance.yml up
 
 .PHONY: maintenance-down
 maintenance-down:
-	docker compose -f compose.maintenance.yaml down
+	docker compose -f compose.maintenance.yml down

@@ -218,3 +218,5 @@ documentation/site/
 compose.yml
 conf/custom/Caddyfile
 conf/custom/maintenance/Caddyfile
+conf/certs/fullchain.cer
+conf/certs/*.key
