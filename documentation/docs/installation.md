@@ -50,6 +50,8 @@ The output will look something like the following:
 📢 You need to fill in anything in the .env file that is blank and required. Not all values are populated by default.
 📢 Here is a list of env vars you will likely need to update:
 📢 --> DJANGO_HOSTS : Comma seperated list of the hosts the main portal app will be available at, eg. app.example.com
+📢 --> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com
+📢 --> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com
 ------------------------------------------------------------------------------------------------------------------------
 📢 You need to configure the caddyfile to point to the correct domains for all your applications. We assume that you
 📢 know how to configure your DNS.
@@ -74,7 +76,7 @@ docker compose up -d postgres
 docker compose down
 ```
 
-### Almost there
+### Starting and setting up home portal superuser
 
 Run the following commands to get it all up and running, you will be prompted for some details to set up your superuser for the home portal app.
 

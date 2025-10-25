@@ -37,6 +37,13 @@ services:
     image: valkey/valkey:8.1.4-alpine3.22
     container_name: valkey
     restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - valkey-cli
+        - ping
+      retries: 3
+      timeout: 5s
     volumes:
       - valkey-data:/data
     networks:
@@ -67,12 +74,51 @@ services:
     networks:
       - hp-network
 
+  authentik-server:
+    container_name: authentik-server
+    restart: unless-stopped
+    image: ghcr.io/goauthentik/server:2025.1.2
+    command: server
+    env_file:
+      - .env
+    volumes:
+      - authentik-media:/media
+      - authentik-templates:/templates
+    depends_on:
+      - postgres
+      - valkey
+    networks:
+      - hp-network
+
+  authentik-worker:
+    container_name: authentik-worker
+    restart: unless-stopped
+    image: ghcr.io/goauthentik/server:2025.1.2
+    command: worker
+    env_file:
+      - .env
+    volumes:
+      - authentik-certs:/certs
+      - authentik-media:/media
+      - authentik-templates:/templates
+    depends_on:
+      - postgres
+      - valkey
+    networks:
+      - hp-network
+
 volumes:
   caddy-data:
     external: false
   valkey-data:
     external: false
   postgres-data:
+    external: false
+  authentik-certs:
+    external: false
+  authentik-media:
+    external: false
+  authentik-templates:
     external: false
 
 networks:

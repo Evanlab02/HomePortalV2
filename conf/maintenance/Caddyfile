@@ -2,6 +2,7 @@
 	tls /certs/fullchain.cer /certs/labuschagne.xyz.key
 }
 
+auth.labuschagne.xyz,
 api.labuschagne.xyz,
 app.labuschagne.xyz,
 admin.labuschagne.xyz,
