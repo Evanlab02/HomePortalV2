@@ -20,8 +20,14 @@ fi
 
 # Ensure required environment variables are set
 if [ -z "$DJANGO_DB_NAME" ] || [ -z "$DJANGO_DB_USER" ] || [ -z "$DJANGO_DB_PASSWORD" ]; then
-    echo -e "${RED}Error: Required environment variables are not set${NC}"
+    echo -e "${RED}Error: Required Django environment variables are not set${NC}"
     echo "Required variables: DJANGO_DB_NAME, DJANGO_DB_USER, DJANGO_DB_PASSWORD"
+    exit 1
+fi
+
+if [ -z "$AUTHENTIK_POSTGRESQL__NAME" ] || [ -z "$AUTHENTIK_POSTGRESQL__USER" ] || [ -z "$AUTHENTIK_POSTGRESQL__PASSWORD" ]; then
+    echo -e "${RED}Error: Required Authentik environment variables are not set${NC}"
+    echo "Required variables: AUTHENTIK_POSTGRESQL__NAME, AUTHENTIK_POSTGRESQL__USER, AUTHENTIK_POSTGRESQL__PASSWORD"
     exit 1
 fi
 
@@ -96,9 +102,71 @@ docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$DJANGO_DB_NAME" -c "
 echo -e "${GREEN}All privileges granted successfully${NC}"
 
 echo ""
+echo -e "${GREEN}=== Creating Authentik Database ===${NC}"
+
+# Check if database exists
+AUTHENTIK_DB_EXISTS=$(docker compose exec -T postgres psql -U "$DB_USERNAME" -lqt | cut -d \| -f 1 | grep -w "$AUTHENTIK_POSTGRESQL__NAME" | wc -l)
+
+if [ "$AUTHENTIK_DB_EXISTS" -eq 1 ]; then
+    echo -e "${GREEN}Database '${AUTHENTIK_POSTGRESQL__NAME}' already exists${NC}"
+else
+    echo -e "${YELLOW}Creating database '${AUTHENTIK_POSTGRESQL__NAME}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "CREATE DATABASE ${AUTHENTIK_POSTGRESQL__NAME};"
+    echo -e "${GREEN}Database '${AUTHENTIK_POSTGRESQL__NAME}' created successfully${NC}"
+fi
+
+echo ""
+echo -e "${GREEN}=== Creating Authentik User ===${NC}"
+
+# Check if user exists
+AUTHENTIK_USER_EXISTS=$(docker compose exec -T postgres psql -U "$DB_USERNAME" -tAc "SELECT 1 FROM pg_roles WHERE rolname='${AUTHENTIK_POSTGRESQL__USER}'" | grep -c 1 || true)
+
+if [ "$AUTHENTIK_USER_EXISTS" -eq 1 ]; then
+    echo -e "${GREEN}User '${AUTHENTIK_POSTGRESQL__USER}' already exists${NC}"
+    echo -e "${YELLOW}Updating password for user '${AUTHENTIK_POSTGRESQL__USER}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "ALTER USER ${AUTHENTIK_POSTGRESQL__USER} WITH PASSWORD '${AUTHENTIK_POSTGRESQL__PASSWORD}';"
+    echo -e "${GREEN}Password updated successfully${NC}"
+else
+    echo -e "${YELLOW}Creating user '${AUTHENTIK_POSTGRESQL__USER}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "CREATE USER ${AUTHENTIK_POSTGRESQL__USER} WITH PASSWORD '${AUTHENTIK_POSTGRESQL__PASSWORD}';"
+    echo -e "${GREEN}User '${AUTHENTIK_POSTGRESQL__USER}' created successfully${NC}"
+fi
+
+echo ""
+echo -e "${GREEN}=== Granting Authentik Privileges ===${NC}"
+
+echo -e "${YELLOW}Granting all privileges on database '${AUTHENTIK_POSTGRESQL__NAME}' to user '${AUTHENTIK_POSTGRESQL__USER}'...${NC}"
+
+# Grant database privileges
+docker compose exec -T postgres psql -U "$DB_USERNAME" -c "GRANT ALL PRIVILEGES ON DATABASE ${AUTHENTIK_POSTGRESQL__NAME} TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+# Grant schema privileges
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL__NAME" -c "GRANT ALL ON SCHEMA public TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+# Grant privileges on all existing tables
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL__NAME" -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+# Grant privileges on all existing sequences
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL__NAME" -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+# Set default privileges for future tables
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL__NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+# Set default privileges for future sequences
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL__NAME" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ${AUTHENTIK_POSTGRESQL__USER};"
+
+echo -e "${GREEN}All privileges granted successfully${NC}"
+
+echo ""
 echo -e "${GREEN}Database initialization completed successfully!${NC}"
 echo ""
 echo "Summary:"
-echo "  - Database: $DJANGO_DB_NAME"
-echo "  - User: $DJANGO_DB_USER"
-echo "  - Privileges: ALL on database $DJANGO_DB_NAME"
+echo "  Django:"
+echo "    - Database: $DJANGO_DB_NAME"
+echo "    - User: $DJANGO_DB_USER"
+echo "    - Privileges: ALL on database $DJANGO_DB_NAME"
+echo ""
+echo "  Authentik:"
+echo "    - Database: $AUTHENTIK_POSTGRESQL__NAME"
+echo "    - User: $AUTHENTIK_POSTGRESQL__USER"
+echo "    - Privileges: ALL on database $AUTHENTIK_POSTGRESQL__NAME"
