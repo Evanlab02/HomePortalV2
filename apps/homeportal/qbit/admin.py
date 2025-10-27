@@ -1,6 +1,4 @@
-"""
-Admin config for the QBittorrent sync app.
-"""
+"""Admin config for the QBittorrent sync app."""
 
 from django.contrib import admin, messages
 from django.http import HttpRequest, HttpResponseRedirect
@@ -33,7 +31,7 @@ class QBitServerAdmin(BaseAdminMixin):
             "Sync Operations",
             {
                 "fields": ("display_sync_actions_detail",),
-                "description": "Use these buttons to synchronize configuration between the database and the QBittorrent server.",
+                "description": "Use these buttons to synchronize configuration between the database and the QBittorrent server.",  # noqa: E501
             },
         ),
     )
@@ -62,14 +60,14 @@ class QBitServerAdmin(BaseAdminMixin):
         push_url = reverse("admin:qbit_qbitserver_push", args=[obj.pk])
         return format_html(
             '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            'ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 '
-            'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none '
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2 mr-2" '
+            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
+            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
+            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2 mr-2" '  # noqa: E501
             'href="{}">⬇ Pull</a>'
             '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            'ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 '
-            'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none '
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2" '
+            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
+            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
+            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2" '  # noqa: E501
             'href="{}">⬆ Push</a>',
             pull_url,
             push_url,
@@ -86,16 +84,16 @@ class QBitServerAdmin(BaseAdminMixin):
         return format_html(
             '<div class="flex gap-4">'
             '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            'ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 '
-            'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none '
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
+            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
+            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
+            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '  # noqa: E501
             'href="{}">⬇ Pull Config from Server</a>'
             '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            'ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 '
-            'focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none '
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
+            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
+            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
+            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '  # noqa: E501
             'href="{}">⬆ Push Config to Server</a>'
-            '</div>',
+            "</div>",
             pull_url,
             push_url,
         )
@@ -104,9 +102,7 @@ class QBitServerAdmin(BaseAdminMixin):
         """Handle pull action for a single server."""
         server = self.get_object(request, object_id)
         if server is None:
-            self.message_user(
-                request, "Server not found.", level=messages.ERROR
-            )
+            self.message_user(request, "Server not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse("admin:qbit_qbitserver_changelist"))
 
         try:
@@ -130,17 +126,13 @@ class QBitServerAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse("admin:qbit_qbitserver_change", args=[object_id])
-        )
+        return HttpResponseRedirect(reverse("admin:qbit_qbitserver_change", args=[object_id]))
 
     def push_single_view(self, request: HttpRequest, object_id: str):
         """Handle push action for a single server."""
         server = self.get_object(request, object_id)
         if server is None:
-            self.message_user(
-                request, "Server not found.", level=messages.ERROR
-            )
+            self.message_user(request, "Server not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse("admin:qbit_qbitserver_changelist"))
 
         try:
@@ -164,9 +156,7 @@ class QBitServerAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse("admin:qbit_qbitserver_change", args=[object_id])
-        )
+        return HttpResponseRedirect(reverse("admin:qbit_qbitserver_change", args=[object_id]))
 
     @admin.action(description="Pull config from selected servers")
     def bulk_pull_configs(self, request: HttpRequest, queryset):

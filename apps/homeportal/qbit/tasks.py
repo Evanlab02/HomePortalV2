@@ -2,13 +2,14 @@
 
 from logging import getLogger
 
-from celery import shared_task
+from celery import shared_task  # type: ignore
 
 from qbit.models import QBitServer
 
 logger = getLogger(__name__)
 
-@shared_task
+
+@shared_task  # type: ignore
 def sync_forwarded_port_to_qbit() -> None:
     """
     Celery task to synchronize the forwarded port from the config file to all QBittorrent servers.
@@ -21,9 +22,9 @@ def sync_forwarded_port_to_qbit() -> None:
     Returns:
         None
     """
-    port = 0
+    port: str | int = 0
     with open("./qbit/config/forwarded_port", "r") as f:
-        port: str | int = f.read().strip()
+        port = f.read().strip()
         port = int(port)
 
     records = QBitServer.objects.all()

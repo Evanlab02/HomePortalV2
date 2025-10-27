@@ -1,0 +1,1 @@
+"""QBittorrent syncing app."""

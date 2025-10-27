@@ -38,6 +38,8 @@ class UnfoldTaskSelectWidget(UnfoldAdminSelectWidget, TaskSelectWidget):
 
 
 class UnfoldPeriodicTaskForm(PeriodicTaskForm):
+    """Periodic task form with Unfold-styled widgets for task fields."""
+
     def __init__(self, *args, **kwargs):
         """Initialize the periodic task form with Unfold-styled widgets for task fields."""
         super().__init__(*args, **kwargs)

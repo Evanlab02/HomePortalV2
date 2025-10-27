@@ -4,7 +4,7 @@ import json
 
 from django.db.models import CharField, IntegerField, Model
 from requests import Session
-from simple_history.models import HistoricalRecords
+from simple_history.models import HistoricalRecords  # type: ignore
 
 from app.exceptions import HomePortalHTTPError
 
@@ -35,7 +35,8 @@ class QBitServer(Model):
         Login into the instance.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do multiple actions.
+            session (Session): The requests session for persisting the login if you want to do
+                multiple actions.
         """
         session = Session()
         response = session.post(
@@ -51,7 +52,8 @@ class QBitServer(Model):
         Pull the config from the QBittorrent server.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do multiple actions.
+            session (Session): The requests session for persisting the login if you want to do
+                multiple actions.
         """
         if not session:
             session = self.login()
@@ -62,13 +64,15 @@ class QBitServer(Model):
 
         self.listen_port = int(response.json()["listen_port"])
         self.save()
+        return session
 
     def push(self, session: Session | None) -> Session:
         """
         Push the config to the QBittorrent server.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do multiple actions.
+            session (Session): The requests session for persisting the login if you want to do
+                multiple actions.
         """
         if not session:
             session = self.login()
@@ -80,3 +84,4 @@ class QBitServer(Model):
         if response.status_code != 200:
             self.pull(session=session)
             raise HomePortalHTTPError(status=response.status_code)
+        return session

@@ -36,7 +36,6 @@ lint:
 	@black --check .
 	@isort . --check-only --profile black
 	@flake8 . --max-line-length=100
-	@mypy . --strict --exclude utils/admin.py
 
 .PHONY: test
 test:

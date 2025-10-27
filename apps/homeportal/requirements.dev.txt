@@ -108,7 +108,9 @@ django-ninja==1.4.5
 django-simple-history==3.10.1
     # via -r requirements.txt
 django-stubs==5.2.7
-    # via -r requirements.dev.in
+    # via
+    #   -r requirements.dev.in
+    #   types-django-import-export
 django-stubs-ext==5.2.7
     # via django-stubs
 django-timezone-field==7.1
@@ -250,8 +252,12 @@ tablib==3.9.0
     #   django-import-export
 termcolor==3.2.0
     # via pytest-sugar
+types-django-import-export==4.3.0.20250822
+    # via -r requirements.dev.in
 types-pyyaml==6.0.12.20250915
     # via django-stubs
+types-requests==2.32.4.20250913
+    # via -r requirements.dev.in
 typing-extensions==4.15.0
     # via
     #   -r requirements.txt
@@ -279,6 +285,7 @@ urllib3==2.5.0
     # via
     #   -r requirements.txt
     #   requests
+    #   types-requests
 vine==5.1.0
     # via
     #   -r requirements.txt
