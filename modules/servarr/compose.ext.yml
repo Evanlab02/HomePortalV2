@@ -27,7 +27,7 @@ services:
   qbittorrent:
     container_name: qbittorrent
     restart: unless-stopped
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: lscr.io/linuxserver/qbittorrent:5.1.2
     depends_on:
       - gluetun
     environment:
