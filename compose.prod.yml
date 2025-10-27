@@ -9,6 +9,7 @@ include:
   - modules/pgadmin/compose.ext.yml
   - modules/yacht/compose.ext.yml
   - modules/servarr/compose.ext.yml
+  # - compose.dev.ext.yml
 
 services:
   caddy:

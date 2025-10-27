@@ -1,0 +1,22 @@
+services:
+  app_dev:
+    container_name: app_dev
+    restart: unless-stopped
+    build:
+      context: apps/homeportal
+      dockerfile: docker/app/Dockerfile
+    env_file:
+      - .env
+    networks:
+      - hp-network
+
+  admin_dev:
+    container_name: admin_dev
+    restart: unless-stopped
+    build:
+      context: apps/homeportal
+      dockerfile: docker/admin/Dockerfile
+    env_file:
+      - .env
+    networks:
+      - hp-network

@@ -18,7 +18,10 @@ jelly.labuschagne.xyz,
 seerr.labuschagne.xyz,
 radarr.labuschagne.xyz,
 sonarr.labuschagne.xyz,
-prowlarr.labuschagne.xyz {
+prowlarr.labuschagne.xyz,
+devapp.labuschagne.xyz,
+devapi.labuschagne.xyz,
+devadmin.labuschagne.xyz {
 	import inttls
 
 	handle_path /* {
