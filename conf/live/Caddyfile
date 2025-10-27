@@ -230,7 +230,7 @@ images.labuschagne.xyz {
 	}
 
 	handle_path /* {
-		reverse_proxy immich-server:2283
+		reverse_proxy immich_server:2283
 	}
 }
 

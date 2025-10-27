@@ -2,7 +2,7 @@ services:
   gluetun:
     container_name: gluetun
     restart: unless-stopped
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:v3.40.0
     ports:
       - "8080:8080"
       - "8191:8191"
@@ -27,7 +27,7 @@ services:
   qbittorrent:
     container_name: qbittorrent
     restart: unless-stopped
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: lscr.io/linuxserver/qbittorrent:5.1.2
     depends_on:
       - gluetun
     environment:
@@ -57,7 +57,7 @@ services:
   seerr:
     container_name: seerr
     restart: unless-stopped
-    image: ghcr.io/fallenbagel/jellyseerr:latest
+    image: ghcr.io/fallenbagel/jellyseerr:2.7.3
     init: true
     environment:
       - LOG_LEVEL=debug
@@ -84,7 +84,7 @@ services:
   prowlarr:
     container_name: prowlarr
     restart: unless-stopped
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: lscr.io/linuxserver/prowlarr:2.1.5
     ports:
       - 9696:9696
     environment:
@@ -104,7 +104,7 @@ services:
   radarr:
     container_name: radarr
     restart: unless-stopped
-    image: lscr.io/linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr:5.28.0
     ports:
       - 7878:7878
     environment:
@@ -127,7 +127,7 @@ services:
   sonarr:
     container_name: sonarr
     restart: unless-stopped
-    image: lscr.io/linuxserver/sonarr:latest
+    image: lscr.io/linuxserver/sonarr:4.0.15
     ports:
       - 8989:8989
     environment:

@@ -93,6 +93,7 @@ DATABASES = {
         "HOST": getenv("DJANGO_DB_HOST"),
         "PORT": getenv("DJANGO_DB_PORT", "5432"),
         "OPTIONS": {
+            "server_side_binding": True,
             "pool": {
                 "min_size": 1,
                 "max_size": 4,

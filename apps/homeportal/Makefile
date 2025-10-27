@@ -3,6 +3,12 @@ requirements:
 	uv pip compile requirements.in -o requirements.txt
 	uv pip compile requirements.dev.in -o requirements.dev.txt
 
+.PHONY: requirements-upgrade
+requirements-upgrade:
+	uv pip compile requirements.in --upgrade -o requirements.txt
+	uv pip compile requirements.dev.in --upgrade -o requirements.dev.txt
+
+
 .PHONY: deps
 deps:
 	uv pip install -r requirements.dev.txt

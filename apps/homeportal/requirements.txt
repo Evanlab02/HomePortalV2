@@ -35,7 +35,7 @@ django-ninja==1.4.5
     # via -r requirements.in
 django-simple-history==3.10.1
     # via -r requirements.in
-django-unfold==0.68.0
+django-unfold==0.69.0
     # via -r requirements.in
 gunicorn==23.0.0
     # via -r requirements.in
@@ -43,11 +43,11 @@ hiredis==3.3.0
     # via redis
 packaging==25.0
     # via gunicorn
-psycopg==3.2.11
+psycopg==3.2.12
     # via -r requirements.in
-psycopg-binary==3.2.11
+psycopg-binary==3.2.12
     # via psycopg
-psycopg-pool==3.2.6
+psycopg-pool==3.2.7
     # via psycopg
 py-moneyed==3.0
     # via django-money
