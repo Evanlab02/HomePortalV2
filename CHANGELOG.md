@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.4.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.3.1...v0.4.0) (2025-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Immich:** Upgrade to 2.1.0
+* **Postgres:** Upgrade to postgres 18
+
+### Features
+
+* **Authentik:** Upgrade to 2025.8.4 ([5a93f9b](https://github.com/Evanlab02/HomePortalV2/commit/5a93f9b0434b1fc5609ca55894e8b8042e44d141))
+* **Django:** Use server side bindings/cursors ([469f32c](https://github.com/Evanlab02/HomePortalV2/commit/469f32c6047c8a411d0c7741b728b7ef5d8a9692))
+* **Immich:** Upgrade to 2.1.0 ([844c6fe](https://github.com/Evanlab02/HomePortalV2/commit/844c6fe352955a987aad69e26565a5b1a5c49e5b))
+* **PgAdmin:** Upgrade to 9.9.0 ([5dd4aad](https://github.com/Evanlab02/HomePortalV2/commit/5dd4aadeac729ed00d70ac88ea289d4d68916bc8))
+* **Postgres:** Upgrade to postgres 18 ([02e6585](https://github.com/Evanlab02/HomePortalV2/commit/02e6585f908ece8c1579c0842923552879badc44))
+* **Valkey:** Upgrade to valkey 9 ([4ff75ff](https://github.com/Evanlab02/HomePortalV2/commit/4ff75ffaa1e246349ce4e94116dfd0dd28f2de9a))
+
+
+### Bug Fixes
+
+* **Caddy:** Update Caddyfiles for new updated immich ([480e21e](https://github.com/Evanlab02/HomePortalV2/commit/480e21ecb7410ec998372029d8459ee9157f781e))
+* **Gluetun:** Pin to 3.40.0 ([056143b](https://github.com/Evanlab02/HomePortalV2/commit/056143b4674aee9b0ce3a20ae55ef854a463a7fc))
+* **Pihole:** Pin pihole to 2025.10.10 ([032ae4a](https://github.com/Evanlab02/HomePortalV2/commit/032ae4ae5f5ba63ed9a68c5d0b183355d48afcfc))
+* **Prowlarr:** Pin to 2.1.5 ([2e02c34](https://github.com/Evanlab02/HomePortalV2/commit/2e02c3492342e82ec9ac29e837d24a1f0246c803))
+* **QBittorrent:** Pin to 5.1.2 ([7fb7b26](https://github.com/Evanlab02/HomePortalV2/commit/7fb7b26f0430cfca1989e850979793cd5fb2511c))
+* **Radarr:** Pin to 5.28.0 ([28a5709](https://github.com/Evanlab02/HomePortalV2/commit/28a5709676e0bf1f7c9245558745a9e74c790c57))
+* **Seerr:** Pin seerr to 2.7.3 ([ade72d7](https://github.com/Evanlab02/HomePortalV2/commit/ade72d71cc908aea7d9d5d05835a3af58a55453a))
+* **Sonarr:** Pin to 4.0.15 ([d5d0a2b](https://github.com/Evanlab02/HomePortalV2/commit/d5d0a2b6113bd0ff307e21ae38c2dc221211c3fa))
+
+
+### Dependencies
+
+* **Django:** Upgrade django app deps ([237ec41](https://github.com/Evanlab02/HomePortalV2/commit/237ec41ac169d508506f21b8918360ee09378a06))
+* **maintenance:** Updated maintenance front-end deps ([6e0444c](https://github.com/Evanlab02/HomePortalV2/commit/6e0444ca496427e1aa07711797866197202d4d53))
+
+
+### Reverts
+
+* Remove immich-ml domain from caddyfile ([692bdf6](https://github.com/Evanlab02/HomePortalV2/commit/692bdf644e286d5c1f384b15461d6fb371c678be))
+
 ## [0.3.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.3.0...v0.3.1) (2025-10-25)
 
 
