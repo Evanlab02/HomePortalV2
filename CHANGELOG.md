@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.0...v0.6.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* Add mount for gluetun forwarded port to prod compose ([500e593](https://github.com/Evanlab02/HomePortalV2/commit/500e5933139c53e69261e48d6927f30aa708033f))
+
+
+### Reverts
+
+* **Postgres:** Revert back to 17.6 ([a642baa](https://github.com/Evanlab02/HomePortalV2/commit/a642baa95819b30e53249aa13c57dd3e070c4ed6))
+
+
+### Miscellaneous Chores
+
+* Add queue to dev dockerfile ([27d3bf4](https://github.com/Evanlab02/HomePortalV2/commit/27d3bf48627027f134f96e7f57536a8b28b5e74c))
+
 ## [0.6.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.5.0...v0.6.0) (2025-10-27)
 
 
