@@ -84,7 +84,7 @@ services:
   prowlarr:
     container_name: prowlarr
     restart: unless-stopped
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: lscr.io/linuxserver/prowlarr:2.1.5
     ports:
       - 9696:9696
     environment:
