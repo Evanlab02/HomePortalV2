@@ -2,7 +2,7 @@ services:
   gluetun:
     container_name: gluetun
     restart: unless-stopped
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:v3.40.0
     ports:
       - "8080:8080"
       - "8191:8191"
