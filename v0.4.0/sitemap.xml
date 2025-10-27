@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://evanlab02.github.io/HomePortalV2/v0.4.0/</loc>
+         <lastmod>2025-10-27</lastmod>
+    </url>
+    <url>
+         <loc>https://evanlab02.github.io/HomePortalV2/v0.4.0/installation/</loc>
+         <lastmod>2025-10-27</lastmod>
+    </url>
+    <url>
+         <loc>https://evanlab02.github.io/HomePortalV2/v0.4.0/dependencies/acme/</loc>
+         <lastmod>2025-10-27</lastmod>
+    </url>
+    <url>
+         <loc>https://evanlab02.github.io/HomePortalV2/v0.4.0/dependencies/jellyfin/</loc>
+         <lastmod>2025-10-27</lastmod>
+    </url>
+</urlset>
