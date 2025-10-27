@@ -26,13 +26,21 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CELERY_RESULT_BACKEND = "django-db"
 
 ALLOWED_HOSTS = ["localhost"]
 if HOSTS:
     ALLOWED_HOSTS += HOSTS
     CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in HOSTS]
 
-THIRD_PARTY_APPS = ["import_export", "guardian", "simple_history", "constance"]
+THIRD_PARTY_APPS = [
+    "django_celery_results",
+    "django_celery_beat",
+    "import_export",
+    "guardian",
+    "simple_history",
+    "constance",
+]
 
 UNFOLD_APPS = [
     "unfold",
@@ -54,7 +62,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-APPS = ["api.apps.ApiConfig", "utils.apps.UtilsConfig"]
+APPS = ["api.apps.ApiConfig", "qbit.apps.QbitConfig", "utils.apps.UtilsConfig"]
 
 INSTALLED_APPS = UNFOLD_APPS + THIRD_PARTY_APPS + DJANGO_APPS + APPS
 
@@ -105,7 +113,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": f"valkey://{getenv('DJANGO_CACHE_HOST')}:{getenv('DJANGO_CACHE_PORT', "6379")}",
+        "LOCATION": f"redis://{getenv('DJANGO_CACHE_HOST')}:{getenv('DJANGO_CACHE_PORT', "6379")}",
     }
 }
 
@@ -130,57 +138,10 @@ AUTHENTICATION_BACKENDS = (
     "guardian.backends.ObjectPermissionBackend",
 )
 CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
+CONSTANCE_DATABASE_CACHE_BACKEND = "default"
 
 CONSTANCE_CONFIG = {
-    "TODO": ("TODO", "TODO"),
-}
-
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {
-        "handlers": ["console"],
-        "level": "INFO",
-    },
-    "formatters": {
-        "verbose": {
-            "format": "{levelname} {asctime} {module} {message}",
-            "style": "{",
-        },
-        "simple": {
-            "format": "{levelname} {message}",
-            "style": "{",
-        },
-    },
-    "handlers": {
-        "console": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-    },
-    "loggers": {
-        "*": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": True,
-        },
-        "django": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": True,
-        },
-        "django.request": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": False,
-        },
-        "django.db.backends": {
-            "handlers": ["console"],
-            "level": "INFO",
-            "propagate": False,
-        },
-    },
+    "CLOUDFLARE_API_KEY": ("TODO", "TODO"),
 }
 
 

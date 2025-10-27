@@ -12,3 +12,5 @@ pytest-cov
 coverage
 django-stubs
 factory_boy
+types-requests
+types-django-import-export

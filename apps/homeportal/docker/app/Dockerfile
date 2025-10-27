@@ -22,6 +22,7 @@ RUN uv pip install -r requirements.txt
 
 COPY ./api ./api
 COPY ./app ./app
+COPY ./qbit ./qbit
 COPY ./utils ./utils
 COPY ./scripts/server.start.sh ./server.start.sh
 
