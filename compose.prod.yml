@@ -1,15 +1,15 @@
 name: hp
 
 include:
-  - modules/actual/compose.ext.yml
-  - modules/dns/compose.ext.yml
-  - modules/files/compose.ext.yml
-  - modules/flame/compose.ext.yml
-  - modules/immich/compose.ext.yml
-  - modules/pgadmin/compose.ext.yml
-  - modules/yacht/compose.ext.yml
-  - modules/servarr/compose.ext.yml
-  # - compose.dev.ext.yml
+  - modules/actual/compose.yml
+  - modules/dns/compose.yml
+  - modules/files/compose.yml
+  - modules/flame/compose.yml
+  - modules/immich/compose.yml
+  - modules/pgadmin/compose.yml
+  - modules/yacht/compose.yml
+  - modules/servarr/compose.yml
+  # - compose.dev.yml
 
 services:
   caddy:
