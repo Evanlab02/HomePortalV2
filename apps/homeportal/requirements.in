@@ -6,7 +6,11 @@ django-constance
 django-unfold
 django-money
 django-ninja
+django-celery-results
+django-celery-beat
 psycopg[binary, pool]
 argon2-cffi
 gunicorn
 redis[hiredis]
+celery[redis]
+requests

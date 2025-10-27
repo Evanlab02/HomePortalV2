@@ -54,3 +54,7 @@ fresh:
 .PHONY: superuser
 superuser:
 	python manage.py createsuperuser
+
+.PHONY: migrations
+migrations:
+	python manage.py makemigrations

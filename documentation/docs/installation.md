@@ -7,7 +7,9 @@
 - [Jellyfin](./dependencies/jellyfin.md)
 - [acme.sh](./dependencies/acme.md)
 
-NOTE: Please ensure you read the acme.sh documentation as this will tell you how to setup certs manually. This is done as this project is assumed to be run on some private network/vpn like service so automatic certificate management probably does not cut it.
+NOTE: Please ensure you read the acme.sh documentation as this will tell you how to setup certs manually. This is done as this project should only be run on a LAN/private network/vpn like service so automatic certificate management probably does not cut it.
+
+IMPORTANT: DO NOT EXPOSE THIS TO THE PUBLIC. The home portal app stores values in plain text for some inter-application communication and will only be corrected in future. Do not under any circumstances allow public access as DB access or admin panel access will expose your application credentials. This is also why authentik exists as a another security layer but do not assume that this is secure enough.
 
 ## Installation
 

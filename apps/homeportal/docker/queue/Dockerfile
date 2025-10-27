@@ -1,13 +1,13 @@
 FROM python:3.13.9-alpine3.22
 
-LABEL org.opencontainers.image.title="Home Portal V2 ADMIN"
+LABEL org.opencontainers.image.title="Home Portal V2 WORKER"
 LABEL org.opencontainers.image.version="LIVE"
 LABEL org.opencontainers.image.licenses="MIT"
 
 EXPOSE 8000
 
 ENV UV_SYSTEM_PYTHON=1
-ENV DJANGO_SETTINGS_MODULE=app.settings.admin.settings
+ENV DJANGO_SETTINGS_MODULE=app.settings.core.settings
 
 RUN apk add --no-cache bash
 
@@ -23,8 +23,8 @@ COPY ./api ./api
 COPY ./app ./app
 COPY ./qbit ./qbit
 COPY ./utils ./utils
-COPY ./scripts/admin.start.sh ./admin.start.sh
+COPY ./scripts/queue.start.sh ./queue.start.sh
 
-RUN chmod +x /app/admin.start.sh
+RUN chmod +x /app/queue.start.sh
 
-ENTRYPOINT [ "sh", "./admin.start.sh" ]
+ENTRYPOINT [ "sh", "./queue.start.sh" ]
