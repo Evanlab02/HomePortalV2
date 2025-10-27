@@ -38,7 +38,7 @@ services:
     env_file:
       - .env
     volumes:
-      - modules/servarr/gluetun/:/app/qbit/config
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
     labels:
@@ -54,7 +54,7 @@ services:
     env_file:
       - .env
     volumes:
-      - modules/servarr/gluetun/:/app/qbit/config
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
 
@@ -65,7 +65,7 @@ services:
     env_file:
       - .env
     volumes:
-      - modules/servarr/gluetun/:/app/qbit/config
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
     labels:
