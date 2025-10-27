@@ -57,7 +57,7 @@ services:
   seerr:
     container_name: seerr
     restart: unless-stopped
-    image: ghcr.io/fallenbagel/jellyseerr:latest
+    image: ghcr.io/fallenbagel/jellyseerr:2.7.3
     init: true
     environment:
       - LOG_LEVEL=debug
