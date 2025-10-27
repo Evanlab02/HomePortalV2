@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "npm:rolldown-vite@7.1.14"
+    "vite": "npm:rolldown-vite@7.1.20"
   },
   "overrides": {
-    "vite": "npm:rolldown-vite@7.1.14"
+    "vite": "npm:rolldown-vite@7.1.20"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
     "daisyui": "^5.3.8",
-    "lucide": "^0.546.0",
+    "lucide": "^0.548.0",
     "tailwindcss": "^4.1.16"
   }
 }
