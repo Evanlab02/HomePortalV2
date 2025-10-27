@@ -61,7 +61,7 @@ django-stubs==5.2.7
     # via -r requirements.dev.in
 django-stubs-ext==5.2.7
     # via django-stubs
-django-unfold==0.68.0
+django-unfold==0.69.0
     # via -r requirements.txt
 factory-boy==3.3.3
     # via -r requirements.dev.in
@@ -105,11 +105,11 @@ pluggy==1.6.0
     # via
     #   pytest
     #   pytest-cov
-psycopg==3.2.11
+psycopg==3.2.12
     # via -r requirements.txt
-psycopg-binary==3.2.11
+psycopg-binary==3.2.12
     # via -r requirements.txt
-psycopg-pool==3.2.6
+psycopg-pool==3.2.7
     # via -r requirements.txt
 py-moneyed==3.0
     # via
@@ -167,7 +167,7 @@ tablib==3.9.0
     # via
     #   -r requirements.txt
     #   django-import-export
-termcolor==3.1.0
+termcolor==3.2.0
     # via pytest-sugar
 types-pyyaml==6.0.12.20250915
     # via django-stubs
