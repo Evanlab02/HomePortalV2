@@ -7,7 +7,7 @@
 - [Jellyfin](./dependencies/jellyfin.md)
 - [acme.sh](./dependencies/acme.md)
 
-NOTE: Please ensure you read the acme.sh documentation as this will tell you how to setup certs manually. This is done as this project is run on a tailscale network and I trust people are running on some private network/vpn like service so automatic certificate management probably does not cut it.
+NOTE: Please ensure you read the acme.sh documentation as this will tell you how to setup certs manually. This is done as this project is assumed to be run on some private network/vpn like service so automatic certificate management probably does not cut it.
 
 ## Installation
 
@@ -20,6 +20,10 @@ Otherwise just clone the repo as is and ensure to git pull every now and then fo
 ```bash
 git clone https://github.com/Evanlab02/HomePortalV2.git
 ```
+
+### Disclaimer
+
+If using the servarr compose module after going through the next steps, note that gluetun is configured to be used with ProtonVPN. If you would like to configure it for other VPN providers you will have to set this up manually.
 
 ### Env Command
 
@@ -35,30 +39,65 @@ The output will look something like the following:
 ⚙️ Creating local compose...
 ℹ️ Your compose file: compose.yml
 ✅ Created local compose
+⚙️ Creating compose modules...
+✅ Created compose modules
 ⚙️ Creating local Caddyfiles
 ℹ️ Your primary Caddyfile: conf/custom/Caddyfile
 ℹ️ Your maintenance Caddyfile: conf/custom/maintenance/Caddyfile
 ✅ Created Caddyfiles
-⚙️ Creating .env file off of template
-ℹ️ Your env file: .env
+⚙️ Creating .env files off of template
+ℹ️ Your primary env file: .env
+ℹ️ Your Pihole/DNS env file: modules/dns/.env
+ℹ️ Your Flame env file: modules/flame/.env
+ℹ️ Your Immich env file: modules/immich/.env
+ℹ️ Your PgAdmin env file: modules/pgadmin/.env
+ℹ️ Your Servarr env file: modules/servarr/.env
 ✅ Created .env files
 ⚙️ Generating passwords (But you are welcome to change them)
+⚙️ Generating passwords for .env
+⚙️ Generating passwords for modules/dns/.env
+⚙️ Generating passwords for modules/flame/.env
+⚙️ Generating passwords for modules/immich/.env
+⚙️ Generating passwords for modules/pgadmin/.env
 ✅ Generated passwords
 
 📢 IMPORTANT INFORMATION BELOW 📢
 ========================================================================================================================
+
+----------------------------------------------- ENV VARS ---------------------------------------------------------------
+
 📢 You need to fill in anything in the .env file that is blank and required. Not all values are populated by default.
 📢 Here is a list of env vars you will likely need to update:
-📢 --> DJANGO_HOSTS : Comma seperated list of the hosts the main portal app will be available at, eg. app.example.com
-📢 --> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com
-📢 --> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com
-------------------------------------------------------------------------------------------------------------------------
+📢 ==> DJANGO_HOSTS : Comma seperated list of the hosts the main portal app will be available at, eg. app.example.com
+📢 ==> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com
+📢 ==> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com
+📢 ==> PGADMIN_DEFAULT_EMAIL (modules/pgadmin/.env) : eg. example@gmail.com
+📢 ==> WIREGUARD_PRIVATE_KEY (modules/servarr/.env) : Key from ProtonVPN
+
+----------------------------------------- DOMAIN CONFIGURATION ----------------------------------------------------------
+
 📢 You need to configure the caddyfile to point to the correct domains for all your applications. We assume that you
-📢 know how to configure your DNS.
-------------------------------------------------------------------------------------------------------------------------
+📢 know how to configure your DNS. Also ensure your jellyfin proxy is setup correctly as this can vary quite a bit
+📢 depending on your setup.
+
+--------------------------------------------- CERTIFICATES -------------------------------------------------------------
+
 📢 Remember that if runnning on a private network like tailscale, there is a guide to getting certs setup as automatic
 📢 certificates from caddy will not work. The default Caddyfiles assume you will be providing certificates so adjust as
 📢 needs be.
+
+----------------------------------------------- MODULES ----------------------------------------------------------------
+
+📢 Please ensure you comment out 'modules' that you will not be using in the compose.yml file under the include
+📢 statement. These 'modules' are optional and are not core functionality of home portal.
+
+------------------------------------------------ VOLUMES ---------------------------------------------------------------
+
+📢 Configure your volumes to point to the location you want your data to be stored. Here are the volumes that will not
+📢 Be automatically configured and require intervention:
+📢 ==> modules/immich/compose.yml --> Look for text '- SETTOLOCATION:/usr/src/app/upload' (Line 22 +-)
+📢 ==> modules/servarr/compose.yml --> Look for all locations that have 'SETTOLOCATION' for volume config
+
 ========================================================================================================================
 ```
 
