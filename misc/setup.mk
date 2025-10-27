@@ -6,14 +6,14 @@ env:
 	@echo "✅ Created local compose"
 
 	@echo "⚙️ Creating compose modules..."
-	@cp modules/actual/compose.ext.yml compose.yml
-	@cp modules/dns/compose.ext.yml compose.yml
-	@cp modules/files/compose.ext.yml compose.yml
-	@cp modules/flame/compose.ext.yml compose.yml
-	@cp modules/immich/compose.ext.yml compose.yml
-	@cp modules/pgadmin/compose.ext.yml compose.yml
-	@cp modules/servarr/compose.ext.yml compose.yml
-	@cp modules/yacht/compose.ext.yml compose.yml
+	@cp modules/actual/compose.ext.yml modules/actual/compose.yml
+	@cp modules/dns/compose.ext.yml modules/dns/compose.yml
+	@cp modules/files/compose.ext.yml modules/files/compose.yml
+	@cp modules/flame/compose.ext.yml modules/flame/compose.yml
+	@cp modules/immich/compose.ext.yml modules/immich/compose.yml
+	@cp modules/pgadmin/compose.ext.yml modules/pgadmin/compose.yml
+	@cp modules/servarr/compose.ext.yml modules/servarr/compose.yml
+	@cp modules/yacht/compose.ext.yml modules/yacht/compose.yml
 	@echo "✅ Created compose modules"
 
 	@echo "⚙️ Creating local Caddyfiles"
