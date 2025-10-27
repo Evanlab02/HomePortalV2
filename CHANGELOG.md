@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.5.0...v0.6.0) (2025-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Queue:** Introduce queue/worker for scheduled tasks and queued tasks along with QBit syncing capabilities
+
+### Features
+
+* **Queue:** Introduce queue/worker for scheduled tasks and queued tasks along with QBit syncing capabilities ([f700395](https://github.com/Evanlab02/HomePortalV2/commit/f700395beb9afc0c3f4a815d7db23e2084ecc1b3))
+
+
+### Miscellaneous Chores
+
+* Fix linting issues ([efd6fae](https://github.com/Evanlab02/HomePortalV2/commit/efd6fae606c87333c25f815655fc03d599877690))
+* Remove mypy from linting ([d4502ba](https://github.com/Evanlab02/HomePortalV2/commit/d4502ba08e26ec34034f65b6d1da724896767f90))
+
 ## [0.5.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.4.0...v0.5.0) (2025-10-27)
 
 
