@@ -5,6 +5,17 @@ env:
 	@echo "ℹ️ Your compose file: compose.yml"
 	@echo "✅ Created local compose"
 
+	@echo "⚙️ Creating compose modules..."
+	@cp modules/actual/compose.ext.yml compose.yml
+	@cp modules/dns/compose.ext.yml compose.yml
+	@cp modules/files/compose.ext.yml compose.yml
+	@cp modules/flame/compose.ext.yml compose.yml
+	@cp modules/immich/compose.ext.yml compose.yml
+	@cp modules/pgadmin/compose.ext.yml compose.yml
+	@cp modules/servarr/compose.ext.yml compose.yml
+	@cp modules/yacht/compose.ext.yml compose.yml
+	@echo "✅ Created compose modules"
+
 	@echo "⚙️ Creating local Caddyfiles"
 	@cp conf/live/Caddyfile conf/custom/Caddyfile
 	@echo "ℹ️ Your primary Caddyfile: conf/custom/Caddyfile"
@@ -81,8 +92,8 @@ env:
 	@echo ""
 	@echo "📢 Configure your volumes to point to the location you want your data to be stored. Here are the volumes that will not"
 	@echo "📢 Be automatically configured and require intervention:"
-	@echo "📢 ==> modules/immich/compose.ext.yml --> Look for text '- SETTOLOCATION:/usr/src/app/upload' (Line 22 +-)"
-	@echo "📢 ==> modules/servarr/compose.ext.yml --> Look for all locations that have 'SETTOLOCATION' for volume config"
+	@echo "📢 ==> modules/immich/compose.yml --> Look for text '- SETTOLOCATION:/usr/src/app/upload' (Line 22 +-)"
+	@echo "📢 ==> modules/servarr/compose.yml --> Look for all locations that have 'SETTOLOCATION' for volume config"
 	@echo ""
 	@echo "========================================================================================================================"
 
