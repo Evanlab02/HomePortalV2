@@ -30,6 +30,11 @@ class QBitServer(Model):
     listen_port = IntegerField(null=True, default=None)
     history = HistoricalRecords()
 
+    class Meta:
+        """Meta configuration."""
+        verbose_name = "QBittorrent Server"
+        verbose_name_plural = "QBittorrent Servers"
+
     def login(self) -> Session:
         """
         Login into the instance.

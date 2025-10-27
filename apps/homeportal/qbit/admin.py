@@ -15,10 +15,6 @@ from utils.admin import BaseAdminMixin
 class QBitServerAdmin(BaseAdminMixin):
     """Admin configuration for QBitServer model with sync capabilities."""
 
-    class Meta:
-        verbose_name = "QBittorrent Server"
-        verbose_name_plural = "QBittorrent Servers"
-
     list_display = ("host", "username", "listen_port", "display_sync_actions")
     list_filter = ("host",)
     search_fields = ("host", "username")
