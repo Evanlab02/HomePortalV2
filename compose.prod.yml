@@ -77,7 +77,7 @@ services:
   postgres:
     container_name: postgres
     restart: unless-stopped
-    image: postgres:17.6-alpine3.22
+    image: postgres:18.0-alpine3.22
     environment:
       PGPASSWORD: '${DB_PASSWORD:-secret}'
       POSTGRES_DB: '${DB_DATABASE}'
