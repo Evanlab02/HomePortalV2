@@ -104,7 +104,7 @@ services:
   radarr:
     container_name: radarr
     restart: unless-stopped
-    image: lscr.io/linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr:5.28.0
     ports:
       - 7878:7878
     environment:
