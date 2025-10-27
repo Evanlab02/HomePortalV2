@@ -190,6 +190,35 @@ UNFOLD = {
                 ],
             },
             {
+                "title": "QBittorrent",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Servers",
+                        "icon": "dns",
+                        "link": lambda request: "/admin/qbit/qbitserver/",
+                    },
+                ],
+            },
+            {
+                "title": "Celery",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Results",
+                        "icon": "task_alt",
+                        "link": lambda request: "/admin/django_celery_results/",
+                    },
+                    {
+                        "title": "Periodic Tasks",
+                        "icon": "schedule",
+                        "link": lambda request: "/admin/django_celery_beat/",
+                    },
+                ],
+            },
+            {
                 "title": "System",
                 "separator": True,
                 "collapsible": True,
