@@ -32,6 +32,7 @@ class QBitServer(Model):
 
     class Meta:
         """Meta configuration."""
+
         verbose_name = "QBittorrent Server"
         verbose_name_plural = "QBittorrent Servers"
 
