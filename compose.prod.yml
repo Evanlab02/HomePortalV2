@@ -15,7 +15,7 @@ services:
   caddy:
     container_name: caddy
     restart: unless-stopped
-    image: ghcr.io/evanlab02/hp2-caddy:0.4.0  # x-release-please-version
+    image: ghcr.io/evanlab02/hp2-caddy:0.5.0  # x-release-please-version
     ports:
       - 443:443
       - 80:80
@@ -34,7 +34,7 @@ services:
   app:
     container_name: app
     restart: unless-stopped
-    image: ghcr.io/evanlab02/hp2-app:0.4.0  # x-release-please-version
+    image: ghcr.io/evanlab02/hp2-app:0.5.0  # x-release-please-version
     env_file:
       - .env
     networks:
@@ -48,7 +48,7 @@ services:
   admin:
     container_name: admin
     restart: unless-stopped
-    image: ghcr.io/evanlab02/hp2-admin:0.4.0  # x-release-please-version
+    image: ghcr.io/evanlab02/hp2-admin:0.5.0  # x-release-please-version
     env_file:
       - .env
     networks:

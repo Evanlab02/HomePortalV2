@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.5.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.4.0...v0.5.0) (2025-10-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Compose:** Create a distinction between compose modules templates and actual files
+
+### Features
+
+* **Compose:** Create a distinction between compose modules templates and actual files ([985c900](https://github.com/Evanlab02/HomePortalV2/commit/985c9007f332a531cab23e2083371871b596f71f))
+* **Dev:** Add dev module for testing changes before release on server ([317c75f](https://github.com/Evanlab02/HomePortalV2/commit/317c75f5baff3bc684a7ae6fd65b5a06a6176f81))
+
+
+### Bug Fixes
+
+* Fix an issue where we were not correctly copying compose modules from their templates during the make env command ([5cef1b4](https://github.com/Evanlab02/HomePortalV2/commit/5cef1b4e5979d0b6b6be525c3e273a433e8d783e))
+
+
+### Documentation
+
+* Update getting started guide with latest information ([75e1f48](https://github.com/Evanlab02/HomePortalV2/commit/75e1f48df714b749fa670ac96e5a0a642547bc2e))
+
 ## [0.4.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.3.1...v0.4.0) (2025-10-27)
 
 
