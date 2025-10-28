@@ -53,7 +53,7 @@ class QBitServer(Model):
             raise HomePortalHTTPError(status=response.status_code)
         return session
 
-    def pull(self, session: Session | None) -> Session:
+    def pull(self, session: Session | None = None) -> Session:
         """
         Pull the config from the QBittorrent server.
 
@@ -72,7 +72,7 @@ class QBitServer(Model):
         self.save()
         return session
 
-    def push(self, session: Session | None) -> Session:
+    def push(self, session: Session | None = None) -> Session:
         """
         Push the config to the QBittorrent server.
 

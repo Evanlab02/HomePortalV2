@@ -7,6 +7,8 @@ services:
       dockerfile: docker/app/Dockerfile
     env_file:
       - .env
+    volumes:
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
 
@@ -18,6 +20,8 @@ services:
       dockerfile: docker/admin/Dockerfile
     env_file:
       - .env
+    volumes:
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
 
@@ -29,5 +33,7 @@ services:
       dockerfile: docker/queue/Dockerfile
     env_file:
       - .env
+    volumes:
+      - ./modules/servarr/gluetun/:/app/qbit/config
     networks:
       - hp-network
