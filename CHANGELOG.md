@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.1...v0.6.2) (2025-10-28)
+
+
+### Bug Fixes
+
+* Add gluetun port to dev containers ([f9256d9](https://github.com/Evanlab02/HomePortalV2/commit/f9256d96b89047edb345e6d432d686ffd782a12a))
+* **Admin:** Fix more UI issues ([b1ffca3](https://github.com/Evanlab02/HomePortalV2/commit/b1ffca31ece33ba4fd8bf67eb2069c2c2777d61a))
+* **Admin:** Small admin page UI adjustments and fixes ([3e25333](https://github.com/Evanlab02/HomePortalV2/commit/3e253332b61ba4c19d72c6c176e57a640d51e7b3))
+
+
+### Miscellaneous Chores
+
+* Format ([e75ede2](https://github.com/Evanlab02/HomePortalV2/commit/e75ede29208a5acf1ffc6b9306550fc3a74b56ae))
+
 ## [0.6.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.0...v0.6.1) (2025-10-27)
 
 
