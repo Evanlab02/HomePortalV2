@@ -82,16 +82,28 @@ class QBitServerAdmin(BaseAdminMixin):
         pull_url = reverse("admin:qbit_qbitserver_pull", args=[obj.pk])
         push_url = reverse("admin:qbit_qbitserver_push", args=[obj.pk])
         return format_html(
-            '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
-            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2 mr-2" '  # noqa: E501
-            'href="{}">⬇ Pull</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
-            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2" '  # noqa: E501
-            'href="{}">⬆ Push</a>',
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
+            "focus-visible:outline-none focus-visible:ring-2 "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 mr-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬇</span> '
+            '<span style="line-height: 1;">Pull</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
+            "focus-visible:outline-none focus-visible:ring-2 "
+            "focus-visible:ring-offset-2 focus-visible:ring-green-500 "
+            "bg-green-600 text-white "
+            "hover:bg-green-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬆</span> '
+            '<span style="line-height: 1;">Push</span>'
+            "</a>",
             pull_url,
             push_url,
         )
@@ -115,17 +127,29 @@ class QBitServerAdmin(BaseAdminMixin):
         pull_url = reverse("admin:qbit_qbitserver_pull", args=[obj.pk])
         push_url = reverse("admin:qbit_qbitserver_push", args=[obj.pk])
         return format_html(
-            '<div class="flex gap-4">'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
-            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '  # noqa: E501
-            'href="{}">⬇ Pull Config from Server</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm font-medium '
-            "ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 "  # noqa: E501
-            "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none "
-            'disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '  # noqa: E501
-            'href="{}">⬆ Push Config to Server</a>'
+            '<div class="flex gap-4" style="display: flex; gap: 1rem;">'
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
+            "focus-visible:outline-none focus-visible:ring-2 "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬇</span> '
+            '<span style="line-height: 1;">Pull Config from Server</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
+            "focus-visible:outline-none focus-visible:ring-2 "
+            "focus-visible:ring-offset-2 focus-visible:ring-green-500 "
+            "bg-green-600 text-white "
+            "hover:bg-green-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬆</span> '
+            '<span style="line-height: 1;">Push Config to Server</span>'
+            "</a>"
             "</div>",
             pull_url,
             push_url,

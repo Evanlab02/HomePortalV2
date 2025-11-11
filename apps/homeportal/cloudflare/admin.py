@@ -23,6 +23,10 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     search_fields = ("name", "zone_id")
     readonly_fields = ("zone_id", "display_sync_actions_detail")
 
+    def has_add_permission(self, request):
+        """Disable adding new zones via admin - zones should only be added via pull."""
+        return False
+
     fieldsets = (
         (
             "Zone Details",
@@ -86,20 +90,28 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         pull_url = reverse("admin:cloudflare_cloudflarezone_pull", args=[obj.pk])
         pull_dns_url = reverse("admin:cloudflare_cloudflarezone_pull_dns", args=[obj.pk])
         return format_html(
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2 mr-2" '
-            'href="{}">⬇ Pull Zone</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 mr-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬇</span> '
+            '<span style="line-height: 1;">Pull Zone</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2" '
-            'href="{}">⬇ Pull DNS</a>',
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬇</span> '
+            '<span style="line-height: 1;">Pull DNS</span>'
+            "</a>",
             pull_url,
             pull_dns_url,
         )
@@ -122,21 +134,29 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         pull_url = reverse("admin:cloudflare_cloudflarezone_pull", args=[obj.pk])
         pull_dns_url = reverse("admin:cloudflare_cloudflarezone_pull_dns", args=[obj.pk])
         return format_html(
-            '<div class="flex gap-4">'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            '<div class="flex gap-4" style="display: flex; gap: 1rem;">'
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
-            'href="{}">⬇ Pull Zone from Cloudflare</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬇</span> '
+            '<span style="line-height: 1;">Pull Zone from Cloudflare</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
-            'href="{}">⬇ Pull DNS Records from Cloudflare</a>'
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬇</span> '
+            '<span style="line-height: 1;">Pull DNS Records from Cloudflare</span>'
+            "</a>"
             "</div>",
             pull_url,
             pull_dns_url,
@@ -321,7 +341,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
     list_display = ("name", "dns_type", "content", "proxied", "zone", "display_sync_actions")
     list_filter = ("dns_type", "proxied", "zone")
     search_fields = ("name", "content", "dns_id")
-    readonly_fields = ("dns_id", "display_sync_actions_detail")
+    readonly_fields = ("dns_id", "zone", "proxiable", "display_sync_actions_detail")
 
     fieldsets = (
         (
@@ -393,20 +413,28 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         pull_url = reverse("admin:cloudflare_cloudflarednsrecord_pull", args=[obj.pk])
         push_url = reverse("admin:cloudflare_cloudflarednsrecord_push", args=[obj.pk])
         return format_html(
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2 mr-2" '
-            'href="{}">⬇ Pull</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 mr-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬇</span> '
+            '<span style="line-height: 1;">Pull</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-1.5 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-8 px-3 py-2" '
-            'href="{}">⬆ Push</a>',
+            "focus-visible:ring-offset-2 focus-visible:ring-green-500 "
+            "bg-green-600 text-white "
+            "hover:bg-green-700 hover:shadow-md hover:scale-105 "
+            'active:scale-95 h-8 px-3 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1;">⬆</span> '
+            '<span style="line-height: 1;">Push</span>'
+            "</a>",
             pull_url,
             push_url,
         )
@@ -429,21 +457,29 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         pull_url = reverse("admin:cloudflare_cloudflarednsrecord_pull", args=[obj.pk])
         push_url = reverse("admin:cloudflare_cloudflarednsrecord_push", args=[obj.pk])
         return format_html(
-            '<div class="flex gap-4">'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            '<div class="flex gap-4" style="display: flex; gap: 1rem;">'
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
-            'href="{}">⬇ Pull DNS Record from Cloudflare</a>'
-            '<a class="inline-flex items-center justify-center rounded-md text-sm '
-            "font-medium ring-offset-background transition-colors "
+            "focus-visible:ring-offset-2 focus-visible:ring-blue-500 "
+            "bg-blue-600 text-white "
+            "hover:bg-blue-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬇</span> '
+            '<span style="line-height: 1;">Pull DNS Record from Cloudflare</span>'
+            "</a>"
+            '<a class="inline-flex items-center justify-center gap-2 rounded-md text-sm '
+            "font-medium transition-all duration-200 "
             "focus-visible:outline-none focus-visible:ring-2 "
-            "focus-visible:ring-ring focus-visible:ring-offset-2 "
-            "disabled:pointer-events-none disabled:opacity-50 bg-primary "
-            'text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2" '
-            'href="{}">⬆ Push DNS Record to Cloudflare</a>'
+            "focus-visible:ring-offset-2 focus-visible:ring-green-500 "
+            "bg-green-600 text-white "
+            "hover:bg-green-700 hover:shadow-lg hover:scale-105 "
+            'active:scale-95 h-10 px-4 py-2 no-underline cursor-pointer" '
+            'href="{}" style="display: inline-flex !important;">'
+            '<span style="line-height: 1; font-size: 1.2em;">⬆</span> '
+            '<span style="line-height: 1;">Push DNS Record to Cloudflare</span>'
+            "</a>"
             "</div>",
             pull_url,
             push_url,

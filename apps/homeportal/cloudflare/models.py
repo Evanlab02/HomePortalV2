@@ -8,8 +8,10 @@ from django.db.models import (
     CASCADE,
     BooleanField,
     CharField,
+    CheckConstraint,
     ForeignKey,
     IntegerField,
+    Q,
     TextField,
 )
 from requests import Session
@@ -55,6 +57,10 @@ class CloudflareZone(BaseModel):
 
         verbose_name = "Cloudflare Zone"
         verbose_name_plural = "Cloudflare Zones"
+
+    def __str__(self) -> str:
+        """Return string representation of the zone."""
+        return f"{self.name} ({self.status})"
 
     def pull(self) -> None:
         """Sync this zone's data from the Cloudflare API.
@@ -159,7 +165,16 @@ class CloudflareZone(BaseModel):
             created_dns_records = CloudflareDNSRecord.objects.bulk_create(dns_records_to_create)
             updated_dns_records_count = CloudflareDNSRecord.objects.bulk_update(
                 dns_records_to_update,
-                fields=["name", "dns_type", "content", "proxiable", "proxied", "zone"],
+                fields=[
+                    "name",
+                    "dns_type",
+                    "content",
+                    "proxiable",
+                    "proxied",
+                    "zone",
+                    "ttl",
+                    "auto_ttl",
+                ],
             )
             deleted_dns_records_count = 0
             if dns_records_to_delete:
@@ -260,9 +275,15 @@ class CloudflareDNSRecord(BaseModel):
         zone (CloudflareZone): The Cloudflare zone this record belongs to.
     """
 
+    DNS_TYPE_CHOICES = [
+        ("A", "A"),
+        ("AAAA", "AAAA"),
+        ("CNAME", "CNAME"),
+    ]
+
     dns_id = CharField(unique=True, max_length=50, blank=True)
     name = CharField(max_length=30)
-    dns_type = CharField(max_length=10)
+    dns_type = CharField(max_length=10, choices=DNS_TYPE_CHOICES)
     content = CharField(max_length=30)
     proxiable = BooleanField(default=False)
     proxied = BooleanField(default=False)
@@ -276,6 +297,33 @@ class CloudflareDNSRecord(BaseModel):
 
         verbose_name = "Cloudflare DNS Record"
         verbose_name_plural = "Cloudflare DNS Records"
+
+        constraints = [
+            CheckConstraint(
+                condition=Q(dns_type__in=["A", "AAAA", "CNAME"]),
+                name="cloudflare_dns_valid_type",
+                violation_error_message="DNS type must be one of: A, AAAA, CNAME",
+            ),
+            CheckConstraint(
+                condition=Q(ttl__isnull=True) | Q(ttl__gte=60, ttl__lte=86400),
+                name="cloudflare_dns_ttl_range",
+                violation_error_message="TTL must be between 60 and 86400 seconds when set.",
+            ),
+            CheckConstraint(
+                condition=Q(proxiable=True) | Q(proxied=False),
+                name="cloudflare_dns_proxied_requires_proxiable",
+                violation_error_message="Proxied must be False when the record is not proxiable.",
+            ),
+            CheckConstraint(
+                condition=Q(auto_ttl=True, ttl__isnull=True) | Q(auto_ttl=False, ttl__isnull=False),
+                name="cloudflare_dns_auto_ttl_consistency",
+                violation_error_message="TTL must be null if auto ttl is enabled.",
+            ),
+        ]
+
+    def __str__(self) -> str:
+        """Return string representation of the DNS record."""
+        return f"{self.name} ({self.dns_type}) -> {self.content}"
 
     def create(self) -> None:
         """Create this DNS record in Cloudflare via the API.

@@ -34,6 +34,10 @@ class QBitServer(BaseModel):
         verbose_name = "QBittorrent Server"
         verbose_name_plural = "QBittorrent Servers"
 
+    def __str__(self) -> str:
+        """Return string representation of the QBittorrent server."""
+        return f"{self.host} ({self.username})"
+
     def login(self) -> Session:
         """
         Login into the QBittorrent instance.
