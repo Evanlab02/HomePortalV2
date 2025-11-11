@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.2...v0.7.3) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Add better logging to cloudflare zone admin ([7580860](https://github.com/Evanlab02/HomePortalV2/commit/7580860f39638b5b6e6d7f9d7bfb1bc0d89d3edc))
+* Update django docker builds to cache layers more efficiently ([4b61701](https://github.com/Evanlab02/HomePortalV2/commit/4b6170163ff2d71ecb7bc9593c3fd3caabf5ad3a))
+
 ## [0.7.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.1...v0.7.2) (2025-11-11)
 
 
