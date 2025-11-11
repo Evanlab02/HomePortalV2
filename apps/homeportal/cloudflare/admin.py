@@ -1,12 +1,17 @@
 """Admin config for the Cloudflare app."""
 
+from logging import getLogger
+
 from django.contrib import admin, messages
 from django.http import HttpRequest, HttpResponseRedirect
 from django.urls import reverse
+from requests import HTTPError
 from unfold.decorators import action
 
 from cloudflare.models import CloudflareDNSRecord, CloudflareZone
 from utils.admin import BaseAdminMixin
+
+log = getLogger(__name__)
 
 
 @admin.register(CloudflareZone)
@@ -34,13 +39,13 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     )
 
     # Actions
-    actions = ["bulk_pull_zones", "bulk_pull_dns_records"]
     actions_list = [
         {
-            "title": "Pull All Zones",
+            "title": "Sync Actions",
             "items": ["pull_all_zones"],
         }
     ]
+    actions = ["bulk_pull_zones", "bulk_pull_dns_records"]
     actions_row = ["pull_zone", "pull_dns_records"]
     actions_detail = [
         {
@@ -56,6 +61,39 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     ]
 
     # Action Definitions
+    @action(
+        description="Pull All Zones",
+        url_path="pull-all-zones",
+        permissions=["pull_all_zones"],
+    )
+    def pull_all_zones(self, request: HttpRequest):
+        """Handle pull all zones and DNS records.
+
+        Pulls all zones and their DNS records from Cloudflare.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponseRedirect: Redirect to the zone list page.
+        """
+        try:
+            CloudflareZone.pull_all()
+            self.message_user(
+                request,
+                "Successfully pulled all zones and DNS records from Cloudflare.",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error pulling all zones: {str(e)}",
+                level=messages.ERROR,
+            )
+
+        return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarezone_changelist"))
+
     @admin.action(description="Pull zone data from Cloudflare")
     def bulk_pull_zones(self, request: HttpRequest, queryset):
         """Bulk action to pull zone data from multiple zones.
@@ -73,7 +111,8 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             try:
                 zone.pull()
                 success_count += 1
-            except Exception:
+            except Exception as e:
+                log.error(f"Exception: {e}")
                 error_count += 1
 
         if success_count > 0:
@@ -107,7 +146,8 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             try:
                 zone.pull_dns_records()
                 success_count += 1
-            except Exception:
+            except Exception as e:
+                log.error(f"Exception: {e}")
                 error_count += 1
 
         if success_count > 0:
@@ -123,38 +163,6 @@ class CloudflareZoneAdmin(BaseAdminMixin):
                 f"Failed to pull DNS records from {error_count} zone(s).",
                 level=messages.ERROR,
             )
-
-    @action(
-        description="Pull All Zones",
-        url_path="pull-all-zones",
-        permissions=["pull_all_zones"],
-    )
-    def pull_all_zones(self, request: HttpRequest):
-        """Handle pull all zones and DNS records.
-
-        Pulls all zones and their DNS records from Cloudflare.
-
-        Args:
-            request (HttpRequest): The HTTP request object.
-
-        Returns:
-            HttpResponseRedirect: Redirect to the zone list page.
-        """
-        try:
-            CloudflareZone.pull_all()
-            self.message_user(
-                request,
-                "Successfully pulled all zones and DNS records from Cloudflare.",
-                level=messages.SUCCESS,
-            )
-        except Exception as e:
-            self.message_user(
-                request,
-                f"Error pulling all zones: {str(e)}",
-                level=messages.ERROR,
-            )
-
-        return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarezone_changelist"))
 
     @action(
         description="Pull Zone",
@@ -186,6 +194,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
                 level=messages.SUCCESS,
             )
         except Exception as e:
+            log.error(f"Exception: {e}")
             self.message_user(
                 request,
                 f"Error pulling zone data for {zone.name}: {str(e)}",
@@ -226,6 +235,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
                 level=messages.SUCCESS,
             )
         except Exception as e:
+            log.error(f"Exception: {e}")
             self.message_user(
                 request,
                 f"Error pulling DNS records for {zone.name}: {str(e)}",
