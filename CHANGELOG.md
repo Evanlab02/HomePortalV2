@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.3...v0.7.4) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Fix some cloudflare schema issues ([8858ac9](https://github.com/Evanlab02/HomePortalV2/commit/8858ac9d2cdfe9eb72bb8378ac8ca6b72979d44f))
+* Further improvements to layer caching and reuse in workflows ([a2384db](https://github.com/Evanlab02/HomePortalV2/commit/a2384db4de5c50b3c16ad36f8b967c22e0a6d24a))
+
 ## [0.7.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.2...v0.7.3) (2025-11-11)
 
 
