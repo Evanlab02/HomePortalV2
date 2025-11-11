@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.3...v0.6.4) (2025-11-11)
+
+
+### Bug Fixes
+
+* Fix dockerfiles not including cloudflare app in source files ([dcfbfa7](https://github.com/Evanlab02/HomePortalV2/commit/dcfbfa7548fc15cb607f3b63922e9e7b4460ed0d))
+
 ## [0.6.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.2...v0.6.3) (2025-11-11)
 
 
