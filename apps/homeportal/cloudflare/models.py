@@ -157,6 +157,8 @@ class CloudflareZone(BaseModel):
                         content=result.content,
                         proxiable=result.proxiable,
                         proxied=result.proxied,
+                        ttl=None if result.ttl == 1 else result.ttl,
+                        auto_ttl=True if result.ttl == 1 else False,
                         zone=self,
                     )
                 )
