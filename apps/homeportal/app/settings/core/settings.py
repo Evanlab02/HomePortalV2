@@ -183,25 +183,30 @@ UNFOLD = {
         "show_all_applications": True,
         "navigation": [
             {
-                "title": "Navigation",
+                "title": "Admin",
                 "separator": True,
                 "items": [
                     {
-                        "title": "Dashboard",
+                        "title": "Home",
                         "icon": "dashboard",
                         "link": lambda request: "/admin/",
                     },
                 ],
             },
             {
-                "title": "QBittorrent",
+                "title": "Celery",
                 "separator": True,
                 "collapsible": True,
                 "items": [
                     {
-                        "title": "Servers",
-                        "icon": "dns",
-                        "link": lambda request: "/admin/qbit/qbitserver/",
+                        "title": "Results",
+                        "icon": "task_alt",
+                        "link": lambda request: "/admin/django_celery_results/",
+                    },
+                    {
+                        "title": "Periodic Tasks",
+                        "icon": "schedule",
+                        "link": lambda request: "/admin/django_celery_beat/",
                     },
                 ],
             },
@@ -228,19 +233,26 @@ UNFOLD = {
                 ],
             },
             {
-                "title": "Celery",
+                "title": "QBittorrent",
                 "separator": True,
                 "collapsible": True,
                 "items": [
                     {
-                        "title": "Results",
-                        "icon": "task_alt",
-                        "link": lambda request: "/admin/django_celery_results/",
+                        "title": "Servers",
+                        "icon": "dns",
+                        "link": lambda request: "/admin/qbit/qbitserver/",
                     },
+                ],
+            },
+            {
+                "title": "Settings",
+                "separator": True,
+                "collapsible": True,
+                "items": [
                     {
-                        "title": "Periodic Tasks",
-                        "icon": "schedule",
-                        "link": lambda request: "/admin/django_celery_beat/",
+                        "title": "Configuration",
+                        "icon": "settings",
+                        "link": lambda request: "/admin/constance/config/",
                     },
                 ],
             },
@@ -258,18 +270,6 @@ UNFOLD = {
                         "title": "Groups",
                         "icon": "group",
                         "link": lambda request: "/admin/auth/group/",
-                    },
-                ],
-            },
-            {
-                "title": "Settings",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "Configuration",
-                        "icon": "settings",
-                        "link": lambda request: "/admin/constance/config/",
                     },
                 ],
             },
