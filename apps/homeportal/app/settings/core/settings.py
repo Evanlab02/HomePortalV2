@@ -177,10 +177,6 @@ UNFOLD = {
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
     "SHOW_BACK_BUTTON": True,
-    # Environment Indicator (helpful for dev/staging/prod)
-    # "ENVIRONMENT": lambda: "local",
-    # "ENVIRONMENT": lambda: ("Development", "warning"),  # ("label", "type")
-    # where type can be: "info", "danger", "warning", "success"
     "BORDER_RADIUS": "8px",
     "SIDEBAR": {
         "show_search": True,
