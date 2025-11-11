@@ -21,6 +21,7 @@ RUN uv pip install -r requirements.txt
 COPY ./manage.py ./manage.py
 COPY ./api ./api
 COPY ./app ./app
+COPY ./cloudflare ./cloudflare
 COPY ./qbit ./qbit
 COPY ./utils ./utils
 COPY ./scripts/admin.start.sh ./admin.start.sh
