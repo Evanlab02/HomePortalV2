@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.5...v0.6.6) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Add additional validations and better admin UI ([b7d65ba](https://github.com/Evanlab02/HomePortalV2/commit/b7d65ba68d578ada908dcac1604b4f5d275ba633))
+
 ## [0.6.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.4...v0.6.5) (2025-11-11)
 
 
