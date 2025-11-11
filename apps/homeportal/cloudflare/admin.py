@@ -52,12 +52,6 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             "items": ["pull_zone", "pull_dns_records"],
         }
     ]
-    actions_submit_line = [
-        {
-            "title": "Sync Actions",
-            "items": ["pull_zone", "pull_dns_records"],
-        }
-    ]
 
     # Action Definitions
     @action(

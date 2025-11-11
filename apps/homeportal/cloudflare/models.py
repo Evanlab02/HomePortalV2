@@ -82,16 +82,14 @@ class CloudflareZone(BaseModel):
             )
             response.raise_for_status()
             data = CloudflareZoneIntegrationWrapper(**response.json())
-            results = data.result
+            result = data.result
 
-        for result in results:
-            if result.id != self.zone_id:
-                continue
+        if result.id != self.zone_id:
+            return
 
-            self.status = result.status
-            self.name = result.name
-            self.save(update_fields=["status", "name"])
-            break
+        self.status = result.status
+        self.name = result.name
+        self.save(update_fields=["status", "name"])
 
         self.pull_dns_records()
         log.info(f"Completed pull for Cloudflare Zone {self.id} ({self.zone_id})")
