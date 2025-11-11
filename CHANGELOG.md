@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.5...v0.7.6) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Remove submit line options and fix issue in pull method for zones ([4852ab2](https://github.com/Evanlab02/HomePortalV2/commit/4852ab2f941075c40ce9c9b2d5410ad38b136c17))
+
 ## [0.7.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.4...v0.7.5) (2025-11-11)
 
 
