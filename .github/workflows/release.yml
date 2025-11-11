@@ -35,34 +35,61 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Build App Image
-        run: |
-          docker build -f Dockerfile -t hp2-caddy:latest .
-          docker build -f apps/homeportal/Dockerfile --target admin -t hp2-admin:latest apps/homeportal/
-          docker build -f apps/homeportal/Dockerfile --target app -t hp2-app:latest apps/homeportal/
-          docker build -f apps/homeportal/Dockerfile --target queue -t hp2-queue:latest apps/homeportal/
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Log in to registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-      - name: Create Tags
-        run: |
-          docker tag hp2-caddy:latest ghcr.io/evanlab02/hp2-caddy:latest
-          docker tag hp2-caddy:latest ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker tag hp2-admin:latest ghcr.io/evanlab02/hp2-admin:latest
-          docker tag hp2-admin:latest ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker tag hp2-app:latest ghcr.io/evanlab02/hp2-app:latest
-          docker tag hp2-app:latest ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker tag hp2-queue:latest ghcr.io/evanlab02/hp2-queue:latest
-          docker tag hp2-queue:latest ghcr.io/evanlab02/hp2-queue:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-      - name: Push Tags
-        run: |
-          docker push ghcr.io/evanlab02/hp2-caddy:latest
-          docker push ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker push ghcr.io/evanlab02/hp2-admin:latest
-          docker push ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker push ghcr.io/evanlab02/hp2-app:latest
-          docker push ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          docker push ghcr.io/evanlab02/hp2-queue:latest
-          docker push ghcr.io/evanlab02/hp2-queue:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push hp2-caddy
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/evanlab02/hp2-caddy:latest
+            ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Build and push hp2-admin
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/homeportal
+          file: ./apps/homeportal/Dockerfile
+          target: admin
+          push: true
+          tags: |
+            ghcr.io/evanlab02/hp2-admin:latest
+            ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Build and push hp2-app
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/homeportal
+          file: ./apps/homeportal/Dockerfile
+          target: app
+          push: true
+          tags: |
+            ghcr.io/evanlab02/hp2-app:latest
+            ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Build and push hp2-queue
+        uses: docker/build-push-action@v6
+        with:
+          context: ./apps/homeportal
+          file: ./apps/homeportal/Dockerfile
+          target: queue
+          push: true
+          tags: |
+            ghcr.io/evanlab02/hp2-queue:latest
+            ghcr.io/evanlab02/hp2-queue:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   docs:
     runs-on: ubuntu-latest
