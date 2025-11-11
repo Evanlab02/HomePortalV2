@@ -58,12 +58,16 @@ class CloudflareDNSRecordIntegration(BaseModel):
 
     id: str = Field(..., description="The unique DNS record identifier.")
     name: str = Field(..., description="The DNS record name.")
-    dns_type: str = Field(..., description="The DNS record type (A, AAAA, CNAME, etc.).")
+    dns_type: str = Field(
+        ..., description="The DNS record type (A, AAAA, CNAME, etc.).", alias="type"
+    )
     content: str = Field(..., description="The DNS record content/value.")
-    proxiable: str = Field(..., description="Whether the record can be proxied through Cloudflare.")
-    proxied: str = Field(..., description="Whether the record is currently proxied.")
+    proxiable: bool = Field(
+        ..., description="Whether the record can be proxied through Cloudflare."
+    )
+    proxied: bool = Field(..., description="Whether the record is currently proxied.")
     ttl: int = Field(..., description="Time to live for the DNS record in seconds.")
-    comment: str = Field(..., description="Optional comment for the DNS record.")
+    comment: str | None = Field(..., description="Optional comment for the DNS record.")
 
 
 class CloudflareDNSRecordIntegrationWrapper(BaseModel):

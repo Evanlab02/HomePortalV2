@@ -268,7 +268,7 @@ class CloudflareDNSRecord(BaseModel):
     proxied = BooleanField(default=False)
     ttl = IntegerField(null=True, blank=True)
     auto_ttl = BooleanField(default=False)
-    comment = TextField()
+    comment = TextField(null=True, blank=True)
     zone = ForeignKey(to=CloudflareZone, on_delete=CASCADE, related_name="dns_records")
 
     class Meta:
