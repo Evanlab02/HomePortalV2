@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.4...v0.7.5) (2025-11-11)
+
+
+### Bug Fixes
+
+* Scope caches to re-use common build steps ([b2d91bc](https://github.com/Evanlab02/HomePortalV2/commit/b2d91bc5b88b35154563bc9a0c48d6711df3fd62))
+
+
+### Miscellaneous Chores
+
+* Formatting ([89decb1](https://github.com/Evanlab02/HomePortalV2/commit/89decb142a9056b05d3cec40190287c79ebcbd46))
+
 ## [0.7.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.3...v0.7.4) (2025-11-11)
 
 
