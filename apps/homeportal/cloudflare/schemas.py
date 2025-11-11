@@ -36,6 +36,7 @@ class CloudflareZoneIntegrationWrapper(BaseModel):
 
     result: CloudflareZoneIntegration
 
+
 class CloudflareZonesIntegrationWrapper(BaseModel):
     """Cloudflare zone wrapper schema for API integration.
 

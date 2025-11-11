@@ -28,8 +28,8 @@ from cloudflare.constants import (
 from cloudflare.schemas import (
     CloudflareDNSRecordIntegrationWrapper,
     CloudflareDNSRecordsIntegrationWrapper,
+    CloudflareZoneIntegrationWrapper,
     CloudflareZonesIntegrationWrapper,
-    CloudflareZoneIntegrationWrapper
 )
 from utils.models import BaseModel
 
