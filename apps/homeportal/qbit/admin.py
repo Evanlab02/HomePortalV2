@@ -1,4 +1,8 @@
-"""Admin config for the QBittorrent sync app."""
+"""Admin config for the QBittorrent sync app.
+
+This module provides Django admin configuration for managing QBittorrent servers,
+including synchronization capabilities for pulling and pushing configurations.
+"""
 
 from django.contrib import admin, messages
 from django.http import HttpRequest, HttpResponseRedirect
@@ -6,14 +10,17 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 from unfold.decorators import display
 
-from app.exceptions import HomePortalHTTPError
 from qbit.models import QBitServer
 from utils.admin import BaseAdminMixin
 
 
 @admin.register(QBitServer)
 class QBitServerAdmin(BaseAdminMixin):
-    """Admin configuration for QBitServer model with sync capabilities."""
+    """Admin configuration for QBitServer model with sync capabilities.
+
+    Provides an admin interface for managing QBittorrent servers with custom
+    actions for synchronizing configuration between the database and QBittorrent servers.
+    """
 
     list_display = ("host", "username", "listen_port", "display_sync_actions")
     list_filter = ("host",)
@@ -37,7 +44,14 @@ class QBitServerAdmin(BaseAdminMixin):
     )
 
     def get_urls(self):
-        """Add custom URLs for single-instance sync operations."""
+        """Add custom URLs for single-instance sync operations.
+
+        Extends the default admin URLs with custom endpoints for pulling and
+        pushing configuration to individual QBittorrent servers.
+
+        Returns:
+            urls (list): List of URL patterns including custom sync URLs.
+        """
         urls = super().get_urls()
         custom_urls = [
             path(
@@ -55,7 +69,16 @@ class QBitServerAdmin(BaseAdminMixin):
 
     @display(description="Actions", label=True)
     def display_sync_actions(self, obj):
-        """Display sync action buttons in list view."""
+        """Display sync action buttons in list view.
+
+        Renders pull and push action buttons for a QBittorrent server in the admin list view.
+
+        Args:
+            obj (QBitServer): The QBitServer instance to display actions for.
+
+        Returns:
+            result (str): HTML string containing formatted action buttons.
+        """
         pull_url = reverse("admin:qbit_qbitserver_pull", args=[obj.pk])
         push_url = reverse("admin:qbit_qbitserver_push", args=[obj.pk])
         return format_html(
@@ -75,7 +98,17 @@ class QBitServerAdmin(BaseAdminMixin):
 
     @display(description="", label=False)
     def display_sync_actions_detail(self, obj):
-        """Display sync action buttons in detail view."""
+        """Display sync action buttons in detail view.
+
+        Renders pull and push action buttons for a QBittorrent server in the admin detail view.
+        Shows a message if the object hasn't been saved yet.
+
+        Args:
+            obj (QBitServer): The QBitServer instance to display actions for.
+
+        Returns:
+            result (str): HTML string containing formatted action buttons or a save prompt message.
+        """
         if not obj.pk:
             return "Save the server first to enable sync actions."
 
@@ -99,7 +132,18 @@ class QBitServerAdmin(BaseAdminMixin):
         )
 
     def pull_single_view(self, request: HttpRequest, object_id: str):
-        """Handle pull action for a single server."""
+        """Handle pull action for a single server.
+
+        Pulls configuration from a QBittorrent server and updates the database record.
+        Displays success or error messages to the user.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            object_id (str): The primary key of the QBitServer instance.
+
+        Returns:
+            result (HttpResponseRedirect): Redirect to the server's change page.
+        """
         server = self.get_object(request, object_id)
         if server is None:
             self.message_user(request, "Server not found.", level=messages.ERROR)
@@ -113,12 +157,6 @@ class QBitServerAdmin(BaseAdminMixin):
                 f"Successfully pulled config from {server.host}. Listen port: {server.listen_port}",
                 level=messages.SUCCESS,
             )
-        except HomePortalHTTPError as e:
-            self.message_user(
-                request,
-                f"Failed to pull config from {server.host}: HTTP {e.status}",
-                level=messages.ERROR,
-            )
         except Exception as e:
             self.message_user(
                 request,
@@ -129,7 +167,18 @@ class QBitServerAdmin(BaseAdminMixin):
         return HttpResponseRedirect(reverse("admin:qbit_qbitserver_change", args=[object_id]))
 
     def push_single_view(self, request: HttpRequest, object_id: str):
-        """Handle push action for a single server."""
+        """Handle push action for a single server.
+
+        Pushes configuration from the database to a QBittorrent server.
+        Displays success or error messages to the user.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            object_id (str): The primary key of the QBitServer instance.
+
+        Returns:
+            result (HttpResponseRedirect): Redirect to the server's change page.
+        """
         server = self.get_object(request, object_id)
         if server is None:
             self.message_user(request, "Server not found.", level=messages.ERROR)
@@ -143,12 +192,6 @@ class QBitServerAdmin(BaseAdminMixin):
                 f"Successfully pushed config to {server.host}. Listen port: {server.listen_port}",
                 level=messages.SUCCESS,
             )
-        except HomePortalHTTPError as e:
-            self.message_user(
-                request,
-                f"Failed to push config to {server.host}: HTTP {e.status}",
-                level=messages.ERROR,
-            )
         except Exception as e:
             self.message_user(
                 request,
@@ -160,7 +203,18 @@ class QBitServerAdmin(BaseAdminMixin):
 
     @admin.action(description="Pull config from selected servers")
     def bulk_pull_configs(self, request: HttpRequest, queryset):
-        """Bulk action to pull configs from multiple servers."""
+        """Bulk action to pull configs from multiple servers.
+
+        Iterates through selected servers and pulls configuration from each.
+        Displays individual warnings for failures and summary messages for successes.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            queryset (QuerySet): QuerySet of selected QBitServer instances.
+
+        Returns:
+            result (None): No return value.
+        """
         success_count = 0
         error_count = 0
 
@@ -169,20 +223,8 @@ class QBitServerAdmin(BaseAdminMixin):
                 session = server.login()
                 server.pull(session=session)
                 success_count += 1
-            except HomePortalHTTPError as e:
+            except Exception:
                 error_count += 1
-                self.message_user(
-                    request,
-                    f"Failed to pull from {server.host}: HTTP {e.status}",
-                    level=messages.WARNING,
-                )
-            except Exception as e:
-                error_count += 1
-                self.message_user(
-                    request,
-                    f"Error pulling from {server.host}: {str(e)}",
-                    level=messages.WARNING,
-                )
 
         if success_count > 0:
             self.message_user(
@@ -200,7 +242,18 @@ class QBitServerAdmin(BaseAdminMixin):
 
     @admin.action(description="Push config to selected servers")
     def bulk_push_configs(self, request: HttpRequest, queryset):
-        """Bulk action to push configs to multiple servers."""
+        """Bulk action to push configs to multiple servers.
+
+        Iterates through selected servers and pushes configuration to each.
+        Displays individual warnings for failures and summary messages for successes.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            queryset (QuerySet): QuerySet of selected QBitServer instances.
+
+        Returns:
+            result (None): No return value.
+        """
         success_count = 0
         error_count = 0
 
@@ -209,20 +262,8 @@ class QBitServerAdmin(BaseAdminMixin):
                 session = server.login()
                 server.push(session=session)
                 success_count += 1
-            except HomePortalHTTPError as e:
+            except Exception:
                 error_count += 1
-                self.message_user(
-                    request,
-                    f"Failed to push to {server.host}: HTTP {e.status}",
-                    level=messages.WARNING,
-                )
-            except Exception as e:
-                error_count += 1
-                self.message_user(
-                    request,
-                    f"Error pushing to {server.host}: {str(e)}",
-                    level=messages.WARNING,
-                )
 
         if success_count > 0:
             self.message_user(

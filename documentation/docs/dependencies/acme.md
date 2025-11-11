@@ -1,6 +1,6 @@
-CREDIT: https://blog.mni.li/posts/internal-tls-with-caddy/?utm_source=shorturl
-
 ## Trusted TLS certificates for internal use 
+
+CREDIT: [Original Blog/Article/Post](https://blog.mni.li/posts/internal-tls-with-caddy/?utm_source=shorturl)
 
 This is how I run all of my selfhosted services at home through my reverse proxy with trusted TLS certificates.
 

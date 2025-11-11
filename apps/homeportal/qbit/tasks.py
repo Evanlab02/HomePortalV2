@@ -12,7 +12,7 @@ logger = getLogger(__name__)
 @shared_task  # type: ignore
 def sync_forwarded_port_to_qbit() -> None:
     """
-    Celery task to synchronize the forwarded port from the config file to all QBittorrent servers.
+    Synchronize the forwarded port from the config file to all QBittorrent servers.
 
     This task reads the forwarded port from './qbit/config/forwarded_port' and updates all
     QBitServer instances if the port differs from the current listen_port. It first pulls the
@@ -20,7 +20,7 @@ def sync_forwarded_port_to_qbit() -> None:
     the new configuration back to the server.
 
     Returns:
-        None
+        None: This function does not return a value.
     """
     port: str | int = 0
     with open("./qbit/config/forwarded_port", "r") as f:

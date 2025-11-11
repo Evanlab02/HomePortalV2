@@ -1,15 +1,22 @@
 # Installing Home Portal V2
 
+IMPORTANT: DO NOT EXPOSE THIS TO THE PUBLIC. The home portal app stores values in plain text for some inter-application communication and will only be corrected in future. Do not under any circumstances allow public access as DB access or admin panel access will expose your application credentials. This is one reason why authentik exists as a another security layer but do not assume that this is secure enough.
+
 ## Pre-requisites
 
-- Docker
-- Docker Compose
-- [Jellyfin](./dependencies/jellyfin.md)
+- Linux Distro
+    - I recommend for the not so familiar with Linux, Debian or Ubuntu. I would put debian above ubuntu as it is more barebones allowing for you to set it up exactly as you want to but Ubuntu comes with some nice pre-defined defaults.
+    - NOTE: Some documentation links to debian installation guides, these should be almost identical to Ubuntu but be sure to follow ubuntu instructions if there is a distinction.
+    - Mac and Windows are not supported, this includes WSL. 
+    - WSL is not supported.
+- [Docker](https://docs.docker.com/engine/install/debian/)
+- [Docker Compose](https://docs.docker.com/engine/install/debian/)
+- [Tailscale](./dependencies/tailscale.md)
+- [Cloudflare Managed Domain](./dependencies/cloudflare.md)
 - [acme.sh](./dependencies/acme.md)
+- [Jellyfin](./dependencies/jellyfin.md)
 
-NOTE: Please ensure you read the acme.sh documentation as this will tell you how to setup certs manually. This is done as this project should only be run on a LAN/private network/vpn like service so automatic certificate management probably does not cut it.
-
-IMPORTANT: DO NOT EXPOSE THIS TO THE PUBLIC. The home portal app stores values in plain text for some inter-application communication and will only be corrected in future. Do not under any circumstances allow public access as DB access or admin panel access will expose your application credentials. This is also why authentik exists as a another security layer but do not assume that this is secure enough.
+NOTE: All of the above is required and you should read the documentation relating to it.
 
 ## Installation
 

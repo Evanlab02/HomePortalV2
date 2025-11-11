@@ -66,6 +66,7 @@ env:
 	@echo "📢 You need to fill in anything in the .env file that is blank and required. Not all values are populated by default."
 	@echo "📢 Here is a list of env vars you will likely need to update:"
 	@echo "📢 ==> DJANGO_HOSTS : Comma seperated list of the hosts the main portal app will be available at, eg. app.example.com"
+	@echo "📢 ==> DJANGO_CLOUDFLARE_API_KEY : The cloudflare API key to be used for the cloudflare integration."
 	@echo "📢 ==> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com"
 	@echo "📢 ==> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com"
 	@echo "📢 ==> PGADMIN_DEFAULT_EMAIL (modules/pgadmin/.env) : eg. example@gmail.com"
