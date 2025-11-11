@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.0...v0.7.1) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Set ttl when pulling DNS records for a zone ([d0b6a2a](https://github.com/Evanlab02/HomePortalV2/commit/d0b6a2a30af65523f9548bec948e04802726190c))
+
 ## [0.7.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.6...v0.7.0) (2025-11-11)
 
 
