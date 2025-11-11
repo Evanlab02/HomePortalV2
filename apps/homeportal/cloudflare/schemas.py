@@ -25,6 +25,20 @@ class CloudflareZoneIntegration(BaseModel):
 class CloudflareZoneIntegrationWrapper(BaseModel):
     """Cloudflare zone wrapper schema for API integration.
 
+    Wraps a single Cloudflare zone returned from the Cloudflare API.
+    Used for parsing the API response containing a single zone.
+
+    Attributes:
+        result (CloudflareZoneIntegration): Single Cloudflare zone.
+    """
+
+    model_config = ConfigDict(extra="ignore")
+
+    result: CloudflareZoneIntegration
+
+class CloudflareZonesIntegrationWrapper(BaseModel):
+    """Cloudflare zone wrapper schema for API integration.
+
     Wraps a list of Cloudflare zones returned from the Cloudflare API.
     Used for parsing the API response containing multiple zones.
 

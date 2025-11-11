@@ -28,7 +28,8 @@ from cloudflare.constants import (
 from cloudflare.schemas import (
     CloudflareDNSRecordIntegrationWrapper,
     CloudflareDNSRecordsIntegrationWrapper,
-    CloudflareZoneIntegrationWrapper,
+    CloudflareZonesIntegrationWrapper,
+    CloudflareZoneIntegrationWrapper
 )
 from utils.models import BaseModel
 
@@ -206,7 +207,7 @@ class CloudflareZone(BaseModel):
                 headers={"Authorization": f"Bearer {config.CLOUDFLARE_API_KEY}"},
             )
             response.raise_for_status()
-            data = CloudflareZoneIntegrationWrapper(**response.json())
+            data = CloudflareZonesIntegrationWrapper(**response.json())
             records = data.result
 
         api_ids = {record.id for record in records}
