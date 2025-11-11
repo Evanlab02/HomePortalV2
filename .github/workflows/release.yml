@@ -52,8 +52,8 @@ jobs:
           tags: |
             ghcr.io/evanlab02/hp2-caddy:latest
             ghcr.io/evanlab02/hp2-caddy:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=caddy
+          cache-to: type=gha,scope=caddy,mode=max
       - name: Build and push hp2-admin
         uses: docker/build-push-action@v6
         with:
@@ -64,8 +64,8 @@ jobs:
           tags: |
             ghcr.io/evanlab02/hp2-admin:latest
             ghcr.io/evanlab02/hp2-admin:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=homeportal
+          cache-to: type=gha,scope=homeportal,mode=max
       - name: Build and push hp2-app
         uses: docker/build-push-action@v6
         with:
@@ -76,8 +76,8 @@ jobs:
           tags: |
             ghcr.io/evanlab02/hp2-app:latest
             ghcr.io/evanlab02/hp2-app:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=homeportal
+          cache-to: type=gha,scope=homeportal,mode=max
       - name: Build and push hp2-queue
         uses: docker/build-push-action@v6
         with:
@@ -88,8 +88,8 @@ jobs:
           tags: |
             ghcr.io/evanlab02/hp2-queue:latest
             ghcr.io/evanlab02/hp2-queue:${{ needs.release-please.outputs.major }}.${{ needs.release-please.outputs.minor }}.${{ needs.release-please.outputs.patch }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=homeportal
+          cache-to: type=gha,scope=homeportal,mode=max
 
   docs:
     runs-on: ubuntu-latest
