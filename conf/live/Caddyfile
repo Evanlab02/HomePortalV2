@@ -131,7 +131,7 @@ api.labuschagne.xyz {
 			trusted_proxies private_ranges
 		}
 
-		reverse_proxy reverse_proxy app:80 {
+		reverse_proxy app:80 {
 			header_up X-Real-IP {remote_host}
 			header_up X-Forwarded-For {remote_host}
 			header_up X-Forwarded-Proto {scheme}
@@ -155,7 +155,7 @@ admin.labuschagne.xyz {
 			trusted_proxies private_ranges
 		}
 
-		reverse_proxy reverse_proxy admin:80 {
+		reverse_proxy admin:80 {
 			header_up X-Real-IP {remote_host}
 			header_up X-Forwarded-For {remote_host}
 			header_up X-Forwarded-Proto {scheme}
@@ -283,7 +283,7 @@ devapi.labuschagne.xyz {
 			trusted_proxies private_ranges
 		}
 
-		reverse_proxy reverse_proxy app_dev:80 {
+		reverse_proxy app_dev:80 {
 			header_up X-Real-IP {remote_host}
 			header_up X-Forwarded-For {remote_host}
 			header_up X-Forwarded-Proto {scheme}
@@ -307,7 +307,7 @@ devadmin.labuschagne.xyz {
 			trusted_proxies private_ranges
 		}
 
-		reverse_proxy reverse_proxy admin_dev:80 {
+		reverse_proxy admin_dev:80 {
 			header_up X-Real-IP {remote_host}
 			header_up X-Forwarded-For {remote_host}
 			header_up X-Forwarded-Proto {scheme}
