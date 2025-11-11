@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.5](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.4...v0.6.5) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Caddy:** Duplicate reverse proxy statements in caddyfile causing gateway timeouts ([cddef3b](https://github.com/Evanlab02/HomePortalV2/commit/cddef3b3210cc58026cd2f3f329e3f429e17f39c))
+* Fix types for cloudflare API responses to prevent validation errors ([1b7f8d7](https://github.com/Evanlab02/HomePortalV2/commit/1b7f8d7c39fccadf1f97e7e57713274384f20025))
+
 ## [0.6.4](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.3...v0.6.4) (2025-11-11)
 
 
