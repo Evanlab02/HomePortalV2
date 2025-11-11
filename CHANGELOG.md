@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.1...v0.7.2) (2025-11-11)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Zones admin improvements ([17abda6](https://github.com/Evanlab02/HomePortalV2/commit/17abda6eeb616f4302fa62dd73c66177771c60a0))
+
 ## [0.7.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.0...v0.7.1) (2025-11-11)
 
 
