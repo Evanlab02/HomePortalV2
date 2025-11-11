@@ -4,7 +4,7 @@ services:
   maintenance:
     container_name: maintenance
     restart: unless-stopped
-    image: ghcr.io/evanlab02/hp2-caddy:0.7.1  # x-release-please-version
+    image: ghcr.io/evanlab02/hp2-caddy:0.7.2  # x-release-please-version
     command: "run --config /etc/caddy/maintenance/Caddyfile --adapter caddyfile"
     ports:
       - 443:443
