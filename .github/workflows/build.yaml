@@ -16,6 +16,6 @@ jobs:
       - name: Build Images
         run: |
           docker build -f Dockerfile -t hp2-caddy:latest .
-          docker build -f apps/homeportal/docker/admin/Dockerfile -t hp2-admin:latest apps/homeportal/
-          docker build -f apps/homeportal/docker/app/Dockerfile -t hp2-app:latest apps/homeportal/
-          docker build -f apps/homeportal/docker/queue/Dockerfile -t hp2-queue:latest apps/homeportal/
+          docker build -f apps/homeportal/Dockerfile --target admin -t hp2-admin:latest apps/homeportal/
+          docker build -f apps/homeportal/Dockerfile --target app -t hp2-app:latest apps/homeportal/
+          docker build -f apps/homeportal/Dockerfile --target queue -t hp2-queue:latest apps/homeportal/

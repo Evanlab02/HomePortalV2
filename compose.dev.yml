@@ -4,7 +4,8 @@ services:
     restart: unless-stopped
     build:
       context: apps/homeportal
-      dockerfile: docker/app/Dockerfile
+      dockerfile: Dockerfile
+      target: app
     env_file:
       - .env
     volumes:
@@ -17,7 +18,8 @@ services:
     restart: unless-stopped
     build:
       context: apps/homeportal
-      dockerfile: docker/admin/Dockerfile
+      dockerfile: Dockerfile
+      target: admin
     env_file:
       - .env
     volumes:
@@ -30,7 +32,8 @@ services:
     restart: unless-stopped
     build:
       context: apps/homeportal
-      dockerfile: docker/queue/Dockerfile
+      dockerfile: Dockerfile
+      target: queue
     env_file:
       - .env
     volumes:

@@ -5,7 +5,6 @@ from logging import getLogger
 from django.contrib import admin, messages
 from django.http import HttpRequest, HttpResponseRedirect
 from django.urls import reverse
-from requests import HTTPError
 from unfold.decorators import action
 
 from cloudflare.models import CloudflareDNSRecord, CloudflareZone
