@@ -14,3 +14,4 @@ gunicorn
 redis[hiredis]
 celery[redis]
 requests
+pydantic

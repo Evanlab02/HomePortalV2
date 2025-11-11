@@ -2,14 +2,13 @@
 
 import json
 
-from django.db.models import CharField, IntegerField, Model
+from django.db.models import CharField, IntegerField
 from requests import Session
-from simple_history.models import HistoricalRecords  # type: ignore
 
-from app.exceptions import HomePortalHTTPError
+from utils.models import BaseModel
 
 
-class QBitServer(Model):
+class QBitServer(BaseModel):
     """
     Model for managing the state of QBittorrent App configurations.
 
@@ -28,7 +27,6 @@ class QBitServer(Model):
     username = CharField(max_length=30)
     password = CharField(max_length=100)
     listen_port = IntegerField(null=True, default=None)
-    history = HistoricalRecords()
 
     class Meta:
         """Meta configuration."""
@@ -38,35 +36,46 @@ class QBitServer(Model):
 
     def login(self) -> Session:
         """
-        Login into the instance.
+        Login into the QBittorrent instance.
+
+        Authenticates with the QBittorrent server using the stored credentials and establishes
+        a session for subsequent API calls.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do
-                multiple actions.
+            Session: The requests session for persisting the login if you want to do multiple actions.
+
+        Raises:
+            HTTPError: If the authentication request fails.
         """
         session = Session()
         response = session.post(
             f"{self.host}/api/v2/auth/login",
             data={"username": self.username, "password": self.password},
         )
-        if response.status_code != 200:
-            raise HomePortalHTTPError(status=response.status_code)
+        response.raise_for_status()
         return session
 
     def pull(self, session: Session | None = None) -> Session:
         """
-        Pull the config from the QBittorrent server.
+        Pull the configuration from the QBittorrent server.
+
+        Retrieves the current preferences from the QBittorrent server, updates the listen_port
+        attribute, and saves the model instance.
+
+        Args:
+            session (Session | None): Optional existing session to reuse. If None, a new session is created.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do
-                multiple actions.
+            Session: The requests session for persisting the login if you want to do multiple actions.
+
+        Raises:
+            HTTPError: If the preferences request fails.
         """
         if not session:
             session = self.login()
 
         response = session.get(f"{self.host}/api/v2/app/preferences")
-        if response.status_code != 200:
-            raise HomePortalHTTPError(status=response.status_code)
+        response.raise_for_status()
 
         self.listen_port = int(response.json()["listen_port"])
         self.save()
@@ -74,11 +83,18 @@ class QBitServer(Model):
 
     def push(self, session: Session | None = None) -> Session:
         """
-        Push the config to the QBittorrent server.
+        Push the configuration to the QBittorrent server.
+
+        Sends the current listen_port setting to the QBittorrent server to update its preferences.
+
+        Args:
+            session (Session | None): Optional existing session to reuse. If None, a new session is created.
 
         Returns:
-            session (Session): The requests session for persisting the login if you want to do
-                multiple actions.
+            Session: The requests session for persisting the login if you want to do multiple actions.
+
+        Raises:
+            HTTPError: If the set preferences request fails.
         """
         if not session:
             session = self.login()
@@ -87,7 +103,5 @@ class QBitServer(Model):
             f"{self.host}/api/v2/app/setPreferences",
             data={"json": json.dumps({"listen_port": self.listen_port})},
         )
-        if response.status_code != 200:
-            self.pull(session=session)
-            raise HomePortalHTTPError(status=response.status_code)
+        response.raise_for_status()
         return session

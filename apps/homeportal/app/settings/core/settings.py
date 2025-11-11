@@ -62,7 +62,12 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-APPS = ["api.apps.ApiConfig", "qbit.apps.QbitConfig", "utils.apps.UtilsConfig"]
+APPS = [
+    "api.apps.ApiConfig",
+    "cloudflare.apps.CloudflareConfig",
+    "qbit.apps.QbitConfig",
+    "utils.apps.UtilsConfig",
+]
 
 INSTALLED_APPS = UNFOLD_APPS + THIRD_PARTY_APPS + DJANGO_APPS + APPS
 
@@ -141,7 +146,10 @@ CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 CONSTANCE_DATABASE_CACHE_BACKEND = "default"
 
 CONSTANCE_CONFIG = {
-    "CLOUDFLARE_API_KEY": ("TODO", "TODO"),
+    "CLOUDFLARE_API_KEY": (
+        getenv("DJANGO_CLOUDFLARE_API_KEY"),
+        "The cloudflare API token/key used within this app.",
+    ),
 }
 
 
@@ -198,6 +206,28 @@ UNFOLD = {
                         "title": "Servers",
                         "icon": "dns",
                         "link": lambda request: "/admin/qbit/qbitserver/",
+                    },
+                ],
+            },
+            {
+                "title": "Cloudflare",
+                "separator": True,
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": "Zones",
+                        "icon": "cloud",
+                        "link": lambda request: "/admin/cloudflare/cloudflarezone/",
+                    },
+                    {
+                        "title": "DNS Records",
+                        "icon": "language",
+                        "link": lambda request: "/admin/cloudflare/cloudflarednsrecord/",
+                    },
+                    {
+                        "title": "Pull All Config",
+                        "icon": "cloud_download",
+                        "link": lambda request: "/admin/cloudflare/cloudflarezone/pull-all/",
                     },
                 ],
             },

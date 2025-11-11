@@ -98,7 +98,9 @@ py-moneyed==3.0
 pycparser==2.23
     # via cffi
 pydantic==2.12.3
-    # via django-ninja
+    # via
+    #   -r requirements.in
+    #   django-ninja
 pydantic-core==2.41.4
     # via pydantic
 python-crontab==3.3.0

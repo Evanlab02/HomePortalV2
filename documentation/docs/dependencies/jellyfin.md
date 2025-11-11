@@ -4,4 +4,4 @@ Home portal relies on some services and jellyfin is one of them. Jellyfin can be
 
 ## Setting Up Jellyfin
 
-Refer to the documentation @ https://jellyfin.org/docs/general/installation/
+Refer to the documentation at the [Official Jellyfin Documentation](https://jellyfin.org/docs/general/installation/)
