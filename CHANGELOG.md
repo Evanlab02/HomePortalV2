@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.6...v0.7.0) (2025-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Cloudflare:** Squash migrations
+
+### Features
+
+* **Cloudflare:** Squash migrations ([61473ff](https://github.com/Evanlab02/HomePortalV2/commit/61473ff0537c285216e9314c06a43045d5082a5d))
+
 ## [0.6.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.5...v0.6.6) (2025-11-11)
 
 
