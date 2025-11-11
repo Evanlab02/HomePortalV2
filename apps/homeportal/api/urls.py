@@ -8,7 +8,7 @@ from ninja import NinjaAPI, Schema
 
 api = NinjaAPI(
     title="Home Portal V2 API",
-    version="0.6.2",  # x-release-please-version
+    version="0.6.3",  # x-release-please-version
 )
 
 

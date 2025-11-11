@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.2...v0.6.3) (2025-11-11)
+
+
+### Features
+
+* **Cloudflare:** Cloudflare DNS records integration into django admin ([7fd3f8b](https://github.com/Evanlab02/HomePortalV2/commit/7fd3f8b2ad537f2326f1befa021cfeaefba00d9d))
+
+
+### Miscellaneous Chores
+
+* Linting fixes and remove the generic HTTP exception from the codebase (Will scope errors down better in future) ([edefd7c](https://github.com/Evanlab02/HomePortalV2/commit/edefd7cb713a286281063613e21735737dc7678a))
+
 ## [0.6.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.6.1...v0.6.2) (2025-10-28)
 
 
