@@ -42,7 +42,8 @@ class QBitServer(BaseModel):
         a session for subsequent API calls.
 
         Returns:
-            Session: The requests session for persisting the login if you want to do multiple actions.
+            Session: The requests session for persisting the login if you
+                want to do multiple actions.
 
         Raises:
             HTTPError: If the authentication request fails.
@@ -63,10 +64,12 @@ class QBitServer(BaseModel):
         attribute, and saves the model instance.
 
         Args:
-            session (Session | None): Optional existing session to reuse. If None, a new session is created.
+            session (Session | None): Optional existing session to reuse.
+                If None, a new session is created.
 
         Returns:
-            Session: The requests session for persisting the login if you want to do multiple actions.
+            Session: The requests session for persisting the login if you
+                want to do multiple actions.
 
         Raises:
             HTTPError: If the preferences request fails.
@@ -88,10 +91,12 @@ class QBitServer(BaseModel):
         Sends the current listen_port setting to the QBittorrent server to update its preferences.
 
         Args:
-            session (Session | None): Optional existing session to reuse. If None, a new session is created.
+            session (Session | None): Optional existing session to reuse.
+                If None, a new session is created.
 
         Returns:
-            Session: The requests session for persisting the login if you want to do multiple actions.
+            Session: The requests session for persisting the login if you
+                want to do multiple actions.
 
         Raises:
             HTTPError: If the set preferences request fails.

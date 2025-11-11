@@ -10,7 +10,6 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 from unfold.decorators import display
 
-from app.exceptions import HomePortalHTTPError
 from qbit.models import QBitServer
 from utils.admin import BaseAdminMixin
 
@@ -144,10 +143,6 @@ class QBitServerAdmin(BaseAdminMixin):
 
         Returns:
             result (HttpResponseRedirect): Redirect to the server's change page.
-
-        Raises:
-            HomePortalHTTPError: If the HTTP request to the QBittorrent server fails.
-            Exception: For any other errors during the pull operation.
         """
         server = self.get_object(request, object_id)
         if server is None:
@@ -183,10 +178,6 @@ class QBitServerAdmin(BaseAdminMixin):
 
         Returns:
             result (HttpResponseRedirect): Redirect to the server's change page.
-
-        Raises:
-            HomePortalHTTPError: If the HTTP request to the QBittorrent server fails.
-            Exception: For any other errors during the push operation.
         """
         server = self.get_object(request, object_id)
         if server is None:
@@ -223,10 +214,6 @@ class QBitServerAdmin(BaseAdminMixin):
 
         Returns:
             result (None): No return value.
-
-        Raises:
-            HomePortalHTTPError: If the HTTP request to a QBittorrent server fails (caught and logged).
-            Exception: For any other errors during pull operations (caught and logged).
         """
         success_count = 0
         error_count = 0
@@ -266,10 +253,6 @@ class QBitServerAdmin(BaseAdminMixin):
 
         Returns:
             result (None): No return value.
-
-        Raises:
-            HomePortalHTTPError: If the HTTP request to a QBittorrent server fails (caught and logged).
-            Exception: For any other errors during push operations (caught and logged).
         """
         success_count = 0
         error_count = 0
@@ -279,7 +262,7 @@ class QBitServerAdmin(BaseAdminMixin):
                 session = server.login()
                 server.push(session=session)
                 success_count += 1
-            except Exception as e:
+            except Exception:
                 error_count += 1
 
         if success_count > 0:
