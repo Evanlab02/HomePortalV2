@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.8](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.7...v0.7.8) (2025-11-14)
+
+
+### Bug Fixes
+
+* **Celery:** Add required status field to result data ([57c8684](https://github.com/Evanlab02/HomePortalV2/commit/57c868424f2bf1b59ae2fd47201838e2118f25cb))
+
 ## [0.7.7](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.6...v0.7.7) (2025-11-14)
 
 
