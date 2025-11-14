@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.11](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.10...v0.7.11) (2025-11-14)
+
+
+### Features
+
+* **Cloudflare:** Reintroduce cloudflare DNS records admin actions ([0390af2](https://github.com/Evanlab02/HomePortalV2/commit/0390af2e90b24b347eb3e7190e87a0b98b8194cc))
+
+
+### Bug Fixes
+
+* **DNS:** Fix cloudflare DNS record creation issues ([f5db06a](https://github.com/Evanlab02/HomePortalV2/commit/f5db06add7332bf4e323f4d61afce89731955f98))
+
 ## [0.7.10](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.9...v0.7.10) (2025-11-14)
 
 
