@@ -225,11 +225,6 @@ UNFOLD = {
                         "icon": "language",
                         "link": lambda request: "/admin/cloudflare/cloudflarednsrecord/",
                     },
-                    {
-                        "title": "Pull All Config",
-                        "icon": "cloud_download",
-                        "link": lambda request: "/admin/cloudflare/cloudflarezone/pull-all/",
-                    },
                 ],
             },
             {

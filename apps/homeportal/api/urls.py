@@ -18,7 +18,7 @@ class HealthCheck(Schema):
     status: Literal["ok"]
 
 
-@api.get("/health", response={200: HealthCheck})
+@api.get("/v1/health", response={200: HealthCheck})
 def health(request: HttpRequest) -> HealthCheck:
     """Health Check."""
     return HealthCheck(status="ok")
