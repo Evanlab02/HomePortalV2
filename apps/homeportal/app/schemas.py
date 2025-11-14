@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 class CeleryMetaData(BaseModel):
     """TODO"""
 
+    status: str = Field(default="success")
     task: str | None = Field(default=None)
     state: str | None = Field(default=None)
     current: int = Field(default=0, ge=0, le=100)
