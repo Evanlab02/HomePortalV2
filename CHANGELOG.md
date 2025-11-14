@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.7](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.6...v0.7.7) (2025-11-14)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Temporary remove some admin actions for rework and do a complete clean up of the zone actions ([030f1a5](https://github.com/Evanlab02/HomePortalV2/commit/030f1a5621060548fe35febcdba8ee9d4021d51b))
+
+
+### Styles
+
+* Adjust side menu ordering and UI ([581b894](https://github.com/Evanlab02/HomePortalV2/commit/581b8947b80a64e66a8e6a9c0c22c8ea3b8fda4c))
+
 ## [0.7.6](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.5...v0.7.6) (2025-11-11)
 
 
