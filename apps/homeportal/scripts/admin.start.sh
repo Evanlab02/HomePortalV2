@@ -1,6 +1,3 @@
-echo "Creating missing migrations..."
-python manage.py makemigrations
-
 echo "Running migrations..."
 python manage.py migrate
 
