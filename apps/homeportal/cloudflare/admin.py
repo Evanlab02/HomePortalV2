@@ -351,7 +351,9 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
     actions_submit_line = ["save_and_push"]
 
     # Utils
-    def delete_queryset(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
+    def delete_queryset(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
+    ) -> None:
         """
         Override bulk delete to call each record's delete method.
 
