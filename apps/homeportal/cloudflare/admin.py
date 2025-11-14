@@ -307,7 +307,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
     search_fields = ("name", "content", "dns_id")
 
     # Forms
-    readonly_fields = ("dns_id", "zone", "proxiable")
+    readonly_fields = ("dns_id", "proxiable")
     fieldsets = (
         (
             "DNS Record Details",
@@ -328,3 +328,22 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             },
         ),
     )
+
+    # Utils
+    def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None):
+        """
+        Make zone field readonly after creation.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            obj (CloudflareDNSRecord | None): The DNS record instance being edited (None for add).
+
+        Returns:
+            tuple: Tuple of readonly field names.
+        """
+        readonly = list(super().get_readonly_fields(request, obj))
+
+        if obj is not None:
+            readonly.append("zone")
+
+        return tuple(readonly)

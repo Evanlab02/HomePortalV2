@@ -3,6 +3,7 @@
 from logging import getLogger
 
 from constance import config
+from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.models import (
     CASCADE,
@@ -64,7 +65,8 @@ class CloudflareZone(BaseModel):
         return f"{self.name} ({self.status})"
 
     def pull(self) -> None:
-        """Sync this zone's data from the Cloudflare API.
+        """
+        Sync this zone's data from the Cloudflare API.
 
         Fetches this specific zone's details from the Cloudflare API using
         the zone detail endpoint and updates this zone's status and name
@@ -95,7 +97,8 @@ class CloudflareZone(BaseModel):
         log.info(f"Completed pull for Cloudflare Zone {self.id} ({self.zone_id})")
 
     def pull_dns_records(self) -> None:
-        """Sync DNS records for this zone from the Cloudflare API.
+        """
+        Sync DNS records for this zone from the Cloudflare API.
 
         Fetches all DNS records for this zone from the Cloudflare API and
         syncs them with the local database by creating new records, updating
@@ -189,7 +192,8 @@ class CloudflareZone(BaseModel):
 
     @staticmethod
     def pull_all() -> None:
-        """Sync all Cloudflare zones from API to local database.
+        """
+        Sync all Cloudflare zones from API to local database.
 
         Fetches all zones from Cloudflare API and syncs with the local database
         by creating new zones that don't exist locally, updating existing zones
@@ -257,7 +261,8 @@ class CloudflareZone(BaseModel):
 
 
 class CloudflareDNSRecord(BaseModel):
-    """Model for managing Cloudflare DNS Records.
+    """
+    Model for managing Cloudflare DNS Records.
 
     This model represents a DNS record in a Cloudflare zone and provides
     methods to create, read, update, and delete DNS records through the
@@ -326,8 +331,30 @@ class CloudflareDNSRecord(BaseModel):
         """Return string representation of the DNS record."""
         return f"{self.name} ({self.dns_type}) -> {self.content}"
 
+    def clean(self) -> None:
+        """
+        Validate the DNS record before saving.
+
+        Prevents changing the zone field after the record has been created.
+
+        Raises:
+            ValidationError: If attempting to change the zone of an existing record.
+        """
+        super().clean()
+
+        if self.pk is not None:
+            try:
+                original = CloudflareDNSRecord.objects.get(pk=self.pk)
+                if original.zone_id != self.zone_id:
+                    raise ValidationError(
+                        {"zone": "Cannot change the zone of an existing DNS record."}
+                    )
+            except CloudflareDNSRecord.DoesNotExist:
+                pass
+
     def create(self) -> None:
-        """Create this DNS record in Cloudflare via the API.
+        """
+        Create this DNS record in Cloudflare via the API.
 
         Sends a POST request to the Cloudflare API to create a new DNS record
         with the current instance's data. Updates the instance's dns_id field
@@ -357,11 +384,12 @@ class CloudflareDNSRecord(BaseModel):
         self.dns_id = result.id
 
     def save(self, *, force_insert=False, force_update=False, using=None, update_fields=None):
-        """Save the DNS record to the database.
+        """
+        Save the DNS record to the database.
 
         Overrides Django's default save method to automatically create the
         DNS record in Cloudflare when saving a new instance (when pk is None).
-        For existing instances, performs a normal database save.
+        For existing instances, performs a normal database save with validation.
 
         Args:
             force_insert (bool): Force INSERT SQL query.
@@ -374,7 +402,9 @@ class CloudflareDNSRecord(BaseModel):
 
         Raises:
             requests.HTTPError: If the Cloudflare API request fails (new records only).
+            ValidationError: If validation fails (e.g., attempting to change zone).
         """
+        self.clean()
         if self.pk is None or self.id is None:
             self.create()
         return super().save(
@@ -385,7 +415,8 @@ class CloudflareDNSRecord(BaseModel):
         )
 
     def delete(self, using=None, keep_parents=False):
-        """Delete the DNS record from both Cloudflare and the database.
+        """
+        Delete the DNS record from both Cloudflare and the database.
 
         Overrides Django's default delete method to first delete the DNS record
         from Cloudflare via the API, then remove it from the local database.
@@ -413,7 +444,8 @@ class CloudflareDNSRecord(BaseModel):
         return super().delete(using, keep_parents)
 
     def push(self) -> None:
-        """Push local changes to Cloudflare via the API.
+        """
+        Push local changes to Cloudflare via the API.
 
         Sends a PATCH request to the Cloudflare API to update the DNS record
         with the current instance's data. This method syncs local changes to
@@ -441,7 +473,8 @@ class CloudflareDNSRecord(BaseModel):
             response.raise_for_status()
 
     def pull(self) -> None:
-        """Pull the latest data from Cloudflare and update the local record.
+        """
+        Pull the latest data from Cloudflare and update the local record.
 
         Fetches the current DNS record data from the Cloudflare API and updates
         this instance's fields with the latest values. Automatically saves the
