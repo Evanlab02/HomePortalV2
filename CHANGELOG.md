@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.12](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.11...v0.7.12) (2025-11-14)
+
+
+### Bug Fixes
+
+* **Celery:** Adjust some error handling to still attach metadata and update and fix docstrings and linting issues ([3eea4f0](https://github.com/Evanlab02/HomePortalV2/commit/3eea4f04ade085509af3fdbd70904b9408e8c4f9))
+
 ## [0.7.11](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.10...v0.7.11) (2025-11-14)
 
 
