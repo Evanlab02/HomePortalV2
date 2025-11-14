@@ -351,6 +351,35 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
     actions_submit_line = ["save_and_push"]
 
     # Utils
+    def delete_queryset(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
+        """
+        Override bulk delete to call each record's delete method.
+
+        This ensures that DNS records are deleted from Cloudflare via the API
+        before being removed from the database, as the model's custom delete()
+        method handles the Cloudflare API deletion.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            queryset (QuerySet): The selected DNS records to delete.
+        """
+        try:
+            count = queryset.count()
+            for record in queryset:
+                record.delete()
+            self.message_user(
+                request,
+                f"Successfully deleted {count} DNS records from Cloudflare and database.",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception during bulk delete: {e}")
+            self.message_user(
+                request,
+                f"Error during bulk delete: {str(e)}",
+                level=messages.ERROR,
+            )
+
     def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None):
         """
         Make zone field readonly after creation.
