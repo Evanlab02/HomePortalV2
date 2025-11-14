@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.13](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.12...v0.7.13) (2025-11-14)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Fix cloudflare bulk delete issues ([5ce0300](https://github.com/Evanlab02/HomePortalV2/commit/5ce0300a5b3caf83da3f70d24ac43ecb85b2feae))
+
 ## [0.7.12](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.11...v0.7.12) (2025-11-14)
 
 
