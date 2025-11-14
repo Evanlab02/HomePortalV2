@@ -10,6 +10,10 @@ from unfold.decorators import action
 
 from cloudflare.models import CloudflareDNSRecord, CloudflareZone
 from cloudflare.tasks import (
+    pull_all_dns_records,
+    pull_dns_record,
+    push_all_dns_records,
+    push_dns_record,
     sync_cloudflare_zone,
     sync_cloudflare_zone_dns_records,
     sync_cloudflare_zones,
@@ -329,6 +333,23 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         ),
     )
 
+    # Actions
+    actions_list = [
+        {
+            "title": "Sync Actions",
+            "items": ["pull_all_records", "push_all_records"],
+        }
+    ]
+    actions = ["bulk_pull_dns_records", "bulk_push_dns_records"]
+    actions_row = ["pull_record", "push_record"]
+    actions_detail = [
+        {
+            "title": "Sync Actions",
+            "items": ["pull_record", "push_record"],
+        }
+    ]
+    actions_submit_line = ["save_and_push"]
+
     # Utils
     def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None):
         """
@@ -347,3 +368,319 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             readonly.append("zone")
 
         return tuple(readonly)
+
+    # Action Definitions
+    @action(
+        description="Pull All DNS Records",
+        url_path="pull-all-records",
+        permissions=["pull_all_records"],
+    )
+    def pull_all_records(self, request: HttpRequest):
+        """
+        Handle pull all DNS records action.
+
+        Pulls all DNS records from Cloudflare across all zones.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponseRedirect: Redirect to the DNS record list page.
+        """
+        try:
+            pull_all_dns_records.delay()
+            self.message_user(
+                request,
+                "Queued Pull All DNS Records",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error: {str(e)}",
+                level=messages.ERROR,
+            )
+
+        return HttpResponseRedirect(
+            reverse("admin:cloudflare_cloudflarednrecord_changelist")
+        )
+
+    @action(
+        description="Push All DNS Records",
+        url_path="push-all-records",
+        permissions=["push_all_records"],
+    )
+    def push_all_records(self, request: HttpRequest):
+        """
+        Handle push all DNS records action.
+
+        Pushes all DNS records to Cloudflare.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponseRedirect: Redirect to the DNS record list page.
+        """
+        try:
+            push_all_dns_records.delay()
+            self.message_user(
+                request,
+                "Queued Push All DNS Records",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error: {str(e)}",
+                level=messages.ERROR,
+            )
+
+        return HttpResponseRedirect(
+            reverse("admin:cloudflare_cloudflarednrecord_changelist")
+        )
+
+    @admin.action(description="Pull DNS records from Cloudflare")
+    def bulk_pull_dns_records(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
+    ):
+        """
+        Bulk action to pull DNS records from Cloudflare.
+
+        Pulls DNS record data from Cloudflare for all selected DNS records in the queryset.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            queryset (QuerySet): The selected DNS record objects to pull data for.
+        """
+        try:
+            for record in queryset:
+                pull_dns_record.delay(db_id=record.id)
+
+            self.message_user(
+                request,
+                "Queued DNS Record Pulls",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error: {str(e)}",
+                level=messages.ERROR,
+            )
+
+    @admin.action(description="Push DNS records to Cloudflare")
+    def bulk_push_dns_records(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
+    ):
+        """
+        Bulk action to push DNS records to Cloudflare.
+
+        Pushes DNS record data to Cloudflare for all selected DNS records in the queryset.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            queryset (QuerySet): The selected DNS record objects to push data for.
+        """
+        try:
+            for record in queryset:
+                push_dns_record.delay(db_id=record.id)
+
+            self.message_user(
+                request,
+                "Queued DNS Record Pushes",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error: {str(e)}",
+                level=messages.ERROR,
+            )
+
+    @action(
+        description="Pull DNS Record",
+        url_path="pull-record",
+        permissions=["pull_record"],
+    )
+    def pull_record(self, request: HttpRequest, object_id: int):
+        """
+        Handle pull action for a single DNS record.
+
+        Pulls DNS record data from Cloudflare for a specific DNS record instance.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            object_id (int): The primary key of the DNS record to pull.
+
+        Returns:
+            HttpResponseRedirect: Redirect to the DNS record detail page.
+        """
+        dns_record = self.get_object(request, object_id)
+        if dns_record is None:
+            self.message_user(request, "DNS Record not found.", level=messages.ERROR)
+            return HttpResponseRedirect(
+                reverse("admin:cloudflare_cloudflarednrecord_changelist")
+            )
+
+        try:
+            dns_record.pull()
+            self.message_user(
+                request,
+                f"Successfully pulled DNS record data for {dns_record.name}.",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error pulling DNS record data for {dns_record.name}: {str(e)}",
+                level=messages.ERROR,
+            )
+
+        return HttpResponseRedirect(
+            reverse("admin:cloudflare_cloudflarednrecord_change", args=[object_id])
+        )
+
+    @action(
+        description="Push DNS Record",
+        url_path="push-record",
+        permissions=["push_record"],
+    )
+    def push_record(self, request: HttpRequest, object_id: int):
+        """
+        Handle push action for a single DNS record.
+
+        Pushes DNS record data to Cloudflare for a specific DNS record instance.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            object_id (int): The primary key of the DNS record to push.
+
+        Returns:
+            HttpResponseRedirect: Redirect to the DNS record detail page.
+        """
+        dns_record = self.get_object(request, object_id)
+        if dns_record is None:
+            self.message_user(request, "DNS Record not found.", level=messages.ERROR)
+            return HttpResponseRedirect(
+                reverse("admin:cloudflare_cloudflarednrecord_changelist")
+            )
+
+        try:
+            dns_record.push()
+            self.message_user(
+                request,
+                f"Successfully pushed DNS record data for {dns_record.name}.",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Error pushing DNS record data for {dns_record.name}: {str(e)}",
+                level=messages.ERROR,
+            )
+
+        return HttpResponseRedirect(
+            reverse("admin:cloudflare_cloudflarednrecord_change", args=[object_id])
+        )
+
+    @action(
+        description="Save & Push",
+        permissions=["save_and_push"],
+    )
+    def save_and_push(self, request: HttpRequest, obj: CloudflareDNSRecord):
+        """
+        Submit line action to save and push DNS record to Cloudflare.
+
+        This action is triggered after the form is saved. It pushes the saved
+        DNS record data to Cloudflare.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+            obj (CloudflareDNSRecord): The saved DNS record instance.
+        """
+        try:
+            obj.push()
+            self.message_user(
+                request,
+                f"Successfully saved and pushed DNS record {obj.name} to Cloudflare.",
+                level=messages.SUCCESS,
+            )
+        except Exception as e:
+            log.error(f"Exception: {e}")
+            self.message_user(
+                request,
+                f"Saved locally but failed to push to Cloudflare: {str(e)}",
+                level=messages.ERROR,
+            )
+
+    # Permission Checks
+    def has_pull_record_permission(
+        self, _request: HttpRequest, _obj: CloudflareDNSRecord | None = None
+    ) -> bool:
+        """Check if user has permission to pull a DNS record.
+
+        Args:
+            _request: The HTTP request object.
+            _obj: The CloudflareDNSRecord instance (None for list view).
+
+        Returns:
+            bool: True if user has permission, False otherwise.
+        """
+        return True
+
+    def has_push_record_permission(
+        self, _request: HttpRequest, _obj: CloudflareDNSRecord | None = None
+    ) -> bool:
+        """Check if user has permission to push a DNS record.
+
+        Args:
+            _request: The HTTP request object.
+            _obj: The CloudflareDNSRecord instance (None for list view).
+
+        Returns:
+            bool: True if user has permission, False otherwise.
+        """
+        return True
+
+    def has_pull_all_records_permission(self, _request: HttpRequest) -> bool:
+        """Check if user has permission to pull all DNS records.
+
+        Args:
+            _request: The HTTP request object.
+
+        Returns:
+            bool: True if user has permission, False otherwise.
+        """
+        return True
+
+    def has_push_all_records_permission(self, _request: HttpRequest) -> bool:
+        """Check if user has permission to push all DNS records.
+
+        Args:
+            _request: The HTTP request object.
+
+        Returns:
+            bool: True if user has permission, False otherwise.
+        """
+        return True
+
+    def has_save_and_push_permission(
+        self, request: HttpRequest, object_id: str | int
+    ) -> bool:
+        """Check if user has permission to save and push a DNS record.
+
+        Args:
+            request: The HTTP request object.
+            object_id: The ID of the DNS record being edited.
+
+        Returns:
+            bool: True if user has permission, False otherwise.
+        """
+        return True
