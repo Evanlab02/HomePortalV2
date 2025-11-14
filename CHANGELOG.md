@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.10](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.9...v0.7.10) (2025-11-14)
+
+
+### Bug Fixes
+
+* **Logging:** Try to add more comprehensive logging ([fbebe7a](https://github.com/Evanlab02/HomePortalV2/commit/fbebe7a84845e80a93ae91a0a7710404836590a5))
+
 ## [0.7.9](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.8...v0.7.9) (2025-11-14)
 
 
