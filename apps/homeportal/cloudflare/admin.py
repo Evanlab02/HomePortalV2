@@ -9,7 +9,11 @@ from django.urls import reverse
 from unfold.decorators import action
 
 from cloudflare.models import CloudflareDNSRecord, CloudflareZone
-from cloudflare.tasks import sync_cloudflare_zones, sync_cloudflare_zone, sync_cloudflare_zone_dns_records
+from cloudflare.tasks import (
+    sync_cloudflare_zone,
+    sync_cloudflare_zone_dns_records,
+    sync_cloudflare_zones,
+)
 from utils.admin import BaseAdminMixin
 
 log = getLogger(__name__)

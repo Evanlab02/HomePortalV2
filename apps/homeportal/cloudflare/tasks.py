@@ -1,13 +1,13 @@
 """Contains celery tasks for cloudflare app."""
 
-from typing import Any
 from logging import getLogger
+from typing import Any
 
-from celery import shared_task, Task
+from celery import Task, shared_task
 from requests import HTTPError
 
 from app.schemas import CeleryMetaData
-from cloudflare.models import CloudflareZone, CloudflareDNSRecord
+from cloudflare.models import CloudflareDNSRecord, CloudflareZone
 
 logger = getLogger(__name__)
 
@@ -105,6 +105,7 @@ def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
 
     logger.info(f"Completed Cloudflare zone sync. (DB_ID: {db_id})")
     return metadata.model_dump()
+
 
 @shared_task(bind=True)
 def sync_cloudflare_zone_dns_records(self: Task, db_id: int) -> dict[str, Any]:
