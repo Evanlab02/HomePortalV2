@@ -402,9 +402,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse("admin:cloudflare_cloudflarednrecord_changelist")
-        )
+        return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
     @action(
         description="Push All DNS Records",
@@ -438,14 +436,10 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse("admin:cloudflare_cloudflarednrecord_changelist")
-        )
+        return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
     @admin.action(description="Pull DNS records from Cloudflare")
-    def bulk_pull_dns_records(
-        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
-    ):
+    def bulk_pull_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]):
         """
         Bulk action to pull DNS records from Cloudflare.
 
@@ -473,9 +467,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
     @admin.action(description="Push DNS records to Cloudflare")
-    def bulk_push_dns_records(
-        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
-    ):
+    def bulk_push_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]):
         """
         Bulk action to push DNS records to Cloudflare.
 
@@ -523,9 +515,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         dns_record = self.get_object(request, object_id)
         if dns_record is None:
             self.message_user(request, "DNS Record not found.", level=messages.ERROR)
-            return HttpResponseRedirect(
-                reverse("admin:cloudflare_cloudflarednrecord_changelist")
-            )
+            return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
         try:
             dns_record.pull()
@@ -543,7 +533,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
         return HttpResponseRedirect(
-            reverse("admin:cloudflare_cloudflarednrecord_change", args=[object_id])
+            reverse("admin:cloudflare_cloudflarednsrecord_change", args=[object_id])
         )
 
     @action(
@@ -567,9 +557,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         dns_record = self.get_object(request, object_id)
         if dns_record is None:
             self.message_user(request, "DNS Record not found.", level=messages.ERROR)
-            return HttpResponseRedirect(
-                reverse("admin:cloudflare_cloudflarednrecord_changelist")
-            )
+            return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
         try:
             dns_record.push()
@@ -587,7 +575,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
         return HttpResponseRedirect(
-            reverse("admin:cloudflare_cloudflarednrecord_change", args=[object_id])
+            reverse("admin:cloudflare_cloudflarednsrecord_change", args=[object_id])
         )
 
     @action(
@@ -671,9 +659,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         """
         return True
 
-    def has_save_and_push_permission(
-        self, request: HttpRequest, object_id: str | int
-    ) -> bool:
+    def has_save_and_push_permission(self, request: HttpRequest, object_id: str | int) -> bool:
         """Check if user has permission to save and push a DNS record.
 
         Args:

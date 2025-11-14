@@ -22,7 +22,8 @@ def sync_cloudflare_zones(self: Task) -> dict[str, Any]:
     and pulling DNS records for all zones.
 
     Returns:
-        TODO
+        dict[str, Any]: Metadata about the task execution including total zones and DNS records
+            synced.
     """
     metadata = CeleryMetaData(task="Sync Cloudflare Zones")
     metadata.propagate(self)
@@ -64,7 +65,22 @@ def sync_cloudflare_zones(self: Task) -> dict[str, Any]:
 @shared_task(bind=True)
 def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
     """
-    TODO
+    Synchronize a single Cloudflare zone.
+
+    Fetches the latest zone data from Cloudflare API for a specific zone
+    and updates the local database.
+
+    Args:
+        self (Task): The Celery task instance.
+        db_id (int): The database ID of the Cloudflare zone to sync.
+
+    Returns:
+        dict[str, Any]: Metadata about the task execution.
+
+    Raises:
+        CloudflareZone.DoesNotExist: If the zone doesn't exist in the database.
+        HTTPError: If the Cloudflare API request fails.
+        Exception: For any other unexpected errors.
     """
     metadata = CeleryMetaData(task="Sync Cloudflare Zone", result={"db_id": db_id})
     metadata.propagate(self)
@@ -110,7 +126,22 @@ def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
 @shared_task(bind=True)
 def sync_cloudflare_zone_dns_records(self: Task, db_id: int) -> dict[str, Any]:
     """
-    TODO
+    Synchronize DNS records for a specific Cloudflare zone.
+
+    Fetches all DNS records from Cloudflare API for a specific zone
+    and updates the local database.
+
+    Args:
+        self (Task): The Celery task instance.
+        db_id (int): The database ID of the Cloudflare zone whose DNS records should be synced.
+
+    Returns:
+        dict[str, Any]: Metadata about the task execution.
+
+    Raises:
+        CloudflareZone.DoesNotExist: If the zone doesn't exist in the database.
+        HTTPError: If the Cloudflare API request fails.
+        Exception: For any other unexpected errors.
     """
     metadata = CeleryMetaData(task="Sync Cloudflare Zone DNS", result={"db_id": db_id})
     metadata.propagate(self)
@@ -131,10 +162,22 @@ def sync_cloudflare_zone_dns_records(self: Task, db_id: int) -> dict[str, Any]:
         metadata.current = 100
         metadata.propagate(self)
     except CloudflareZone.DoesNotExist as e:
+        logger.error(f"Zone DNS Sync Failed: {e}")
+        metadata.state = "Record Does Not Exist"
+        metadata.current = 100
+        metadata.propagate(self)
         raise e
     except HTTPError as e:
+        logger.error(f"Zone DNS Sync Failed: {e}")
+        metadata.state = "HTTP Request Failure"
+        metadata.current = 100
+        metadata.propagate(self)
         raise e
     except Exception as e:
+        logger.error(f"Zone DNS Sync Failed: {e}")
+        metadata.state = "Unexpected Failure"
+        metadata.current = 100
+        metadata.propagate(self)
         raise e
 
     logger.info(f"Completed Cloudflare Zone DNS Sync. (DB_ID: {db_id})")
