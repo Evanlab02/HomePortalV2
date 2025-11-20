@@ -1,6 +1,8 @@
 # Installing Home Portal V2
 
-IMPORTANT: DO NOT EXPOSE THIS TO THE PUBLIC. The home portal app stores values in plain text for some inter-application communication and will only be corrected in future. Do not under any circumstances allow public access as DB access or admin panel access will expose your application credentials. This is one reason why authentik exists as a another security layer but do not assume that this is secure enough.
+IMPORTANT: DO NOT EXPOSE THIS TO THE PUBLIC. 
+
+The home portal app stores values in plain text for some inter-application communication and will only be corrected in future. Do not under any circumstances allow public access as DB access or admin panel access will expose your application credentials. This is one reason why authentik exists as a another security layer but do not assume that this is secure enough.
 
 ## Pre-requisites
 
@@ -44,16 +46,19 @@ make env
 
 The output will look something like the following:
 
-```bash
+```plaintext
 ⚙️ Creating local compose...
 ℹ️ Your compose file: compose.yml
 ✅ Created local compose
+
 ⚙️ Creating compose modules...
 ✅ Created compose modules
+
 ⚙️ Creating local Caddyfiles
 ℹ️ Your primary Caddyfile: conf/custom/Caddyfile
 ℹ️ Your maintenance Caddyfile: conf/custom/maintenance/Caddyfile
 ✅ Created Caddyfiles
+
 ⚙️ Creating .env files off of template
 ℹ️ Your primary env file: .env
 ℹ️ Your Pihole/DNS env file: modules/dns/.env
@@ -62,13 +67,16 @@ The output will look something like the following:
 ℹ️ Your PgAdmin env file: modules/pgadmin/.env
 ℹ️ Your Servarr env file: modules/servarr/.env
 ✅ Created .env files
+
 ⚙️ Generating passwords (But you are welcome to change them)
 ⚙️ Generating passwords for .env
 ⚙️ Generating passwords for modules/dns/.env
 ⚙️ Generating passwords for modules/flame/.env
 ⚙️ Generating passwords for modules/immich/.env
 ⚙️ Generating passwords for modules/pgadmin/.env
+⚙️ Generating passwords for modules/servarr/.env
 ✅ Generated passwords
+
 
 📢 IMPORTANT INFORMATION BELOW 📢
 ========================================================================================================================
@@ -78,6 +86,7 @@ The output will look something like the following:
 📢 You need to fill in anything in the .env file that is blank and required. Not all values are populated by default.
 📢 Here is a list of env vars you will likely need to update:
 📢 ==> DJANGO_HOSTS : Comma seperated list of the hosts the main portal app will be available at, eg. app.example.com
+📢 ==> DJANGO_CLOUDFLARE_API_KEY : The cloudflare API key to be used for the cloudflare integration.
 📢 ==> AUTHENTIK_AUTHENTIK__EXTERNAL_HOST : eg. auth.example.com
 📢 ==> AUTHENTIK_BOOTSTRAP_EMAIL : eg. example@gmail.com
 📢 ==> PGADMIN_DEFAULT_EMAIL (modules/pgadmin/.env) : eg. example@gmail.com
@@ -86,14 +95,12 @@ The output will look something like the following:
 ----------------------------------------- DOMAIN CONFIGURATION ----------------------------------------------------------
 
 📢 You need to configure the caddyfile to point to the correct domains for all your applications. We assume that you
-📢 know how to configure your DNS. Also ensure your jellyfin proxy is setup correctly as this can vary quite a bit
-📢 depending on your setup.
+📢 know how to configure your DNS.
 
 --------------------------------------------- CERTIFICATES -------------------------------------------------------------
 
-📢 Remember that if runnning on a private network like tailscale, there is a guide to getting certs setup as automatic
-📢 certificates from caddy will not work. The default Caddyfiles assume you will be providing certificates so adjust as
-📢 needs be.
+📢 Remember there is a guide to getting certs setup for private networks/IPs
+📢 Ensure your Caddyfile matches to what your cert files look like.
 
 ----------------------------------------------- MODULES ----------------------------------------------------------------
 
@@ -124,15 +131,6 @@ docker compose up -d postgres
 docker compose down
 ```
 
-### Starting and setting up home portal superuser
-
-Run the following commands to get it all up and running, you will be prompted for some details to set up your superuser for the home portal app. (Remember your credentials for later as these will be unique and different to your other creds).
-
-```bash
-docker compose up -d
-make superuser
-```
-
 ### Logging into authentik and setting up
 
 You will now need to login into authentik after waiting a few minutes (Authentik takes a while to set up).
@@ -144,6 +142,15 @@ Once you are in, you will need to start configuring your apps via the admin inte
 Please familiarize yourself with authentik for this step.
 
 You will be using the proxy authentication if you get it confused.
+
+### Starting and setting up home portal superuser
+
+Run the following commands to get it all up and running, you will be prompted for some details to set up your superuser for the home portal app. (Remember your credentials for later as these will be unique and different to your other creds).
+
+```bash
+docker compose up -d
+make superuser
+```
 
 ### All done
 
