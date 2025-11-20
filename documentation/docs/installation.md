@@ -16,7 +16,6 @@ The home portal app stores values in plain text for some inter-application commu
 - [Tailscale](./dependencies/tailscale.md)
 - [Cloudflare Managed Domain](./dependencies/cloudflare.md)
 - [acme.sh](./dependencies/acme.md)
-- [Jellyfin](./dependencies/jellyfin.md)
 
 NOTE: All of the above is required and you should read the documentation relating to it.
 

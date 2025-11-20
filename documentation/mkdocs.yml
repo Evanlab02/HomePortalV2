@@ -49,5 +49,4 @@ nav:
     - Tailscale: dependencies/tailscale.md
     - Cloudflare: dependencies/cloudflare.md
     - acme.sh: dependencies/acme.md
-    - Jellyfin: dependencies/jellyfin.md
   - Getting started: installation.md
