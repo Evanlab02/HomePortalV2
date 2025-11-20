@@ -4,7 +4,7 @@ env:
 	@cp compose.prod.yml compose.yml
 	@echo "ℹ️ Your compose file: compose.yml"
 	@echo "✅ Created local compose"
-
+	@echo ""
 	@echo "⚙️ Creating compose modules..."
 	@cp modules/actual/compose.ext.yml modules/actual/compose.yml
 	@cp modules/dns/compose.ext.yml modules/dns/compose.yml
@@ -15,14 +15,14 @@ env:
 	@cp modules/servarr/compose.ext.yml modules/servarr/compose.yml
 	@cp modules/yacht/compose.ext.yml modules/yacht/compose.yml
 	@echo "✅ Created compose modules"
-
+	@echo ""
 	@echo "⚙️ Creating local Caddyfiles"
 	@cp conf/live/Caddyfile conf/custom/Caddyfile
 	@echo "ℹ️ Your primary Caddyfile: conf/custom/Caddyfile"
 	@cp conf/maintenance/Caddyfile conf/custom/maintenance/Caddyfile
 	@echo "ℹ️ Your maintenance Caddyfile: conf/custom/maintenance/Caddyfile"
 	@echo "✅ Created Caddyfiles"
-
+	@echo ""
 	@echo "⚙️ Creating .env files off of template"
 	@cp .env.template .env
 	@echo "ℹ️ Your primary env file: .env"
@@ -37,7 +37,7 @@ env:
 	@cp modules/servarr/.env.template modules/servarr/.env
 	@echo "ℹ️ Your Servarr env file: modules/servarr/.env"
 	@echo "✅ Created .env files"
-
+	@echo ""
 	@echo "⚙️ Generating passwords (But you are welcome to change them)"
 	@echo "⚙️ Generating passwords for .env"
 	@sed -i "s|^DJANGO_SECRET_KEY=.*|DJANGO_SECRET_KEY=$$(openssl rand -base64 32)|" .env
@@ -55,8 +55,10 @@ env:
 	@sed -i "s|^IMMICH_DB_PASSWORD=.*|IMMICH_DB_PASSWORD=$$(openssl rand -base64 32)|" modules/immich/.env
 	@echo "⚙️ Generating passwords for modules/pgadmin/.env"
 	@sed -i "s|^PGADMIN_DEFAULT_PASSWORD=.*|PGADMIN_DEFAULT_PASSWORD=$$(openssl rand -base64 32)|" modules/pgadmin/.env
+	@echo "⚙️ Generating passwords for modules/servarr/.env"
+	@sed -i "s|^TUBESYNC_PW=.*|TUBESYNC_PW=$$(openssl rand -base64 32)|" modules/servarr/.env
 	@echo "✅ Generated passwords"
-
+	@echo ""
 	@echo ""
 	@echo "📢 IMPORTANT INFORMATION BELOW 📢"
 	@echo "========================================================================================================================"
@@ -75,14 +77,12 @@ env:
 	@echo "----------------------------------------- DOMAIN CONFIGURATION ----------------------------------------------------------"
 	@echo ""
 	@echo "📢 You need to configure the caddyfile to point to the correct domains for all your applications. We assume that you"
-	@echo "📢 know how to configure your DNS. Also ensure your jellyfin proxy is setup correctly as this can vary quite a bit"
-	@echo "📢 depending on your setup."
+	@echo "📢 know how to configure your DNS."
 	@echo ""
 	@echo "--------------------------------------------- CERTIFICATES -------------------------------------------------------------"
 	@echo ""
-	@echo "📢 Remember that if runnning on a private network like tailscale, there is a guide to getting certs setup as automatic"
-	@echo "📢 certificates from caddy will not work. The default Caddyfiles assume you will be providing certificates so adjust as"
-	@echo "📢 needs be."
+	@echo "📢 Remember there is a guide to getting certs setup for private networks/IPs"
+	@echo "📢 Ensure your Caddyfile matches to what your cert files look like."
 	@echo ""
 	@echo "----------------------------------------------- MODULES ----------------------------------------------------------------"
 	@echo ""

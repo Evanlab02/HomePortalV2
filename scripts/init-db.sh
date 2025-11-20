@@ -36,6 +36,12 @@ if [ -z "$DB_USERNAME" ]; then
     exit 1
 fi
 
+if [ -z "$TUBESYNC_DB" ] || [ -z "$TUBESYNC_USER" ] || [ -z "$TUBESYNC_PW" ]; then
+    echo -e "${RED}Error: Required Tubesync environment variables are not set${NC}"
+    echo "Required variables: TUBESYNC_DB, TUBESYNC_USER, TUBESYNC_PW"
+    exit 1
+fi
+
 echo -e "${GREEN}Starting database initialization...${NC}"
 echo ""
 
@@ -158,6 +164,62 @@ docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$AUTHENTIK_POSTGRESQL
 echo -e "${GREEN}All privileges granted successfully${NC}"
 
 echo ""
+echo -e "${GREEN}=== Creating Tubesync Database ===${NC}"
+
+# Check if database exists
+TUBESYNC_DB_EXISTS=$(docker compose exec -T postgres psql -U "$DB_USERNAME" -lqt | cut -d \| -f 1 | grep -w "$TUBESYNC_DB" | wc -l)
+
+if [ "$TUBESYNC_DB_EXISTS" -eq 1 ]; then
+    echo -e "${GREEN}Database '${TUBESYNC_DB}' already exists${NC}"
+else
+    echo -e "${YELLOW}Creating database '${TUBESYNC_DB}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "CREATE DATABASE ${TUBESYNC_DB};"
+    echo -e "${GREEN}Database '${TUBESYNC_DB}' created successfully${NC}"
+fi
+
+echo ""
+echo -e "${GREEN}=== Creating Tubesync User ===${NC}"
+
+# Check if user exists
+TUBESYNC_USER_EXISTS=$(docker compose exec -T postgres psql -U "$DB_USERNAME" -tAc "SELECT 1 FROM pg_roles WHERE rolname='${TUBESYNC_USER}'" | grep -c 1 || true)
+
+if [ "$TUBESYNC_USER_EXISTS" -eq 1 ]; then
+    echo -e "${GREEN}User '${TUBESYNC_USER}' already exists${NC}"
+    echo -e "${YELLOW}Updating password for user '${TUBESYNC_USER}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "ALTER USER ${TUBESYNC_USER} WITH PASSWORD '${TUBESYNC_PW}';"
+    echo -e "${GREEN}Password updated successfully${NC}"
+else
+    echo -e "${YELLOW}Creating user '${TUBESYNC_USER}'...${NC}"
+    docker compose exec -T postgres psql -U "$DB_USERNAME" -c "CREATE USER ${TUBESYNC_USER} WITH PASSWORD '${TUBESYNC_PW}';"
+    echo -e "${GREEN}User '${TUBESYNC_USER}' created successfully${NC}"
+fi
+
+echo ""
+echo -e "${GREEN}=== Granting Tubesync Privileges ===${NC}"
+
+echo -e "${YELLOW}Granting all privileges on database '${TUBESYNC_DB}' to user '${TUBESYNC_USER}'...${NC}"
+
+# Grant database privileges
+docker compose exec -T postgres psql -U "$DB_USERNAME" -c "GRANT ALL PRIVILEGES ON DATABASE ${TUBESYNC_DB} TO ${TUBESYNC_USER};"
+
+# Grant schema privileges
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$TUBESYNC_DB" -c "GRANT ALL ON SCHEMA public TO ${TUBESYNC_USER};"
+
+# Grant privileges on all existing tables
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$TUBESYNC_DB" -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${TUBESYNC_USER};"
+
+# Grant privileges on all existing sequences
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$TUBESYNC_DB" -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ${TUBESYNC_USER};"
+
+# Set default privileges for future tables
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$TUBESYNC_DB" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO ${TUBESYNC_USER};"
+
+# Set default privileges for future sequences
+docker compose exec -T postgres psql -U "$DB_USERNAME" -d "$TUBESYNC_DB" -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ${TUBESYNC_USER};"
+
+echo -e "${GREEN}All privileges granted successfully${NC}"
+
+echo ""
 echo -e "${GREEN}Database initialization completed successfully!${NC}"
 echo ""
 echo "Summary:"
@@ -170,3 +232,8 @@ echo "  Authentik:"
 echo "    - Database: $AUTHENTIK_POSTGRESQL__NAME"
 echo "    - User: $AUTHENTIK_POSTGRESQL__USER"
 echo "    - Privileges: ALL on database $AUTHENTIK_POSTGRESQL__NAME"
+echo ""
+echo "  Tubesync:"
+echo "    - Database: $TUBESYNC_DB"
+echo "    - User: $TUBESYNC_USER"
+echo "    - Privileges: ALL on database $TUBESYNC_DB"

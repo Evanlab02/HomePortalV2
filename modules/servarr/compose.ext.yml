@@ -55,7 +55,7 @@ services:
       - TZ=UTC
     volumes:
       - rdt-config:/data/db
-      - ${TORRENT_DOWNLOADS_PATH:-./downloads}:/data/downloads
+      - SETTOLOCATION:/data/downloads
     labels:
       - flame.type=application
       - flame.name=Media Downloads
@@ -64,6 +64,18 @@ services:
     network_mode: "service:gluetun"
     depends_on:
       - gluetun
+
+  tubesync:
+    image: ghcr.io/meeb/tubesync:v0.15.11
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - DATABASE_CONNECTION=postgresql://${TUBESYNC_USER}:${TUBESYNC_PW}@${TUBESYNC_HOST}/${TUBESYNC_DB}
+    volumes:
+      - tubesync-config:/config
+      - SETTOLOCATION:/data/downloads
 
   byparr:
     container_name: byparr
@@ -180,4 +192,6 @@ volumes:
   radarr-config:
     external: false
   sonarr-config:
+    external: false
+  tubesync-config:
     external: false
