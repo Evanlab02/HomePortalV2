@@ -102,7 +102,7 @@ sonarr.labuschagne.xyz {
 torrent.labuschagne.xyz {
 	import inttls
 
-	forward_auth hp-authentik-server:9000 {
+	forward_auth authentik-server:9000 {
 		uri /outpost.goauthentik.io/auth/caddy
 		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
 		trusted_proxies private_ranges
@@ -118,7 +118,7 @@ torrent.labuschagne.xyz {
 download.labuschagne.xyz {
 	import inttls
 
-	forward_auth hp-authentik-server:9000 {
+	forward_auth authentik-server:9000 {
 		uri /outpost.goauthentik.io/auth/caddy
 		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
 		trusted_proxies private_ranges
@@ -127,6 +127,38 @@ download.labuschagne.xyz {
 	handle_path /* {
 		reverse_proxy gluetun:6500 {
 			header_up Host download.labuschagne.xyz
+		}
+	}
+}
+
+jelly.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy jellyfin:8096 {
+			header_up Host jelly.labuschagne.xyz
+		}
+	}
+}
+
+tubesync.labuschagne.xyz {
+	import inttls
+
+	forward_auth authentik-server:9000 {
+		uri /outpost.goauthentik.io/auth/caddy
+		copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Entitlements X-Authentik-Email X-Authentik-Name X-Authentik-Uid X-Authentik-Jwt X-Authentik-Meta-Jwks X-Authentik-Meta-Outpost X-Authentik-Meta-Provider X-Authentik-Meta-App X-Authentik-Meta-Version
+		trusted_proxies private_ranges
+	}
+
+	handle_path /* {
+		reverse_proxy tubesync:4848 {
+			header_up Host tubesync.labuschagne.xyz
 		}
 	}
 }

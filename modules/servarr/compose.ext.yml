@@ -46,9 +46,9 @@ services:
       - flame.icon=download
 
   rdtclient:
-    image: rogerfar/rdtclient:2.0.119
     container_name: rdtclient
     restart: unless-stopped
+    image: rogerfar/rdtclient:2.0.119
     environment:
       - PUID=1000
       - PGID=1000
@@ -66,8 +66,9 @@ services:
       - gluetun
 
   tubesync:
-    image: ghcr.io/meeb/tubesync:v0.15.11
+    container_name: tubesync
     restart: unless-stopped
+    image: ghcr.io/meeb/tubesync:v0.15.11
     environment:
       - PUID=1000
       - PGID=1000
@@ -76,6 +77,13 @@ services:
     volumes:
       - tubesync-config:/config
       - SETTOLOCATION:/data/downloads
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=TubeSync
+      - flame.url=https://tubesync.labuschagne.xyz
+      - flame.icon=download
 
   byparr:
     container_name: byparr
@@ -84,6 +92,8 @@ services:
     init: true
     ports:
       - "8191:8191"
+    networks:
+      - hp-network
 
   seerr:
     container_name: seerr
@@ -174,8 +184,40 @@ services:
       - hp-network
     labels:
       - flame.type=application
-      - flame.name=sonarr
+      - flame.name=Sonarr
       - flame.url=https://sonarr.labuschagne.xyz
+      - flame.icon=movie-open
+
+  jellyfin:
+    container_name: jellyfin
+    restart: unless-stopped
+    image: ghcr.io/jellyfin/jellyfin:10.11.3
+    ports:
+      - 8096:8096/tcp
+      - 7359:7359/udp
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.labuschagne.xyz
+    volumes:
+      - jellyfin-config:/config
+      - jellyfin-cache:/cache
+      - type: bind
+        source: SETTOLOCATION
+        target: /tv/int1
+      - type: bind
+        source: SETTOLOCATION
+        target: /tv/ext1
+      - type: bind
+        source: SETTOLOCATION
+        target: /movies/int1
+      - type: bind
+        source: SETTOLOCATION
+        target: /movies/ext1
+    networks:
+      - hp-network
+    labels:
+      - flame.type=application
+      - flame.name=Jellyfin
+      - flame.url=https://jelly.labuschagne.xyz
       - flame.icon=movie-open
 
 volumes:
@@ -194,4 +236,8 @@ volumes:
   sonarr-config:
     external: false
   tubesync-config:
+    external: false
+  jellyfin-config:
+    external: false
+  jellyfin-cache:
     external: false
