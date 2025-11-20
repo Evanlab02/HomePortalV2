@@ -5,7 +5,7 @@ include:
   - modules/dns/compose.yml
   - modules/files/compose.yml
   - modules/flame/compose.yml
-  - modules/immich/compose.yml
+  # - modules/immich/compose.yml
   - modules/pgadmin/compose.yml
   - modules/yacht/compose.yml
   - modules/servarr/compose.yml
