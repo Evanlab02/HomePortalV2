@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.7.14](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.13...v0.7.14) (2025-11-20)
+
+
+### Features
+
+* **Jellyfin:** Jellyfin is now run as a container ([0c67afc](https://github.com/Evanlab02/HomePortalV2/commit/0c67afc16e1d96ef921d7e8c5e606dec442e6e5f))
+* **RDT:** Added RDT Client ([367e646](https://github.com/Evanlab02/HomePortalV2/commit/367e646b2197ab9a895a2a31a06e5cda1ce30e62))
+* **Tubesync:** Add tubesync to home portal ([1569fd9](https://github.com/Evanlab02/HomePortalV2/commit/1569fd917ae015b996a20fa152ad6cfa12896fd3))
+
+
+### Bug Fixes
+
+* **Byparr:** Remove from gluetun network ([367e646](https://github.com/Evanlab02/HomePortalV2/commit/367e646b2197ab9a895a2a31a06e5cda1ce30e62))
+* Do not create missing migrations on admin start up ([6e1273d](https://github.com/Evanlab02/HomePortalV2/commit/6e1273d893c8a7fefb23752feb80f779076494d5))
+* **Tubesync:** Add to caddyfile config ([0c67afc](https://github.com/Evanlab02/HomePortalV2/commit/0c67afc16e1d96ef921d7e8c5e606dec442e6e5f))
+
+
+### Documentation
+
+* **Jellyfin:** Remove jellyfin as a dependency in the documentation ([b5e761e](https://github.com/Evanlab02/HomePortalV2/commit/b5e761e2954f3ffaeaaa6d0991b7e70f001b3463))
+* Make some slight adjustments to getting started docs ([9560060](https://github.com/Evanlab02/HomePortalV2/commit/95600602f57ffe524678c09e72a8b2465f66b4dc))
+* Update documentation to be more up to date with latest releases ([dca3c8a](https://github.com/Evanlab02/HomePortalV2/commit/dca3c8ad53ae36be6b205e2c959a34436a90ae1f))
+
+
+### Miscellaneous Chores
+
+* **Immich:** Remove immich from default compose as this currently has issues and will only be solved once I migrate over to V2 on my own machines ([c5c83a8](https://github.com/Evanlab02/HomePortalV2/commit/c5c83a8fda5f9110d8915cc2657c10c72cc4c95e))
+
 ## [0.7.13](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.12...v0.7.13) (2025-11-14)
 
 
