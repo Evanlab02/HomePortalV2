@@ -4,8 +4,8 @@ services:
     restart: unless-stopped
     image: qmcgaw/gluetun:v3.40.0
     ports:
+      - "6500:6500"
       - "8080:8080"
-      - "8191:8191"
     cap_add:
       - NET_ADMIN
     devices:
@@ -45,14 +45,33 @@ services:
       - flame.url=https://torrent.labuschagne.xyz
       - flame.icon=download
 
+  rdtclient:
+    image: rogerfar/rdtclient:2.0.119
+    container_name: rdtclient
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - rdt-config:/data/db
+      - ${TORRENT_DOWNLOADS_PATH:-./downloads}:/data/downloads
+    labels:
+      - flame.type=application
+      - flame.name=Media Downloads
+      - flame.url=https://downloads.labuschagne.xyz
+      - flame.icon=download
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+
   byparr:
     container_name: byparr
     restart: unless-stopped
     image: ghcr.io/thephaseless/byparr:2.0.1
     init: true
-    network_mode: "service:gluetun"
-    depends_on:
-      - gluetun
+    ports:
+      - "8191:8191"
 
   seerr:
     container_name: seerr
@@ -151,6 +170,8 @@ volumes:
   gluetun-data:
     external: false
   qbittorrent-config:
+    external: false
+  rdt-config:
     external: false
   seerr-config:
     external: false
