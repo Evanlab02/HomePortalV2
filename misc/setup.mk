@@ -1,5 +1,5 @@
-.PHONY: env
-env:
+.PHONY: install
+install:
 	@echo "⚙️ Creating local compose..."
 	@cp compose.prod.yml compose.yml
 	@echo "ℹ️ Your compose file: compose.yml"

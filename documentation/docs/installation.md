@@ -31,16 +31,12 @@ Otherwise just clone the repo as is and ensure to git pull every now and then fo
 git clone https://github.com/Evanlab02/HomePortalV2.git
 ```
 
-### Disclaimer
-
-If using the servarr compose module after going through the next steps, note that gluetun is configured to be used with ProtonVPN. If you would like to configure it for other VPN providers you will have to set this up manually.
-
-### Env Command
+### Installation Command
 
 To setup your environment so you can start configuring the portal to your needs, you will need to run the following Makefile command:
 
 ```bash
-make env
+make install
 ```
 
 The output will look something like the following:
@@ -118,7 +114,11 @@ The output will look something like the following:
 
 Please ensure you follow the instructions here. This will require some knowledge of Caddy, DNS and others.
 
-### Setup
+#### Disclaimer
+
+If using the servarr compose module after going through the above steps, note that gluetun is configured to be used with ProtonVPN. If you would like to configure it for other VPN providers you will have to set this up manually.
+
+### Setup DB
 
 Next you will need to setup your database. There is a utility script for this that should help.
 
@@ -129,6 +129,10 @@ docker compose up -d postgres
 ./scripts/init-db.sh
 docker compose down
 ```
+
+## Setting Up
+
+WIP
 
 ### Logging into authentik and setting up
 
@@ -151,11 +155,11 @@ docker compose up -d
 make superuser
 ```
 
-### All done
+## All done
 
 You should now be able to access all apps with your authentik credentials (perhaps with another login screen for the app specfiic credentials which will likely be in your env vars or have been setup with make superuser).
 
-### Maintenance mode
+## Maintenance mode
 
 If you ever have to do maintenance on the server but can keep docker going, you can use the maintenance mode. This will use the maintenance Caddyfile that you have setup.
 
