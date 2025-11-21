@@ -25,36 +25,23 @@ def sync_cloudflare_zones(self: Task) -> dict[str, Any]:
         dict[str, Any]: Metadata about the task execution including total zones and DNS records
             synced.
     """
-    metadata = CeleryMetaData(task="Sync Cloudflare Zones")
+    metadata = CeleryMetaData(task="Sync Cloudflare Zones", indeterminate=True)
     metadata.propagate(self)
     logger.info("Starting Cloudflare Zones Sync...")
 
     try:
-        metadata.state = "Started Zones Sync"
-        metadata.current = 40
-        metadata.propagate(self)
         CloudflareZone.pull_all()
-
-        metadata.state = "Finalizing Results"
-        metadata.current = 90
-        metadata.propagate(self)
         zone_count = CloudflareZone.objects.all().count()
         dns_count = CloudflareDNSRecord.objects.all().count()
-
-        metadata.state = "COMPLETED"
-        metadata.current = 100
         metadata.result = {"Total Zones": zone_count, "Total DNS Records": dns_count}
-        metadata.propagate(self)
     except HTTPError as e:
         logger.error(f"Zone Sync HTTP Req Failed: {e}")
         metadata.state = "HTTP Request Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
     except Exception as e:
         logger.error(f"Zone Sync Failed: {e}")
         metadata.state = "Unexpected Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
 
@@ -82,40 +69,26 @@ def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
         HTTPError: If the Cloudflare API request fails.
         Exception: For any other unexpected errors.
     """
-    metadata = CeleryMetaData(task="Sync Cloudflare Zone", result={"db_id": db_id})
+    metadata = CeleryMetaData(task="Sync Cloudflare Zone", indeterminate=True, result={"db_id": db_id})
     metadata.propagate(self)
     logger.info(f"Starting Cloudflare Zone Sync... (DB_ID: {db_id})")
 
     try:
-        metadata.state = "Getting Zone..."
-        metadata.current = 20
-        metadata.propagate(self)
         zone = CloudflareZone.objects.get(id=db_id)
-
-        metadata.state = "Pulling Zone..."
-        metadata.current = 80
-        metadata.propagate(self)
         zone.pull()
-
-        metadata.state = "COMPLETED"
-        metadata.current = 100
-        metadata.propagate(self)
     except CloudflareZone.DoesNotExist as e:
         logger.error(f"Zone Sync Failed: {e}")
         metadata.state = "Record Does Not Exist"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
     except HTTPError as e:
         logger.error(f"Zone Sync Failed: {e}")
         metadata.state = "HTTP Request Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
     except Exception as e:
         logger.error(f"Zone Sync Failed: {e}")
         metadata.state = "Unexpected Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
 
@@ -143,40 +116,26 @@ def sync_cloudflare_zone_dns_records(self: Task, db_id: int) -> dict[str, Any]:
         HTTPError: If the Cloudflare API request fails.
         Exception: For any other unexpected errors.
     """
-    metadata = CeleryMetaData(task="Sync Cloudflare Zone DNS", result={"db_id": db_id})
+    metadata = CeleryMetaData(task="Sync Cloudflare Zone DNS", indeterminate=True, result={"db_id": db_id})
     metadata.propagate(self)
     logger.info(f"Starting Cloudflare Zone DNS Sync... (DB_ID: {db_id})")
 
     try:
-        metadata.state = "Getting Zone..."
-        metadata.current = 20
-        metadata.propagate(self)
         zone = CloudflareZone.objects.get(id=db_id)
-
-        metadata.state = "Pulling Zone..."
-        metadata.current = 80
-        metadata.propagate(self)
         zone.pull_dns_records()
-
-        metadata.state = "COMPLETED"
-        metadata.current = 100
-        metadata.propagate(self)
     except CloudflareZone.DoesNotExist as e:
         logger.error(f"Zone DNS Sync Failed: {e}")
         metadata.state = "Record Does Not Exist"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
     except HTTPError as e:
         logger.error(f"Zone DNS Sync Failed: {e}")
         metadata.state = "HTTP Request Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
     except Exception as e:
         logger.error(f"Zone DNS Sync Failed: {e}")
         metadata.state = "Unexpected Failure"
-        metadata.current = 100
         metadata.propagate(self)
         raise e
 

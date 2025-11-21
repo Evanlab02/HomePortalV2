@@ -13,6 +13,19 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from os import getenv
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
+from app.permissions import (
+    can_view_celery_results,
+    can_view_celery_tasks,
+    can_view_cloudflare_dns_records,
+    can_view_cloudflare_zones,
+    can_view_constance_config,
+    can_view_groups,
+    can_view_qbit_servers,
+    can_view_users,
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 ROOT_URLCONF = "app.settings.core.urls"
@@ -189,7 +202,7 @@ UNFOLD = {
                     {
                         "title": "Home",
                         "icon": "dashboard",
-                        "link": lambda request: "/admin/",
+                        "link": reverse_lazy("admin:index"),
                     },
                 ],
             },
@@ -201,12 +214,18 @@ UNFOLD = {
                     {
                         "title": "Results",
                         "icon": "task_alt",
-                        "link": lambda request: "/admin/django_celery_results/",
+                        "link": reverse_lazy(
+                            "admin:app_list", kwargs={"app_label": "django_celery_results"}
+                        ),
+                        "permission": can_view_celery_results,
                     },
                     {
                         "title": "Periodic Tasks",
                         "icon": "schedule",
-                        "link": lambda request: "/admin/django_celery_beat/",
+                        "link": reverse_lazy(
+                            "admin:app_list", kwargs={"app_label": "django_celery_beat"}
+                        ),
+                        "permission": can_view_celery_tasks,
                     },
                 ],
             },
@@ -218,12 +237,14 @@ UNFOLD = {
                     {
                         "title": "Zones",
                         "icon": "cloud",
-                        "link": lambda request: "/admin/cloudflare/cloudflarezone/",
+                        "link": reverse_lazy("admin:cloudflare_cloudflarezone_changelist"),
+                        "permission": can_view_cloudflare_zones,
                     },
                     {
                         "title": "DNS Records",
                         "icon": "language",
-                        "link": lambda request: "/admin/cloudflare/cloudflarednsrecord/",
+                        "link": reverse_lazy("admin:cloudflare_cloudflarednsrecord_changelist"),
+                        "permission": can_view_cloudflare_dns_records,
                     },
                 ],
             },
@@ -235,7 +256,8 @@ UNFOLD = {
                     {
                         "title": "Servers",
                         "icon": "dns",
-                        "link": lambda request: "/admin/qbit/qbitserver/",
+                        "link": reverse_lazy("admin:qbit_qbitserver_changelist"),
+                        "permission": can_view_qbit_servers,
                     },
                 ],
             },
@@ -247,7 +269,8 @@ UNFOLD = {
                     {
                         "title": "Configuration",
                         "icon": "settings",
-                        "link": lambda request: "/admin/constance/config/",
+                        "link": reverse_lazy("admin:constance_config_changelist"),
+                        "permission": can_view_constance_config,
                     },
                 ],
             },
@@ -259,12 +282,14 @@ UNFOLD = {
                     {
                         "title": "Users",
                         "icon": "people",
-                        "link": lambda request: "/admin/auth/user/",
+                        "link": reverse_lazy("admin:auth_user_changelist"),
+                        "permission": can_view_users,
                     },
                     {
                         "title": "Groups",
                         "icon": "group",
-                        "link": lambda request: "/admin/auth/group/",
+                        "link": reverse_lazy("admin:auth_group_changelist"),
+                        "permission": can_view_groups,
                     },
                 ],
             },

@@ -70,7 +70,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         url_path="pull-all-zones",
         permissions=["pull_all_zones"],
     )
-    def pull_all_zones(self, request: HttpRequest):
+    def pull_all_zones(self, request: HttpRequest) -> None:
         """
         Handle pull all zones and DNS records.
 
@@ -100,7 +100,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarezone_changelist"))
 
     @admin.action(description="Pull zone data from Cloudflare")
-    def bulk_pull_zones(self, request: HttpRequest, queryset: QuerySet[CloudflareZone]):
+    def bulk_pull_zones(self, request: HttpRequest, queryset: QuerySet[CloudflareZone]) -> None:
         """
         Bulk action to pull zone data from multiple zones.
 
@@ -111,12 +111,30 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             queryset (QuerySet): The selected zone objects to pull data for.
         """
         try:
+            user = request.user
+
+            records: list[CloudflareZone] = []
+            skipped = 0
+
             for record in queryset:
+                if user.has_perm("cloudflare.pull_zone", record):
+                    records.append(record)
+                else:
+                    skipped += 1
+
+            if skipped:
+                self.message_user(
+                    request,
+                    f"Skipped {skipped} zone pulls due to insufficient permissions.",
+                    level=messages.WARNING,
+                )
+
+            for record in records:
                 sync_cloudflare_zone.delay(db_id=record.id)
 
             self.message_user(
                 request,
-                "Queued Zone Pulls",
+                f"Queued Zone Pulls (Count: ({len(records)}))",
                 level=messages.SUCCESS,
             )
         except Exception as e:
@@ -128,7 +146,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             )
 
     @admin.action(description="Pull DNS records from Cloudflare")
-    def bulk_pull_dns_records(self, request: HttpRequest, queryset):
+    def bulk_pull_dns_records(self, request: HttpRequest, queryset) -> None:
         """
         Bulk action to pull DNS records from multiple zones.
 
@@ -139,7 +157,25 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             queryset (QuerySet): The selected zone objects to pull DNS records for.
         """
         try:
+            user = request.user
+
+            records: list[CloudflareZone] = []
+            skipped = 0
+
             for record in queryset:
+                if user.has_perm("cloudflare.pull_zone_dns", record):
+                    records.append(record)
+                else:
+                    skipped += 1
+
+            if skipped:
+                self.message_user(
+                    request,
+                    f"Skipped {skipped} zone pulls due to insufficient permissions.",
+                    level=messages.WARNING,
+                )
+
+            for record in records:
                 sync_cloudflare_zone_dns_records.delay(db_id=record.id)
 
             self.message_user(
@@ -160,7 +196,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         url_path="pull-zone",
         permissions=["pull_zone"],
     )
-    def pull_zone(self, request: HttpRequest, object_id: int):
+    def pull_zone(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
         Handle pull action for a single zone.
 
@@ -202,7 +238,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         url_path="pull-dns-records",
         permissions=["pull_dns_records"],
     )
-    def pull_dns_records(self, request: HttpRequest, object_id: int):
+    def pull_dns_records(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
         Handle pull DNS records action for a single zone.
 
@@ -257,43 +293,43 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         return False
 
     def has_pull_zone_permission(
-        self, _request: HttpRequest, _obj: CloudflareZone | None = None
+        self, request: HttpRequest, obj: CloudflareZone | None = None
     ) -> bool:
         """Check if user has permission to pull zone.
 
         Args:
-            _request: The HTTP request object.
-            _obj: The CloudflareZone instance (None for list view).
+            request: The HTTP request object.
+            obj: The CloudflareZone instance (None for list view).
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.has_perm("cloudflare.pull_zone", obj)
 
     def has_pull_dns_records_permission(
-        self, _request: HttpRequest, _obj: CloudflareZone | None = None
+        self, request: HttpRequest, obj: CloudflareZone | None = None
     ) -> bool:
         """Check if user has permission to pull DNS records.
 
         Args:
-            _request: The HTTP request object.
-            _obj: The CloudflareZone instance (None for list view).
+            request: The HTTP request object.
+            obj: The CloudflareZone instance (None for list view).
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.has_perm("cloudflare.pull_zone_dns", obj)
 
-    def has_pull_all_zones_permission(self, _request: HttpRequest) -> bool:
+    def has_pull_all_zones_permission(self, request: HttpRequest) -> bool:
         """Check if user has permission to pull all zones.
 
         Args:
-            _request: The HTTP request object.
+            request: The HTTP request object.
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.is_superuser
 
 
 @admin.register(CloudflareDNSRecord)
@@ -366,12 +402,30 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             queryset (QuerySet): The selected DNS records to delete.
         """
         try:
-            count = queryset.count()
+            user = request.user
+
+            records: list[CloudflareDNSRecord] = []
+            skipped = 0
+
             for record in queryset:
+                if user.has_perm("cloudflare.delete", record):
+                    records.append(record)
+                else:
+                    skipped += 1
+
+            if skipped:
+                self.message_user(
+                    request,
+                    f"Skipped {skipped} DNS record deletions due to insufficient permissions.",
+                    level=messages.WARNING,
+                )
+
+            for record in records:
                 record.delete()
+
             self.message_user(
                 request,
-                f"Successfully deleted {count} DNS records from Cloudflare and database.",
+                f"Successfully deleted {len(records)} DNS records from Cloudflare and database.",
                 level=messages.SUCCESS,
             )
         except Exception as e:
@@ -382,7 +436,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-    def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None):
+    def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None) -> tuple[str]:
         """
         Make zone field readonly after creation.
 
@@ -406,7 +460,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         url_path="pull-all-records",
         permissions=["pull_all_records"],
     )
-    def pull_all_records(self, request: HttpRequest):
+    def pull_all_records(self, request: HttpRequest) -> HttpResponseRedirect:
         """
         Handle pull all DNS records action.
 
@@ -440,7 +494,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         url_path="push-all-records",
         permissions=["push_all_records"],
     )
-    def push_all_records(self, request: HttpRequest):
+    def push_all_records(self, request: HttpRequest) -> HttpResponseRedirect:
         """
         Handle push all DNS records action.
 
@@ -470,7 +524,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
     @admin.action(description="Pull DNS records from Cloudflare")
-    def bulk_pull_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]):
+    def bulk_pull_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
         """
         Bulk action to pull DNS records from Cloudflare.
 
@@ -481,12 +535,30 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             queryset (QuerySet): The selected DNS record objects to pull data for.
         """
         try:
+            user = request.user
+
+            records: list[CloudflareDNSRecord] = []
+            skipped = 0
+
             for record in queryset:
+                if user.has_perm("cloudflare.pull", record):
+                    records.append(record)
+                else:
+                    skipped += 1
+
+            if skipped:
+                self.message_user(
+                    request,
+                    f"Skipped {skipped} DNS record pulls due to insufficient permissions.",
+                    level=messages.WARNING,
+                )
+
+            for record in records:
                 pull_dns_record.delay(db_id=record.id)
 
             self.message_user(
                 request,
-                "Queued DNS Record Pulls",
+                f"Queued DNS Record Pulls (Count: {len(records)})",
                 level=messages.SUCCESS,
             )
         except Exception as e:
@@ -498,7 +570,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
     @admin.action(description="Push DNS records to Cloudflare")
-    def bulk_push_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]):
+    def bulk_push_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
         """
         Bulk action to push DNS records to Cloudflare.
 
@@ -509,12 +581,30 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             queryset (QuerySet): The selected DNS record objects to push data for.
         """
         try:
+            user = request.user
+
+            records: list[CloudflareDNSRecord] = []
+            skipped = 0
+
             for record in queryset:
+                if user.has_perm("cloudflare.push", record):
+                    records.append(record)
+                else:
+                    skipped += 1
+
+            if skipped:
+                self.message_user(
+                    request,
+                    f"Skipped {skipped} DNS record pushes due to insufficient permissions.",
+                    level=messages.WARNING,
+                )
+
+            for record in records:
                 push_dns_record.delay(db_id=record.id)
 
             self.message_user(
                 request,
-                "Queued DNS Record Pushes",
+                f"Queued DNS Record Pushes (Count: {len(records)})",
                 level=messages.SUCCESS,
             )
         except Exception as e:
@@ -530,7 +620,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         url_path="pull-record",
         permissions=["pull_record"],
     )
-    def pull_record(self, request: HttpRequest, object_id: int):
+    def pull_record(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
         Handle pull action for a single DNS record.
 
@@ -572,7 +662,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         url_path="push-record",
         permissions=["push_record"],
     )
-    def push_record(self, request: HttpRequest, object_id: int):
+    def push_record(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
         Handle push action for a single DNS record.
 
@@ -640,55 +730,71 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
     # Permission Checks
+    def has_add_permission(self, request: HttpRequest) -> bool:
+        """Disable adding new zones via admin - zones should only be added via pull."""
+        return request.user.has_perm("cloudflare.add_cloudflarednsrecord")
+
+    def has_change_permission(
+        self, request: HttpRequest, obj: CloudflareZone | None = None
+    ) -> bool:
+        """Disable changing zones via admin - zones should only be updated via pull."""
+        return request.user.has_perm("cloudflare.update", obj)
+
+    def has_delete_permission(
+        self, request: HttpRequest, obj: CloudflareZone | None = None
+    ) -> bool:
+        """Disable deleting zones via admin - zones are read-only."""
+        return request.user.has_perm("cloudflare.delete", obj)
+
     def has_pull_record_permission(
-        self, _request: HttpRequest, _obj: CloudflareDNSRecord | None = None
+        self, request: HttpRequest, obj: CloudflareDNSRecord | None = None
     ) -> bool:
         """Check if user has permission to pull a DNS record.
 
         Args:
-            _request: The HTTP request object.
-            _obj: The CloudflareDNSRecord instance (None for list view).
+            request: The HTTP request object.
+            obj: The CloudflareDNSRecord instance (None for list view).
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.has_perm("cloudflare.pull", obj)
 
     def has_push_record_permission(
-        self, _request: HttpRequest, _obj: CloudflareDNSRecord | None = None
+        self, request: HttpRequest, obj: CloudflareDNSRecord | None = None
     ) -> bool:
         """Check if user has permission to push a DNS record.
 
         Args:
-            _request: The HTTP request object.
-            _obj: The CloudflareDNSRecord instance (None for list view).
+            request: The HTTP request object.
+            obj: The CloudflareDNSRecord instance (None for list view).
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.has_perm("cloudflare.push", obj)
 
-    def has_pull_all_records_permission(self, _request: HttpRequest) -> bool:
+    def has_pull_all_records_permission(self, request: HttpRequest) -> bool:
         """Check if user has permission to pull all DNS records.
 
         Args:
-            _request: The HTTP request object.
+            request: The HTTP request object.
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.is_superuser
 
-    def has_push_all_records_permission(self, _request: HttpRequest) -> bool:
+    def has_push_all_records_permission(self, request: HttpRequest) -> bool:
         """Check if user has permission to push all DNS records.
 
         Args:
-            _request: The HTTP request object.
+            request: The HTTP request object.
 
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        return request.user.is_superuser
 
     def has_save_and_push_permission(self, request: HttpRequest, object_id: str | int) -> bool:
         """Check if user has permission to save and push a DNS record.
@@ -700,4 +806,5 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         Returns:
             bool: True if user has permission, False otherwise.
         """
-        return True
+        record = CloudflareDNSRecord.objects.get(id=object_id)
+        return request.user.has_perm("cloudflare.push", record)

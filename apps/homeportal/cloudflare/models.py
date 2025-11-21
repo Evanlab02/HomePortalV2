@@ -60,6 +60,11 @@ class CloudflareZone(BaseModel):
         verbose_name = "Cloudflare Zone"
         verbose_name_plural = "Cloudflare Zones"
 
+        permissions = (
+            ("pull_zone", "Pull Zone"),
+            ("pull_zone_dns", "Pull Zone DNS Records"),
+        )
+
     def __str__(self) -> str:
         """Return string representation of the zone."""
         return f"{self.name} ({self.status})"
@@ -303,6 +308,13 @@ class CloudflareDNSRecord(BaseModel):
 
         verbose_name = "Cloudflare DNS Record"
         verbose_name_plural = "Cloudflare DNS Records"
+
+        permissions = (
+            ("update", "Update DNS Record"),
+            ("delete", "Delete DNS Record"),
+            ("pull", "Pull DNS Record"),
+            ("push", "Push DNS Record"),
+        )
 
         constraints = [
             CheckConstraint(
