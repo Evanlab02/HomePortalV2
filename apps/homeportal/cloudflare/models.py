@@ -17,7 +17,7 @@ from django.db.models import (
 )
 from requests import Session
 
-from cloudflare.constants import (
+from cloudflare.constants.api import (
     CLOUDFLARE_DNS_RECORDS_CREATE_URL,
     CLOUDFLARE_DNS_RECORDS_DELETE_URL,
     CLOUDFLARE_DNS_RECORDS_DETAIL_URL,
@@ -25,6 +25,10 @@ from cloudflare.constants import (
     CLOUDFLARE_DNS_RECORDS_UPDATE_URL,
     CLOUDFLARE_ZONES_DETAIL_URL,
     CLOUDFLARE_ZONES_LIST_URL,
+)
+from cloudflare.constants.permissions import (
+    CLOUDFLAREDNSRECORD_PERMISSIONS,
+    CLOUDFLAREZONE_PERMISSIONS,
 )
 from cloudflare.schemas import (
     CloudflareDNSRecordIntegrationWrapper,
@@ -48,6 +52,13 @@ class CloudflareZone(BaseModel):
         zone_id (str): Unique Cloudflare zone identifier.
         status (str): Current status of the zone (e.g., 'active', 'pending').
         name (str): Domain name associated with the zone.
+
+    Permissions:
+        - pullall: Can pull all zones from Cloudflare (global operation)
+        - pullany: Can pull any zone from Cloudflare, including its DNS records
+        - pullanydns: Can pull DNS records from any zone
+        - pull: Object-level permission to pull a specific zone and its DNS records
+        - pulldns: Object-level permission to pull DNS records for a specific zone
     """
 
     zone_id = CharField(unique=True, max_length=50)
@@ -60,10 +71,7 @@ class CloudflareZone(BaseModel):
         verbose_name = "Cloudflare Zone"
         verbose_name_plural = "Cloudflare Zones"
 
-        permissions = (
-            ("pull_zone", "Pull Zone"),
-            ("pull_zone_dns", "Pull Zone DNS Records"),
-        )
+        permissions = CLOUDFLAREZONE_PERMISSIONS
 
     def __str__(self) -> str:
         """Return string representation of the zone."""
@@ -164,6 +172,7 @@ class CloudflareZone(BaseModel):
                         content=result.content,
                         proxiable=result.proxiable,
                         proxied=result.proxied,
+                        comment=result.comment,
                         ttl=None if result.ttl == 1 else result.ttl,
                         auto_ttl=True if result.ttl == 1 else False,
                         zone=self,
@@ -309,12 +318,7 @@ class CloudflareDNSRecord(BaseModel):
         verbose_name = "Cloudflare DNS Record"
         verbose_name_plural = "Cloudflare DNS Records"
 
-        permissions = (
-            ("update", "Update DNS Record"),
-            ("delete", "Delete DNS Record"),
-            ("pull", "Pull DNS Record"),
-            ("push", "Push DNS Record"),
-        )
+        permissions = CLOUDFLAREDNSRECORD_PERMISSIONS
 
         constraints = [
             CheckConstraint(
