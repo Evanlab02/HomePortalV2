@@ -15,6 +15,7 @@ from django_celery_beat.models import (
     PeriodicTask,
     SolarSchedule,
 )
+from guardian.admin import GuardedModelAdmin
 from import_export.admin import ImportExportModelAdmin
 from simple_history.admin import SimpleHistoryAdmin
 from unfold.admin import ModelAdmin
@@ -47,7 +48,7 @@ class UnfoldPeriodicTaskForm(PeriodicTaskForm):
         self.fields["regtask"].widget = UnfoldTaskSelectWidget()
 
 
-class BaseAdminMixin(SimpleHistoryAdmin, ModelAdmin, ImportExportModelAdmin):
+class BaseAdminMixin(SimpleHistoryAdmin, ModelAdmin, GuardedModelAdmin, ImportExportModelAdmin):
     """Base application admin mixin."""
 
     import_form_class = ImportForm
