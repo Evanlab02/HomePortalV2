@@ -70,7 +70,9 @@ def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
         Exception: For any other unexpected errors.
     """
     metadata = CeleryMetaData(
-        task="Sync Cloudflare Zone", indeterminate=True, result={"db_id": db_id}
+        task="Sync Cloudflare Zone",
+        indeterminate=True,
+        result={"db_id": db_id},
     )
     metadata.propagate(self)
     logger.info(f"Starting Cloudflare Zone Sync... (DB_ID: {db_id})")
