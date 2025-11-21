@@ -44,4 +44,3 @@ class CeleryMetaData(BaseModel):
             task (Task): The Celery task instance to update.
         """
         task.update_state(state=self.state, meta=self.model_dump())
-

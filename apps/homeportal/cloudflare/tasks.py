@@ -69,7 +69,9 @@ def sync_cloudflare_zone(self: Task, db_id: int) -> dict[str, Any]:
         HTTPError: If the Cloudflare API request fails.
         Exception: For any other unexpected errors.
     """
-    metadata = CeleryMetaData(task="Sync Cloudflare Zone", indeterminate=True, result={"db_id": db_id})
+    metadata = CeleryMetaData(
+        task="Sync Cloudflare Zone", indeterminate=True, result={"db_id": db_id}
+    )
     metadata.propagate(self)
     logger.info(f"Starting Cloudflare Zone Sync... (DB_ID: {db_id})")
 
@@ -116,7 +118,9 @@ def sync_cloudflare_zone_dns_records(self: Task, db_id: int) -> dict[str, Any]:
         HTTPError: If the Cloudflare API request fails.
         Exception: For any other unexpected errors.
     """
-    metadata = CeleryMetaData(task="Sync Cloudflare Zone DNS", indeterminate=True, result={"db_id": db_id})
+    metadata = CeleryMetaData(
+        task="Sync Cloudflare Zone DNS", indeterminate=True, result={"db_id": db_id}
+    )
     metadata.propagate(self)
     logger.info(f"Starting Cloudflare Zone DNS Sync... (DB_ID: {db_id})")
 

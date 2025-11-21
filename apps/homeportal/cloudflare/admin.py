@@ -436,7 +436,9 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-    def get_readonly_fields(self, request: HttpRequest, obj: CloudflareDNSRecord | None = None) -> tuple[str]:
+    def get_readonly_fields(
+        self, request: HttpRequest, obj: CloudflareDNSRecord | None = None
+    ) -> tuple[str]:
         """
         Make zone field readonly after creation.
 
@@ -524,7 +526,9 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         return HttpResponseRedirect(reverse("admin:cloudflare_cloudflarednsrecord_changelist"))
 
     @admin.action(description="Pull DNS records from Cloudflare")
-    def bulk_pull_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
+    def bulk_pull_dns_records(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
+    ) -> None:
         """
         Bulk action to pull DNS records from Cloudflare.
 
@@ -570,7 +574,9 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             )
 
     @admin.action(description="Push DNS records to Cloudflare")
-    def bulk_push_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]) -> None:
+    def bulk_push_dns_records(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareDNSRecord]
+    ) -> None:
         """
         Bulk action to push DNS records to Cloudflare.
 

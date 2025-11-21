@@ -37,7 +37,8 @@ def can_view_celery_results(request: HttpRequest) -> bool:
         request: The HTTP request object containing the authenticated user.
 
     Returns:
-        bool: True if the user has the 'django_celery_results.view_taskresult' permission, False otherwise.
+        bool: True if the user has the 'django_celery_results.view_taskresult'
+            permission, False otherwise.
     """
     return request.user.has_perm("django_celery_results.view_taskresult")
 
@@ -50,7 +51,8 @@ def can_view_celery_tasks(request: HttpRequest) -> bool:
         request: The HTTP request object containing the authenticated user.
 
     Returns:
-        bool: True if the user has the 'django_celery_beat.view_periodictask' permission, False otherwise.
+        bool: True if the user has the 'django_celery_beat.view_periodictask'
+            permission, False otherwise.
     """
     return request.user.has_perm("django_celery_beat.view_periodictask")
 
@@ -76,7 +78,8 @@ def can_view_cloudflare_dns_records(request: HttpRequest) -> bool:
         request: The HTTP request object containing the authenticated user.
 
     Returns:
-        bool: True if the user has the 'cloudflare.view_cloudflarednsrecord' permission, False otherwise.
+        bool: True if the user has the 'cloudflare.view_cloudflarednsrecord'
+            permission, False otherwise.
     """
     return request.user.has_perm("cloudflare.view_cloudflarednsrecord")
 
