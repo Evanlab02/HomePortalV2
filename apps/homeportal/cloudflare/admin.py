@@ -19,7 +19,6 @@ from cloudflare.constants.permissions import (
     CLOUDFLAREDNSRECORD_DELETE_GLOBAL,
     CLOUDFLAREDNSRECORD_PULL,
     CLOUDFLAREDNSRECORD_PUSH,
-    CLOUDFLAREDNSRECORD_PUSH_GLOBAL,
     CLOUDFLAREZONE_PULL,
     CLOUDFLAREZONE_PULLALL_GLOBAL,
     CLOUDFLAREZONE_PULLANY_GLOBAL,
@@ -790,7 +789,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             skipped = 0
 
             for record in queryset:
-                if user.has_perm(CLOUDFLAREDNSRECORD_PUSH_GLOBAL, record):
+                if user.has_perm(CLOUDFLAREDNSRECORD_PUSH, record):
                     records.append(record)
                 else:
                     skipped += 1
