@@ -73,7 +73,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     actions_detail = ["pull_zone", "pull_dns_records"]
 
     # Django Admin Config
-    ## Django Permissions
+    # Django Permissions
     def has_add_permission(self, request: HttpRequest) -> bool:
         """
         Check if user has permission to add new Cloudflare zones.
@@ -125,16 +125,16 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         """
         return request.user.is_superuser
 
-    ## Django Bulk Actions
+    # Django Bulk Actions
     @admin.action(description="Pull zone data from Cloudflare")
     def bulk_pull_zones(self, request: HttpRequest, queryset: QuerySet[CloudflareZone]) -> None:
         """
         Bulk action to pull zone data from Cloudflare for selected zones.
 
-        Checks user permissions (pullall_cloudflarezone or pullany_cloudflarezone global permissions,
-        or object-level 'pull' permission) for each selected zone. Queues pull tasks for zones
-        the user has permission to access and displays appropriate messages for success, warnings,
-        and errors.
+        Checks user permissions (pullall_cloudflarezone or pullany_cloudflarezone
+        global permissions, or object-level 'pull' permission) for each selected
+        zone. Queues pull tasks for zones the user has permission to access and
+        displays appropriate messages for success, warnings, and errors.
 
         Args:
             request (HttpRequest): The HTTP request object.
@@ -179,13 +179,16 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             )
 
     @admin.action(description="Pull DNS records from Cloudflare")
-    def bulk_pull_dns_records(self, request: HttpRequest, queryset: QuerySet[CloudflareZone]) -> None:
+    def bulk_pull_dns_records(
+        self, request: HttpRequest, queryset: QuerySet[CloudflareZone]
+    ) -> None:
         """
         Bulk action to pull DNS records from Cloudflare for selected zones.
 
-        Checks user permissions (pullall_cloudflarezone, pullany_cloudflarezone, or pullanydns_cloudflarezone
-        global permissions, or object-level 'pull' or 'pulldns' permissions) for each selected zone.
-        Queues DNS record pull tasks for zones the user has permission to access.
+        Checks user permissions (pullall_cloudflarezone, pullany_cloudflarezone,
+        or pullanydns_cloudflarezone global permissions, or object-level 'pull'
+        or 'pulldns' permissions) for each selected zone. Queues DNS record pull
+        tasks for zones the user has permission to access.
 
         Args:
             request (HttpRequest): The HTTP request object.
@@ -236,7 +239,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             )
 
     # Unfold
-    ## Global Unfold Actions
+    # Global Unfold Actions
     @action(
         description="Pull All Zones",
         url_path="pull-all-zones",
@@ -285,7 +288,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         user = request.user
         return user.has_perm(CLOUDFLAREZONE_PULLALL_GLOBAL)
 
-    ## Unfold Row Actions
+    # Unfold Row Actions
     @action(
         description="Pull Zone",
         url_path="row-pull-zone",
@@ -349,7 +352,8 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             request (HttpRequest): The HTTP request object.
 
         Returns:
-            bool: True if user has pullall_cloudflarezone, pullany_cloudflarezone, or pullanydns_cloudflarezone permission.
+            bool: True if user has pullall_cloudflarezone, pullany_cloudflarezone,
+                or pullanydns_cloudflarezone permission.
         """
         user = request.user
         return (
@@ -358,7 +362,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             or user.has_perm(CLOUDFLAREZONE_PULLANYDNS_GLOBAL)
         )
 
-    ## Unfold Detail Actions
+    # Unfold Detail Actions
     @action(
         description="Pull Zone",
         url_path="pull-zone",
@@ -451,10 +455,10 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             or user.has_perm(CLOUDFLAREZONE_PULLDNS, obj)
         )
 
-    ## Unfold Utils
+    # Unfold Utils
     def __pull_zone(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
-        Internal utility method to execute a zone data pull operation.
+        Execute a zone data pull operation.
 
         Retrieves the zone from the database and calls its pull() method to sync data
         from Cloudflare. Displays success or error messages to the user.
@@ -490,7 +494,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
 
     def __pull_dns_records(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """
-        Internal utility method to execute a DNS records pull operation.
+        Execute a DNS records pull operation.
 
         Retrieves the zone from the database and calls its pull_dns_records() method to sync
         DNS records from Cloudflare. Displays success or error messages to the user.
@@ -522,9 +526,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse(CLOUDFLARE_ZONE_CHANGELIST_URL, args=[object_id])
-        )
+        return HttpResponseRedirect(reverse(CLOUDFLARE_ZONE_CHANGELIST_URL, args=[object_id]))
 
 
 @admin.register(CloudflareDNSRecord)
@@ -854,9 +856,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse(CLOUDFLARE_DNS_RECORD_CHANGE_URL, args=[object_id])
-        )
+        return HttpResponseRedirect(reverse(CLOUDFLARE_DNS_RECORD_CHANGE_URL, args=[object_id]))
 
     @action(
         description="Push DNS Record",
@@ -896,9 +896,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(
-            reverse(CLOUDFLARE_DNS_RECORD_CHANGE_URL, args=[object_id])
-        )
+        return HttpResponseRedirect(reverse(CLOUDFLARE_DNS_RECORD_CHANGE_URL, args=[object_id]))
 
     @action(
         description="Save & Push",
