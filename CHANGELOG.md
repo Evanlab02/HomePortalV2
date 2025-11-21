@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.0...v0.8.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* **Guardian:** Add guardian admin base model to admin mixin ([46142c6](https://github.com/Evanlab02/HomePortalV2/commit/46142c6624a090501328407405df0e321e6e569f))
+
 ## [0.8.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.14...v0.8.0) (2025-11-21)
 
 
