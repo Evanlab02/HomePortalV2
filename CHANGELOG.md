@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.1...v0.8.2) (2025-11-21)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Superusers can still edit/add or delete zones but should be avoided. This is to still allow object permission changes in some way for some user and that is the superuser. ([e988ca5](https://github.com/Evanlab02/HomePortalV2/commit/e988ca52423e53f24f27d571ecdaadfa60141abe))
+
 ## [0.8.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.0...v0.8.1) (2025-11-21)
 
 
