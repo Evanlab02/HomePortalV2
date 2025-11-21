@@ -19,14 +19,16 @@ class CeleryMetaData(BaseModel):
         task (str | None): Name of the task being executed.
         current (int): Current progress value (0-100).
         total (Literal[100]): Total progress value (always 100).
+        indeterminate (bool): There is no progress indication on this.
         error (str | None): Error message if the task failed.
         result (dict[str, str | int]): Dictionary containing task results.
     """
 
-    state: str = Field(default="Starting...")
+    state: str = Field(default="In Progress")
     task: str | None = Field(default=None)
     current: int = Field(default=0, ge=0, le=100)
     total: Literal[100] = Field(default=100)
+    indeterminate: bool = Field(default=False)
     error: str | None = Field(default=None)
     result: dict[str, str | int] = Field(default={})
 
