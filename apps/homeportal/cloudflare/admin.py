@@ -396,7 +396,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         Returns:
             bool: True if user has permission to pull the zone, False otherwise.
         """
-        obj = self.get_object(request=request, id=object_id)
+        obj = self.get_object(request=request, object_id=object_id)
         if obj is None:
             return False
 
@@ -441,7 +441,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         Returns:
             bool: True if user has permission to pull DNS records, False otherwise.
         """
-        obj = self.get_object(request=request, id=object_id)
+        obj = self.get_object(request=request, object_id=object_id)
         if obj is None:
             return False
 
@@ -505,7 +505,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         Returns:
             HttpResponseRedirect: Redirect to the CloudflareZone change page for the specified zone.
         """
-        zone = self.get_object(request, object_id)
+        zone = self.get_object(request=request, object_id=object_id)
         if zone is None:
             self.message_user(request, "Zone not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse(CLOUDFLARE_ZONE_CHANGELIST_URL))
@@ -835,7 +835,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         Returns:
             HttpResponseRedirect: Redirect to the DNS record detail page.
         """
-        dns_record = self.get_object(request, object_id)
+        dns_record = self.get_object(request=request, object_id=object_id)
         if dns_record is None:
             self.message_user(request, "DNS Record not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse(CLOUDFLARE_DNS_RECORD_CHANGELIST_URL))
@@ -875,7 +875,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         Returns:
             HttpResponseRedirect: Redirect to the DNS record detail page.
         """
-        dns_record = self.get_object(request, object_id)
+        dns_record = self.get_object(request=request, object_id=object_id)
         if dns_record is None:
             self.message_user(request, "DNS Record not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse(CLOUDFLARE_DNS_RECORD_CHANGELIST_URL))
