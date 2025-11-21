@@ -57,6 +57,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     search_fields = ("name", "zone_id")
 
     # Forms
+    readonly_fields = ("zone_id",)
     fieldsets = (
         (
             "Zone Details",
@@ -526,7 +527,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
                 level=messages.ERROR,
             )
 
-        return HttpResponseRedirect(reverse(CLOUDFLARE_ZONE_CHANGELIST_URL, args=[object_id]))
+        return HttpResponseRedirect(reverse(CLOUDFLARE_ZONE_CHANGELIST_URL))
 
 
 @admin.register(CloudflareDNSRecord)
@@ -742,7 +743,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
             skipped = 0
 
             for record in queryset:
-                if user.has_perm(CLOUDFLAREDNSRECORD_PULL_GLOBAL, record):
+                if user.has_perm(CLOUDFLAREDNSRECORD_PULL, record):
                     records.append(record)
                 else:
                     skipped += 1
@@ -934,7 +935,7 @@ class CloudflareDNSRecordAdmin(BaseAdminMixin):
         return request.user.has_perm(CLOUDFLAREDNSRECORD_ADD_GLOBAL)
 
     def has_change_permission(
-        self, request: HttpRequest, obj: CloudflareZone | None = None
+        self, request: HttpRequest, obj: CloudflareDNSRecord | None = None
     ) -> bool:
         """Disable changing zones via admin - zones should only be updated via pull."""
         return request.user.has_perm(CLOUDFLAREDNSRECORD_CHANGE_GLOBAL, obj)
