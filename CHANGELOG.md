@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.0...v0.9.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Fix incorrect get_object arguments (id instead of object_id) ([94b5b1d](https://github.com/Evanlab02/HomePortalV2/commit/94b5b1d3dd8bb46b11ace03ec7c88f4b38c7b3da))
+
 ## [0.9.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.2...v0.9.0) (2025-11-21)
 
 
