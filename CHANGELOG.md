@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.9.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.2...v0.9.0) (2025-11-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Cloudflare:** Full rework of the cloudflare zones permission system
+
+### Features
+
+* **Cloudflare:** Full rework of the cloudflare zones permission system ([efa73fd](https://github.com/Evanlab02/HomePortalV2/commit/efa73fda15e41ab5dae66ecdb68ea593eebf2c56))
+
+
+### Miscellaneous Chores
+
+* Fix linting issues ([e1b5fa3](https://github.com/Evanlab02/HomePortalV2/commit/e1b5fa33c2d2a75335cc954c6a89bcfca1059198))
+* Linting ([9e4fdcc](https://github.com/Evanlab02/HomePortalV2/commit/9e4fdcc876eaa82a4de3218dd97b03e5b06a8c03))
+* Small admin fixes ([84a0c31](https://github.com/Evanlab02/HomePortalV2/commit/84a0c31c67aa331856978180ee274711d89e86c9))
+* Some more admin fixes ([103f0d5](https://github.com/Evanlab02/HomePortalV2/commit/103f0d5a74742eec88b680efe8edb54c7261508a))
+
 ## [0.8.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.8.1...v0.8.2) (2025-11-21)
 
 
