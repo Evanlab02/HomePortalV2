@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.8.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.14...v0.8.0) (2025-11-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Permissions:** Add cloudflare permission checks in the admin interface and generate the side menu based on the users available permissions
+
+### Features
+
+* **Permissions:** Add cloudflare permission checks in the admin interface and generate the side menu based on the users available permissions ([22b91ed](https://github.com/Evanlab02/HomePortalV2/commit/22b91edfbb0e50ad300d27232f1a356295d9868a))
+
+
+### Miscellaneous Chores
+
+* Formatting and Linting Fixes ([bc26e6e](https://github.com/Evanlab02/HomePortalV2/commit/bc26e6e84e993a8d1f6b01896630b231c3d92952))
+
 ## [0.7.14](https://github.com/Evanlab02/HomePortalV2/compare/v0.7.13...v0.7.14) (2025-11-20)
 
 
