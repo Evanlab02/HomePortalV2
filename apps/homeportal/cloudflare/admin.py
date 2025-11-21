@@ -278,19 +278,19 @@ class CloudflareZoneAdmin(BaseAdminMixin):
     # Permission Checks
     def has_add_permission(self, request: HttpRequest) -> bool:
         """Disable adding new zones via admin - zones should only be added via pull."""
-        return False
+        return request.user.is_superuser
 
     def has_change_permission(
         self, request: HttpRequest, obj: CloudflareZone | None = None
     ) -> bool:
         """Disable changing zones via admin - zones should only be updated via pull."""
-        return False
+        return request.user.is_superuser
 
     def has_delete_permission(
         self, request: HttpRequest, obj: CloudflareZone | None = None
     ) -> bool:
         """Disable deleting zones via admin - zones are read-only."""
-        return False
+        return request.user.is_superuser
 
     def has_pull_zone_permission(
         self, request: HttpRequest, obj: CloudflareZone | None = None
