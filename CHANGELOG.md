@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.10.0...v0.10.1) (2025-11-22)
+
+
+### Bug Fixes
+
+* **Dockerfile:** Reintroduce api source code to all layers to fix start up bug ([5631bdd](https://github.com/Evanlab02/HomePortalV2/commit/5631bdde6632c3186565a6f910d61b4a99d59e54))
+
 ## [0.10.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.2...v0.10.0) (2025-11-22)
 
 
