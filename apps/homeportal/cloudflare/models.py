@@ -27,7 +27,6 @@ from cloudflare.constants.api import (
     CLOUDFLARE_ZONES_LIST_URL,
 )
 from cloudflare.constants.permissions import (
-    CLOUDFLAREDNSRECORD_PERMISSIONS,
     CLOUDFLAREZONE_PERMISSIONS,
 )
 from cloudflare.schemas import (
@@ -317,8 +316,6 @@ class CloudflareDNSRecord(BaseModel):
 
         verbose_name = "Cloudflare DNS Record"
         verbose_name_plural = "Cloudflare DNS Records"
-
-        permissions = CLOUDFLAREDNSRECORD_PERMISSIONS
 
         constraints = [
             CheckConstraint(
