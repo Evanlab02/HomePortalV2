@@ -13,15 +13,15 @@ from cloudflare.constants.admin import (
 )
 from cloudflare.constants.permissions import (
     ZONE_PULL,
-    ZONE_PULL_FQ,
     ZONE_PULL_ALL,
     ZONE_PULL_ALL_FQ,
     ZONE_PULL_ANY,
-    ZONE_PULL_ANY_FQ,
     ZONE_PULL_ANY_DNS,
     ZONE_PULL_ANY_DNS_FQ,
+    ZONE_PULL_ANY_FQ,
     ZONE_PULL_DNS,
-    ZONE_PULL_DNS_FQ
+    ZONE_PULL_DNS_FQ,
+    ZONE_PULL_FQ,
 )
 from cloudflare.models import CloudflareZone
 from cloudflare.tasks import (
@@ -311,9 +311,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             bool: True if user has pullall_cloudflarezone or pullany_cloudflarezone permission.
         """
         user = request.user
-        return user.has_perm(ZONE_PULL_ALL_FQ) or user.has_perm(
-            ZONE_PULL_ANY_FQ
-        )
+        return user.has_perm(ZONE_PULL_ALL_FQ) or user.has_perm(ZONE_PULL_ANY_FQ)
 
     @action(
         description="Pull DNS Records",
