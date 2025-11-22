@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.10.0](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.2...v0.10.0) (2025-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Cloudflare:** Completely remove cloudflare DNS records management and rework cloudlflare zones again to try and finalize permissions system to start stabilizing for other record types in future
+* **Migrations:** Completely recreated all migrations to reset permissions to finalized version
+
+### Features
+
+* **Cloudflare:** Completely remove cloudflare DNS records management and rework cloudlflare zones again to try and finalize permissions system to start stabilizing for other record types in future ([2669845](https://github.com/Evanlab02/HomePortalV2/commit/26698458a8a9771f6edbab415495510eb046982b))
+* **Migrations:** Completely recreated all migrations to reset permissions to finalized version ([98aae4d](https://github.com/Evanlab02/HomePortalV2/commit/98aae4dcecabeea65622b60cb2f729c29ef5f542))
+
+
+### Bug Fixes
+
+* **Docker:** Try to optimize image layering by moving API source out of base image and only include it in app image ([be6de27](https://github.com/Evanlab02/HomePortalV2/commit/be6de27f2566c0e9142813bf40f3fcc29621570b))
+
+
+### Miscellaneous Chores
+
+* Format ([2c2eefa](https://github.com/Evanlab02/HomePortalV2/commit/2c2eefa429894d14891f0c9554f18baed0629500))
+* Small fixes and adjustments ([69b84aa](https://github.com/Evanlab02/HomePortalV2/commit/69b84aa878296eaca3d71f97a0e8d82732acef10))
+
 ## [0.9.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.1...v0.9.2) (2025-11-22)
 
 
