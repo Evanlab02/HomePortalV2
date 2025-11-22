@@ -240,12 +240,12 @@ UNFOLD = {
                         "link": reverse_lazy("admin:cloudflare_cloudflarezone_changelist"),
                         "permission": can_view_cloudflare_zones,
                     },
-                    {
-                        "title": "DNS Records",
-                        "icon": "language",
-                        "link": reverse_lazy("admin:cloudflare_cloudflarednsrecord_changelist"),
-                        "permission": can_view_cloudflare_dns_records,
-                    },
+                    # {
+                    #     "title": "DNS Records",
+                    #     "icon": "language",
+                    #     "link": reverse_lazy("admin:cloudflare_cloudflarednsrecord_changelist"),
+                    #     "permission": can_view_cloudflare_dns_records,
+                    # },
                 ],
             },
             {
