@@ -13,15 +13,10 @@ from cloudflare.constants.admin import (
 )
 from cloudflare.constants.permissions import (
     ZONE_PULL,
-    ZONE_PULL_ALL,
     ZONE_PULL_ALL_FQ,
-    ZONE_PULL_ANY,
-    ZONE_PULL_ANY_DNS,
     ZONE_PULL_ANY_DNS_FQ,
     ZONE_PULL_ANY_FQ,
     ZONE_PULL_DNS,
-    ZONE_PULL_DNS_FQ,
-    ZONE_PULL_FQ,
 )
 from cloudflare.models import CloudflareZone
 from cloudflare.tasks import (
@@ -189,9 +184,9 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             user = request.user
 
             has_global_perm = (
-                user.has_perm(ZONE_PULL_ALL)
-                or user.has_perm(ZONE_PULL_ANY)
-                or user.has_perm(ZONE_PULL_ANY_DNS)
+                user.has_perm(ZONE_PULL_ALL_FQ)
+                or user.has_perm(ZONE_PULL_ANY_FQ)
+                or user.has_perm(ZONE_PULL_ANY_DNS_FQ)
             )
             records: list[CloudflareZone] = []
             skipped = 0
@@ -199,8 +194,8 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             for record in queryset:
                 if (
                     has_global_perm
-                    or user.has_perm(ZONE_PULL_FQ, record)
-                    or user.has_perm(ZONE_PULL_DNS_FQ, record)
+                    or user.has_perm(ZONE_PULL, record)
+                    or user.has_perm(ZONE_PULL_DNS, record)
                 ):
                     records.append(record)
                 else:
@@ -277,7 +272,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
             bool: True if user has the pullall_cloudflarezone permission, False otherwise.
         """
         user = request.user
-        return user.has_perm(ZONE_PULL_ALL)
+        return user.has_perm(ZONE_PULL_ALL_FQ)
 
     # Unfold Row Actions
     @action(
@@ -518,6 +513,7 @@ class CloudflareZoneAdmin(BaseAdminMixin):
         return HttpResponseRedirect(reverse(CLOUDFLARE_ZONE_CHANGELIST_URL))
 
 
+# TODO: Temporary until the permission system for cloudflare zones is working well and properly.
 # @admin.register(CloudflareDNSRecord)
 # class CloudflareDNSRecordAdmin(BaseAdminMixin):
 #     """
