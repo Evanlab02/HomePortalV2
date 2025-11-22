@@ -23,7 +23,6 @@ WORKDIR /app
 COPY ./requirements.txt ./requirements.txt
 RUN uv pip install -r requirements.txt
 
-COPY ./api ./api
 COPY ./app ./app
 COPY ./cloudflare ./cloudflare
 COPY ./qbit ./qbit
@@ -63,6 +62,8 @@ ENV DJANGO_SETTINGS_MODULE=app.settings.core.settings
 
 COPY ./scripts/server.start.sh ./server.start.sh
 RUN chmod +x /app/server.start.sh
+
+COPY ./api ./api
 
 ENTRYPOINT [ "sh", "./server.start.sh" ]
 
