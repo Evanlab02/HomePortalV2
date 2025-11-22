@@ -44,6 +44,8 @@ COPY ./manage.py ./manage.py
 COPY ./scripts/admin.start.sh ./admin.start.sh
 RUN chmod +x /app/admin.start.sh
 
+COPY ./api ./api
+
 ENTRYPOINT [ "sh", "./admin.start.sh" ]
 
 # ==============================================================================
@@ -78,5 +80,7 @@ LABEL org.opencontainers.image.version="LIVE"
 ENV DJANGO_SETTINGS_MODULE=app.settings.core.settings
 COPY ./scripts/queue.start.sh ./queue.start.sh
 RUN chmod +x /app/queue.start.sh
+
+COPY ./api ./api
 
 ENTRYPOINT [ "sh", "./queue.start.sh" ]
