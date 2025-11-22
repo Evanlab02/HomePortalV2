@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.1...v0.9.2) (2025-11-22)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Add missing migrations ([21f8149](https://github.com/Evanlab02/HomePortalV2/commit/21f8149a1445e35c1b22f344f4a3597f4eeb0169))
+
 ## [0.9.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.9.0...v0.9.1) (2025-11-21)
 
 
