@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.10.1...v0.10.2) (2025-11-22)
+
+
+### Bug Fixes
+
+* **Cloudflare:** Remove cloudflare DNS records from side menu ([6c4a54c](https://github.com/Evanlab02/HomePortalV2/commit/6c4a54c6d88839d53b8b8629fffc142bedb58527))
+
 ## [0.10.1](https://github.com/Evanlab02/HomePortalV2/compare/v0.10.0...v0.10.1) (2025-11-22)
 
 
