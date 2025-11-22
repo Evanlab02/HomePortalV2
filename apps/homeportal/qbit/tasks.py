@@ -128,7 +128,7 @@ def pull_qbit_server(self: Task, db_id: int) -> dict[str, Any]:
         metadata.state = "COMPLETED"
         metadata.current = 100
         metadata.result["host"] = server.host
-        metadata.result["listen_port"] = server.listen_port
+        metadata.result["listen_port"] = server.listen_port  # type: ignore[assignment]
         metadata.propagate(self)
     except QBitServer.DoesNotExist as e:
         logger.error(f"Server Pull Failed: {e}")
@@ -190,7 +190,7 @@ def push_qbit_server(self: Task, db_id: int) -> dict[str, Any]:
         metadata.state = "COMPLETED"
         metadata.current = 100
         metadata.result["host"] = server.host
-        metadata.result["listen_port"] = server.listen_port
+        metadata.result["listen_port"] = server.listen_port  # type: ignore[assignment]
         metadata.propagate(self)
     except QBitServer.DoesNotExist as e:
         logger.error(f"Server Push Failed: {e}")

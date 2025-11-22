@@ -2,8 +2,8 @@
 
 from django.contrib.auth.models import Group, User
 from django.db.models import DateTimeField, Model
-from simple_history import register  # type: ignore
-from simple_history.models import HistoricalRecords  # type: ignore
+from simple_history import register
+from simple_history.models import HistoricalRecords
 
 register(User, app=__package__)
 register(Group, app=__package__)

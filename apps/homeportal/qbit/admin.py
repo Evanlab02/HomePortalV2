@@ -67,7 +67,7 @@ class QBitServerAdmin(BaseAdminMixin):
         url_path="pull-all-servers",
         permissions=["pull_all_servers"],
     )
-    def pull_all_servers(self, request: HttpRequest):
+    def pull_all_servers(self, request: HttpRequest) -> HttpResponseRedirect:
         """Queue async task to pull config from all QBittorrent servers.
 
         Args:
@@ -89,7 +89,7 @@ class QBitServerAdmin(BaseAdminMixin):
         url_path="push-all-servers",
         permissions=["push_all_servers"],
     )
-    def push_all_servers(self, request: HttpRequest):
+    def push_all_servers(self, request: HttpRequest) -> HttpResponseRedirect:
         """Queue async task to push config to all QBittorrent servers.
 
         Args:
@@ -108,7 +108,7 @@ class QBitServerAdmin(BaseAdminMixin):
 
     # Bulk actions (queryset actions)
     @admin.action(description="Pull config from selected servers")
-    def bulk_pull_servers(self, request: HttpRequest, queryset: QuerySet[QBitServer]):
+    def bulk_pull_servers(self, request: HttpRequest, queryset: QuerySet[QBitServer]) -> None:
         """Queue async tasks to pull configs from selected servers.
 
         Args:
@@ -124,7 +124,7 @@ class QBitServerAdmin(BaseAdminMixin):
             self.message_user(request, f"Error: {str(e)}", level=messages.ERROR)
 
     @admin.action(description="Push config to selected servers")
-    def bulk_push_servers(self, request: HttpRequest, queryset: QuerySet[QBitServer]):
+    def bulk_push_servers(self, request: HttpRequest, queryset: QuerySet[QBitServer]) -> None:
         """Queue async tasks to push configs to selected servers.
 
         Args:
@@ -145,7 +145,7 @@ class QBitServerAdmin(BaseAdminMixin):
         url_path="pull-server",
         permissions=["pull_server"],
     )
-    def pull_server(self, request: HttpRequest, object_id: int):
+    def pull_server(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """Pull configuration from a single QBittorrent server (synchronous).
 
         Args:
@@ -155,7 +155,7 @@ class QBitServerAdmin(BaseAdminMixin):
         Returns:
             result (HttpResponseRedirect): Redirect to the server's change page.
         """
-        server = self.get_object(request, object_id)
+        server = self.get_object(request, str(object_id))
         if server is None:
             self.message_user(request, "Server not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse("admin:qbit_qbitserver_changelist"))
@@ -183,7 +183,7 @@ class QBitServerAdmin(BaseAdminMixin):
         url_path="push-server",
         permissions=["push_server"],
     )
-    def push_server(self, request: HttpRequest, object_id: int):
+    def push_server(self, request: HttpRequest, object_id: int) -> HttpResponseRedirect:
         """Push configuration to a single QBittorrent server (synchronous).
 
         Args:
@@ -193,7 +193,7 @@ class QBitServerAdmin(BaseAdminMixin):
         Returns:
             result (HttpResponseRedirect): Redirect to the server's change page.
         """
-        server = self.get_object(request, object_id)
+        server = self.get_object(request, str(object_id))
         if server is None:
             self.message_user(request, "Server not found.", level=messages.ERROR)
             return HttpResponseRedirect(reverse("admin:qbit_qbitserver_changelist"))

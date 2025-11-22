@@ -18,7 +18,6 @@ from django.urls import reverse_lazy
 from app.permissions import (
     can_view_celery_results,
     can_view_celery_tasks,
-    can_view_cloudflare_dns_records,
     can_view_cloudflare_zones,
     can_view_constance_config,
     can_view_groups,

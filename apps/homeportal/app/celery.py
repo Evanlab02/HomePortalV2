@@ -2,7 +2,7 @@
 
 import os
 
-from celery import Celery  # type: ignore
+from celery import Celery
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings.core.settings")
 
