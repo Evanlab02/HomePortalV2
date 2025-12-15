@@ -1,0 +1,4647 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://evanlab02.github.io/HomePortalV2/v0.10.3/CHANGELOG/">
+      
+      
+        <link rel="prev" href="../dependencies/acme/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Changelog - Home Portal V2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Home Portal V2" class="md-header__button md-logo" aria-label="Home Portal V2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Home Portal V2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/evanlab02/HomePortalV2/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HomePortalV2
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home Portal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../features/general/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../releases/v1/" class="md-tabs__link">
+          
+  
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../development/" class="md-tabs__link">
+          
+  
+  
+  Development/Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dependencies/tailscale/" class="md-tabs__link">
+          
+  
+  
+  Other
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Home Portal V2" class="md-nav__button md-logo" aria-label="Home Portal V2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Home Portal V2
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/evanlab02/HomePortalV2/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HomePortalV2
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home Portal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../features/general/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../architecture/overview/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../releases/v1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../development/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Development/Contributing
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../dependencies/tailscale/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Other
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0103-2025-12-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.3 (2025-12-15)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.3 (2025-12-15)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0102-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.2 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.2 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0101-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.1 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.1 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0100-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.0 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.0 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#092-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.2 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.2 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#091-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.1 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.1 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#090-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.0 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.0 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#082-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.2 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.2 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#081-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.1 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.1 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#080-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.0 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.0 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0714-2025-11-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.14 (2025-11-20)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.14 (2025-11-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0713-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.13 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.13 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0712-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.12 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.12 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0711-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.11 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.11 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0710-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.10 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.10 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#079-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.9 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.9 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#078-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.8 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.8 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#077-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.7 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.7 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#076-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.6 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.6 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#075-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.5 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.5 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#074-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.4 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.4 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#073-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.3 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.3 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#072-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.2 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.2 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#071-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.1 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.1 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#070-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.0 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.0 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#066-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.6 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.6 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#065-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.5 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.5 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#064-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.4 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.4 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#063-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.3 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.3 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#062-2025-10-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.2 (2025-10-28)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.2 (2025-10-28)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#061-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.1 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.1 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#060-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.1 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.1 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.0 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#021-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2.1 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.1 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#020-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2.0 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.0 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#014-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.4 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.4 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#013-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.3 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.3 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#012-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.2 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.2 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#011-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.1 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.1 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#010-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.0 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.0 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#008-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.8 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.8 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#007-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.7 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.7 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#006-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.6 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.6 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#005-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.5 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.5 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#004-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.4 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.4 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#003-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.3 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.3 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#002-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.2 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.2 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0103-2025-12-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.3 (2025-12-15)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.3 (2025-12-15)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0102-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.2 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.2 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0101-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.1 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.1 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0100-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.10.0 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.10.0 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#092-2025-11-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.2 (2025-11-22)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.2 (2025-11-22)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#091-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.1 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.1 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#090-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.0 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.9.0 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#082-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.2 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.2 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#081-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.1 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.1 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#080-2025-11-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.0 (2025-11-21)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.0 (2025-11-21)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0714-2025-11-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.14 (2025-11-20)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.14 (2025-11-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0713-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.13 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.13 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0712-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.12 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.12 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0711-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.11 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.11 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0710-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.10 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.10 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#079-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.9 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.9 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#078-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.8 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.8 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#077-2025-11-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.7 (2025-11-14)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.7 (2025-11-14)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Styles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#076-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.6 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.6 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#075-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.5 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.5 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#074-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.4 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.4 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#073-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.3 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.3 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#072-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.2 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.2 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#071-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.1 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.1 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#070-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.0 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.0 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#066-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.6 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.6 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#065-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.5 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.5 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#064-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.4 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.4 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#063-2025-11-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.3 (2025-11-11)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.3 (2025-11-11)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#062-2025-10-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.2 (2025-10-28)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.2 (2025-10-28)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#061-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.1 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.1 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#060-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040-2025-10-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4.0 (2025-10-27)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.4.0 (2025-10-27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.1 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.1 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.0 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#021-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2.1 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.1 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#020-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2.0 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.0 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#014-2025-10-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.4 (2025-10-25)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.4 (2025-10-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#013-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.3 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.3 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#012-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.2 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.2 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#011-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.1 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.1 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#010-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.0 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.0 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breaking-changes_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠ BREAKING CHANGES
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#008-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.8 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.8 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#007-2025-10-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.7 (2025-10-24)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.7 (2025-10-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#006-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.6 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.6 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#005-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.5 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.5 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#004-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.4 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.4 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#003-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.3 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.3 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-chores_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Miscellaneous Chores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#002-2025-10-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.0.2 (2025-10-23)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.0.2 (2025-10-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="changelog">Changelog</h1>
+<h2 id="0103-2025-12-15"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.10.2...v0.10.3">0.10.3</a> (2025-12-15)</h2>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>Add tenacity 9.1.2 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/39a6a0aaaffec74cb033e4f6efc382f4203e5ca5">39a6a0a</a>)</li>
+<li>Upgrade to django==5.2.9 &amp; urllib3==2.6.2 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/007e5119659c425095e48cbdc18a0d7d7acf25ed">007e511</a>)</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>Further blank document additions in prep for future updates (<a href="https://github.com/Evanlab02/HomePortalV2/commit/4143832bf29c1cfa40df8b27c48abaaa5baf9f66">4143832</a>)</li>
+<li>Update release please config changelog path, to enable changelog inclusion in docs (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5e07ae61299aaecbcdbad5ddf741a6056c3f003f">5e07ae6</a>)</li>
+<li>Update structure and create empty pages for future use (<a href="https://github.com/Evanlab02/HomePortalV2/commit/70be8a4e2e37d8fc2eec5bbc47b169a76d0129d4">70be8a4</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores">Miscellaneous Chores</h3>
+<ul>
+<li>Add mypy and implement several mypy fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/d359bba971f02ae209bb9f2fc605660cd62034e3">d359bba</a>)</li>
+</ul>
+<h2 id="0102-2025-11-22"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.10.1...v0.10.2">0.10.2</a> (2025-11-22)</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Remove cloudflare DNS records from side menu (<a href="https://github.com/Evanlab02/HomePortalV2/commit/6c4a54c6d88839d53b8b8629fffc142bedb58527">6c4a54c</a>)</li>
+</ul>
+<h2 id="0101-2025-11-22"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.10.0...v0.10.1">0.10.1</a> (2025-11-22)</h2>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
+<ul>
+<li><strong>Dockerfile:</strong> Reintroduce api source code to all layers to fix start up bug (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5631bdde6632c3186565a6f910d61b4a99d59e54">5631bdd</a>)</li>
+</ul>
+<h2 id="0100-2025-11-22"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.9.2...v0.10.0">0.10.0</a> (2025-11-22)</h2>
+<h3 id="breaking-changes">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Completely remove cloudflare DNS records management and rework cloudlflare zones again to try and finalize permissions system to start stabilizing for other record types in future</li>
+<li><strong>Migrations:</strong> Completely recreated all migrations to reset permissions to finalized version</li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Completely remove cloudflare DNS records management and rework cloudlflare zones again to try and finalize permissions system to start stabilizing for other record types in future (<a href="https://github.com/Evanlab02/HomePortalV2/commit/26698458a8a9771f6edbab415495510eb046982b">2669845</a>)</li>
+<li><strong>Migrations:</strong> Completely recreated all migrations to reset permissions to finalized version (<a href="https://github.com/Evanlab02/HomePortalV2/commit/98aae4dcecabeea65622b60cb2f729c29ef5f542">98aae4d</a>)</li>
+</ul>
+<h3 id="bug-fixes_2">Bug Fixes</h3>
+<ul>
+<li><strong>Docker:</strong> Try to optimize image layering by moving API source out of base image and only include it in app image (<a href="https://github.com/Evanlab02/HomePortalV2/commit/be6de27f2566c0e9142813bf40f3fcc29621570b">be6de27</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_1">Miscellaneous Chores</h3>
+<ul>
+<li>Format (<a href="https://github.com/Evanlab02/HomePortalV2/commit/2c2eefa429894d14891f0c9554f18baed0629500">2c2eefa</a>)</li>
+<li>Small fixes and adjustments (<a href="https://github.com/Evanlab02/HomePortalV2/commit/69b84aa878296eaca3d71f97a0e8d82732acef10">69b84aa</a>)</li>
+</ul>
+<h2 id="092-2025-11-22"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.9.1...v0.9.2">0.9.2</a> (2025-11-22)</h2>
+<h3 id="bug-fixes_3">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Add missing migrations (<a href="https://github.com/Evanlab02/HomePortalV2/commit/21f8149a1445e35c1b22f344f4a3597f4eeb0169">21f8149</a>)</li>
+</ul>
+<h2 id="091-2025-11-21"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.9.0...v0.9.1">0.9.1</a> (2025-11-21)</h2>
+<h3 id="bug-fixes_4">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Fix incorrect get_object arguments (id instead of object_id) (<a href="https://github.com/Evanlab02/HomePortalV2/commit/94b5b1d3dd8bb46b11ace03ec7c88f4b38c7b3da">94b5b1d</a>)</li>
+</ul>
+<h2 id="090-2025-11-21"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.8.2...v0.9.0">0.9.0</a> (2025-11-21)</h2>
+<h3 id="breaking-changes_1">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Full rework of the cloudflare zones permission system</li>
+</ul>
+<h3 id="features_1">Features</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Full rework of the cloudflare zones permission system (<a href="https://github.com/Evanlab02/HomePortalV2/commit/efa73fda15e41ab5dae66ecdb68ea593eebf2c56">efa73fd</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_2">Miscellaneous Chores</h3>
+<ul>
+<li>Fix linting issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/e1b5fa33c2d2a75335cc954c6a89bcfca1059198">e1b5fa3</a>)</li>
+<li>Linting (<a href="https://github.com/Evanlab02/HomePortalV2/commit/9e4fdcc876eaa82a4de3218dd97b03e5b06a8c03">9e4fdcc</a>)</li>
+<li>Small admin fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/84a0c31c67aa331856978180ee274711d89e86c9">84a0c31</a>)</li>
+<li>Some more admin fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/103f0d5a74742eec88b680efe8edb54c7261508a">103f0d5</a>)</li>
+</ul>
+<h2 id="082-2025-11-21"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.8.1...v0.8.2">0.8.2</a> (2025-11-21)</h2>
+<h3 id="bug-fixes_5">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Superusers can still edit/add or delete zones but should be avoided. This is to still allow object permission changes in some way for some user and that is the superuser. (<a href="https://github.com/Evanlab02/HomePortalV2/commit/e988ca52423e53f24f27d571ecdaadfa60141abe">e988ca5</a>)</li>
+</ul>
+<h2 id="081-2025-11-21"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.8.0...v0.8.1">0.8.1</a> (2025-11-21)</h2>
+<h3 id="bug-fixes_6">Bug Fixes</h3>
+<ul>
+<li><strong>Guardian:</strong> Add guardian admin base model to admin mixin (<a href="https://github.com/Evanlab02/HomePortalV2/commit/46142c6624a090501328407405df0e321e6e569f">46142c6</a>)</li>
+</ul>
+<h2 id="080-2025-11-21"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.14...v0.8.0">0.8.0</a> (2025-11-21)</h2>
+<h3 id="breaking-changes_2">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Permissions:</strong> Add cloudflare permission checks in the admin interface and generate the side menu based on the users available permissions</li>
+</ul>
+<h3 id="features_2">Features</h3>
+<ul>
+<li><strong>Permissions:</strong> Add cloudflare permission checks in the admin interface and generate the side menu based on the users available permissions (<a href="https://github.com/Evanlab02/HomePortalV2/commit/22b91edfbb0e50ad300d27232f1a356295d9868a">22b91ed</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_3">Miscellaneous Chores</h3>
+<ul>
+<li>Formatting and Linting Fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/bc26e6e84e993a8d1f6b01896630b231c3d92952">bc26e6e</a>)</li>
+</ul>
+<h2 id="0714-2025-11-20"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.13...v0.7.14">0.7.14</a> (2025-11-20)</h2>
+<h3 id="features_3">Features</h3>
+<ul>
+<li><strong>Jellyfin:</strong> Jellyfin is now run as a container (<a href="https://github.com/Evanlab02/HomePortalV2/commit/0c67afc16e1d96ef921d7e8c5e606dec442e6e5f">0c67afc</a>)</li>
+<li><strong>RDT:</strong> Added RDT Client (<a href="https://github.com/Evanlab02/HomePortalV2/commit/367e646b2197ab9a895a2a31a06e5cda1ce30e62">367e646</a>)</li>
+<li><strong>Tubesync:</strong> Add tubesync to home portal (<a href="https://github.com/Evanlab02/HomePortalV2/commit/1569fd917ae015b996a20fa152ad6cfa12896fd3">1569fd9</a>)</li>
+</ul>
+<h3 id="bug-fixes_7">Bug Fixes</h3>
+<ul>
+<li><strong>Byparr:</strong> Remove from gluetun network (<a href="https://github.com/Evanlab02/HomePortalV2/commit/367e646b2197ab9a895a2a31a06e5cda1ce30e62">367e646</a>)</li>
+<li>Do not create missing migrations on admin start up (<a href="https://github.com/Evanlab02/HomePortalV2/commit/6e1273d893c8a7fefb23752feb80f779076494d5">6e1273d</a>)</li>
+<li><strong>Tubesync:</strong> Add to caddyfile config (<a href="https://github.com/Evanlab02/HomePortalV2/commit/0c67afc16e1d96ef921d7e8c5e606dec442e6e5f">0c67afc</a>)</li>
+</ul>
+<h3 id="documentation_1">Documentation</h3>
+<ul>
+<li><strong>Jellyfin:</strong> Remove jellyfin as a dependency in the documentation (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b5e761e2954f3ffaeaaa6d0991b7e70f001b3463">b5e761e</a>)</li>
+<li>Make some slight adjustments to getting started docs (<a href="https://github.com/Evanlab02/HomePortalV2/commit/95600602f57ffe524678c09e72a8b2465f66b4dc">9560060</a>)</li>
+<li>Update documentation to be more up to date with latest releases (<a href="https://github.com/Evanlab02/HomePortalV2/commit/dca3c8ad53ae36be6b205e2c959a34436a90ae1f">dca3c8a</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_4">Miscellaneous Chores</h3>
+<ul>
+<li><strong>Immich:</strong> Remove immich from default compose as this currently has issues and will only be solved once I migrate over to V2 on my own machines (<a href="https://github.com/Evanlab02/HomePortalV2/commit/c5c83a8fda5f9110d8915cc2657c10c72cc4c95e">c5c83a8</a>)</li>
+</ul>
+<h2 id="0713-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.12...v0.7.13">0.7.13</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_8">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Fix cloudflare bulk delete issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5ce0300a5b3caf83da3f70d24ac43ecb85b2feae">5ce0300</a>)</li>
+</ul>
+<h2 id="0712-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.11...v0.7.12">0.7.12</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_9">Bug Fixes</h3>
+<ul>
+<li><strong>Celery:</strong> Adjust some error handling to still attach metadata and update and fix docstrings and linting issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3eea4f04ade085509af3fdbd70904b9408e8c4f9">3eea4f0</a>)</li>
+</ul>
+<h2 id="0711-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.10...v0.7.11">0.7.11</a> (2025-11-14)</h2>
+<h3 id="features_4">Features</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Reintroduce cloudflare DNS records admin actions (<a href="https://github.com/Evanlab02/HomePortalV2/commit/0390af2e90b24b347eb3e7190e87a0b98b8194cc">0390af2</a>)</li>
+</ul>
+<h3 id="bug-fixes_10">Bug Fixes</h3>
+<ul>
+<li><strong>DNS:</strong> Fix cloudflare DNS record creation issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/f5db06add7332bf4e323f4d61afce89731955f98">f5db06a</a>)</li>
+</ul>
+<h2 id="0710-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.9...v0.7.10">0.7.10</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_11">Bug Fixes</h3>
+<ul>
+<li><strong>Logging:</strong> Try to add more comprehensive logging (<a href="https://github.com/Evanlab02/HomePortalV2/commit/fbebe7a84845e80a93ae91a0a7710404836590a5">fbebe7a</a>)</li>
+</ul>
+<h2 id="079-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.8...v0.7.9">0.7.9</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_12">Bug Fixes</h3>
+<ul>
+<li><strong>Celery:</strong> More celery fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/d2b449a3834d1e79eebac7d71aba0cd3dd50f6fe">d2b449a</a>)</li>
+</ul>
+<h2 id="078-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.7...v0.7.8">0.7.8</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_13">Bug Fixes</h3>
+<ul>
+<li><strong>Celery:</strong> Add required status field to result data (<a href="https://github.com/Evanlab02/HomePortalV2/commit/57c868424f2bf1b59ae2fd47201838e2118f25cb">57c8684</a>)</li>
+</ul>
+<h2 id="077-2025-11-14"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.6...v0.7.7">0.7.7</a> (2025-11-14)</h2>
+<h3 id="bug-fixes_14">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Temporary remove some admin actions for rework and do a complete clean up of the zone actions (<a href="https://github.com/Evanlab02/HomePortalV2/commit/030f1a5621060548fe35febcdba8ee9d4021d51b">030f1a5</a>)</li>
+</ul>
+<h3 id="styles">Styles</h3>
+<ul>
+<li>Adjust side menu ordering and UI (<a href="https://github.com/Evanlab02/HomePortalV2/commit/581b8947b80a64e66a8e6a9c0c22c8ea3b8fda4c">581b894</a>)</li>
+</ul>
+<h2 id="076-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.5...v0.7.6">0.7.6</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_15">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Remove submit line options and fix issue in pull method for zones (<a href="https://github.com/Evanlab02/HomePortalV2/commit/4852ab2f941075c40ce9c9b2d5410ad38b136c17">4852ab2</a>)</li>
+</ul>
+<h2 id="075-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.4...v0.7.5">0.7.5</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_16">Bug Fixes</h3>
+<ul>
+<li>Scope caches to re-use common build steps (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b2d91bc5b88b35154563bc9a0c48d6711df3fd62">b2d91bc</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_5">Miscellaneous Chores</h3>
+<ul>
+<li>Formatting (<a href="https://github.com/Evanlab02/HomePortalV2/commit/89decb142a9056b05d3cec40190287c79ebcbd46">89decb1</a>)</li>
+</ul>
+<h2 id="074-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.3...v0.7.4">0.7.4</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_17">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Fix some cloudflare schema issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/8858ac9d2cdfe9eb72bb8378ac8ca6b72979d44f">8858ac9</a>)</li>
+<li>Further improvements to layer caching and reuse in workflows (<a href="https://github.com/Evanlab02/HomePortalV2/commit/a2384db4de5c50b3c16ad36f8b967c22e0a6d24a">a2384db</a>)</li>
+</ul>
+<h2 id="073-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.2...v0.7.3">0.7.3</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_18">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Add better logging to cloudflare zone admin (<a href="https://github.com/Evanlab02/HomePortalV2/commit/7580860f39638b5b6e6d7f9d7bfb1bc0d89d3edc">7580860</a>)</li>
+<li>Update django docker builds to cache layers more efficiently (<a href="https://github.com/Evanlab02/HomePortalV2/commit/4b6170163ff2d71ecb7bc9593c3fd3caabf5ad3a">4b61701</a>)</li>
+</ul>
+<h2 id="072-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.1...v0.7.2">0.7.2</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_19">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Zones admin improvements (<a href="https://github.com/Evanlab02/HomePortalV2/commit/17abda6eeb616f4302fa62dd73c66177771c60a0">17abda6</a>)</li>
+</ul>
+<h2 id="071-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.7.0...v0.7.1">0.7.1</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_20">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Set ttl when pulling DNS records for a zone (<a href="https://github.com/Evanlab02/HomePortalV2/commit/d0b6a2a30af65523f9548bec948e04802726190c">d0b6a2a</a>)</li>
+</ul>
+<h2 id="070-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.6...v0.7.0">0.7.0</a> (2025-11-11)</h2>
+<h3 id="breaking-changes_3">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Squash migrations</li>
+</ul>
+<h3 id="features_5">Features</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Squash migrations (<a href="https://github.com/Evanlab02/HomePortalV2/commit/61473ff0537c285216e9314c06a43045d5082a5d">61473ff</a>)</li>
+</ul>
+<h2 id="066-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.5...v0.6.6">0.6.6</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_21">Bug Fixes</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Add additional validations and better admin UI (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b7d65ba68d578ada908dcac1604b4f5d275ba633">b7d65ba</a>)</li>
+</ul>
+<h2 id="065-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.4...v0.6.5">0.6.5</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_22">Bug Fixes</h3>
+<ul>
+<li><strong>Caddy:</strong> Duplicate reverse proxy statements in caddyfile causing gateway timeouts (<a href="https://github.com/Evanlab02/HomePortalV2/commit/cddef3b3210cc58026cd2f3f329e3f429e17f39c">cddef3b</a>)</li>
+<li>Fix types for cloudflare API responses to prevent validation errors (<a href="https://github.com/Evanlab02/HomePortalV2/commit/1b7f8d7c39fccadf1f97e7e57713274384f20025">1b7f8d7</a>)</li>
+</ul>
+<h2 id="064-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.3...v0.6.4">0.6.4</a> (2025-11-11)</h2>
+<h3 id="bug-fixes_23">Bug Fixes</h3>
+<ul>
+<li>Fix dockerfiles not including cloudflare app in source files (<a href="https://github.com/Evanlab02/HomePortalV2/commit/dcfbfa7548fc15cb607f3b63922e9e7b4460ed0d">dcfbfa7</a>)</li>
+</ul>
+<h2 id="063-2025-11-11"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.2...v0.6.3">0.6.3</a> (2025-11-11)</h2>
+<h3 id="features_6">Features</h3>
+<ul>
+<li><strong>Cloudflare:</strong> Cloudflare DNS records integration into django admin (<a href="https://github.com/Evanlab02/HomePortalV2/commit/7fd3f8b2ad537f2326f1befa021cfeaefba00d9d">7fd3f8b</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_6">Miscellaneous Chores</h3>
+<ul>
+<li>Linting fixes and remove the generic HTTP exception from the codebase (Will scope errors down better in future) (<a href="https://github.com/Evanlab02/HomePortalV2/commit/edefd7cb713a286281063613e21735737dc7678a">edefd7c</a>)</li>
+</ul>
+<h2 id="062-2025-10-28"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.1...v0.6.2">0.6.2</a> (2025-10-28)</h2>
+<h3 id="bug-fixes_24">Bug Fixes</h3>
+<ul>
+<li>Add gluetun port to dev containers (<a href="https://github.com/Evanlab02/HomePortalV2/commit/f9256d96b89047edb345e6d432d686ffd782a12a">f9256d9</a>)</li>
+<li><strong>Admin:</strong> Fix more UI issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b1ffca31ece33ba4fd8bf67eb2069c2c2777d61a">b1ffca3</a>)</li>
+<li><strong>Admin:</strong> Small admin page UI adjustments and fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3e253332b61ba4c19d72c6c176e57a640d51e7b3">3e25333</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_7">Miscellaneous Chores</h3>
+<ul>
+<li>Format (<a href="https://github.com/Evanlab02/HomePortalV2/commit/e75ede29208a5acf1ffc6b9306550fc3a74b56ae">e75ede2</a>)</li>
+</ul>
+<h2 id="061-2025-10-27"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.6.0...v0.6.1">0.6.1</a> (2025-10-27)</h2>
+<h3 id="bug-fixes_25">Bug Fixes</h3>
+<ul>
+<li>Add mount for gluetun forwarded port to prod compose (<a href="https://github.com/Evanlab02/HomePortalV2/commit/500e5933139c53e69261e48d6927f30aa708033f">500e593</a>)</li>
+</ul>
+<h3 id="reverts">Reverts</h3>
+<ul>
+<li><strong>Postgres:</strong> Revert back to 17.6 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/a642baa95819b30e53249aa13c57dd3e070c4ed6">a642baa</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_8">Miscellaneous Chores</h3>
+<ul>
+<li>Add queue to dev dockerfile (<a href="https://github.com/Evanlab02/HomePortalV2/commit/27d3bf48627027f134f96e7f57536a8b28b5e74c">27d3bf4</a>)</li>
+</ul>
+<h2 id="060-2025-10-27"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.5.0...v0.6.0">0.6.0</a> (2025-10-27)</h2>
+<h3 id="breaking-changes_4">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Queue:</strong> Introduce queue/worker for scheduled tasks and queued tasks along with QBit syncing capabilities</li>
+</ul>
+<h3 id="features_7">Features</h3>
+<ul>
+<li><strong>Queue:</strong> Introduce queue/worker for scheduled tasks and queued tasks along with QBit syncing capabilities (<a href="https://github.com/Evanlab02/HomePortalV2/commit/f700395beb9afc0c3f4a815d7db23e2084ecc1b3">f700395</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_9">Miscellaneous Chores</h3>
+<ul>
+<li>Fix linting issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/efd6fae606c87333c25f815655fc03d599877690">efd6fae</a>)</li>
+<li>Remove mypy from linting (<a href="https://github.com/Evanlab02/HomePortalV2/commit/d4502ba08e26ec34034f65b6d1da724896767f90">d4502ba</a>)</li>
+</ul>
+<h2 id="050-2025-10-27"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.4.0...v0.5.0">0.5.0</a> (2025-10-27)</h2>
+<h3 id="breaking-changes_5">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Compose:</strong> Create a distinction between compose modules templates and actual files</li>
+</ul>
+<h3 id="features_8">Features</h3>
+<ul>
+<li><strong>Compose:</strong> Create a distinction between compose modules templates and actual files (<a href="https://github.com/Evanlab02/HomePortalV2/commit/985c9007f332a531cab23e2083371871b596f71f">985c900</a>)</li>
+<li><strong>Dev:</strong> Add dev module for testing changes before release on server (<a href="https://github.com/Evanlab02/HomePortalV2/commit/317c75f5baff3bc684a7ae6fd65b5a06a6176f81">317c75f</a>)</li>
+</ul>
+<h3 id="bug-fixes_26">Bug Fixes</h3>
+<ul>
+<li>Fix an issue where we were not correctly copying compose modules from their templates during the make env command (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5cef1b4e5979d0b6b6be525c3e273a433e8d783e">5cef1b4</a>)</li>
+</ul>
+<h3 id="documentation_2">Documentation</h3>
+<ul>
+<li>Update getting started guide with latest information (<a href="https://github.com/Evanlab02/HomePortalV2/commit/75e1f48df714b749fa670ac96e5a0a642547bc2e">75e1f48</a>)</li>
+</ul>
+<h2 id="040-2025-10-27"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.3.1...v0.4.0">0.4.0</a> (2025-10-27)</h2>
+<h3 id="breaking-changes_6">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Immich:</strong> Upgrade to 2.1.0</li>
+<li><strong>Postgres:</strong> Upgrade to postgres 18</li>
+</ul>
+<h3 id="features_9">Features</h3>
+<ul>
+<li><strong>Authentik:</strong> Upgrade to 2025.8.4 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5a93f9b0434b1fc5609ca55894e8b8042e44d141">5a93f9b</a>)</li>
+<li><strong>Django:</strong> Use server side bindings/cursors (<a href="https://github.com/Evanlab02/HomePortalV2/commit/469f32c6047c8a411d0c7741b728b7ef5d8a9692">469f32c</a>)</li>
+<li><strong>Immich:</strong> Upgrade to 2.1.0 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/844c6fe352955a987aad69e26565a5b1a5c49e5b">844c6fe</a>)</li>
+<li><strong>PgAdmin:</strong> Upgrade to 9.9.0 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5dd4aadeac729ed00d70ac88ea289d4d68916bc8">5dd4aad</a>)</li>
+<li><strong>Postgres:</strong> Upgrade to postgres 18 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/02e6585f908ece8c1579c0842923552879badc44">02e6585</a>)</li>
+<li><strong>Valkey:</strong> Upgrade to valkey 9 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/4ff75ffaa1e246349ce4e94116dfd0dd28f2de9a">4ff75ff</a>)</li>
+</ul>
+<h3 id="bug-fixes_27">Bug Fixes</h3>
+<ul>
+<li><strong>Caddy:</strong> Update Caddyfiles for new updated immich (<a href="https://github.com/Evanlab02/HomePortalV2/commit/480e21ecb7410ec998372029d8459ee9157f781e">480e21e</a>)</li>
+<li><strong>Gluetun:</strong> Pin to 3.40.0 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/056143b4674aee9b0ce3a20ae55ef854a463a7fc">056143b</a>)</li>
+<li><strong>Pihole:</strong> Pin pihole to 2025.10.10 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/032ae4ae5f5ba63ed9a68c5d0b183355d48afcfc">032ae4a</a>)</li>
+<li><strong>Prowlarr:</strong> Pin to 2.1.5 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/2e02c3492342e82ec9ac29e837d24a1f0246c803">2e02c34</a>)</li>
+<li><strong>QBittorrent:</strong> Pin to 5.1.2 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/7fb7b26f0430cfca1989e850979793cd5fb2511c">7fb7b26</a>)</li>
+<li><strong>Radarr:</strong> Pin to 5.28.0 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/28a5709676e0bf1f7c9245558745a9e74c790c57">28a5709</a>)</li>
+<li><strong>Seerr:</strong> Pin seerr to 2.7.3 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/ade72d71cc908aea7d9d5d05835a3af58a55453a">ade72d7</a>)</li>
+<li><strong>Sonarr:</strong> Pin to 4.0.15 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/d5d0a2b6113bd0ff307e21ae38c2dc221211c3fa">d5d0a2b</a>)</li>
+</ul>
+<h3 id="dependencies_1">Dependencies</h3>
+<ul>
+<li><strong>Django:</strong> Upgrade django app deps (<a href="https://github.com/Evanlab02/HomePortalV2/commit/237ec41ac169d508506f21b8918360ee09378a06">237ec41</a>)</li>
+<li><strong>maintenance:</strong> Updated maintenance front-end deps (<a href="https://github.com/Evanlab02/HomePortalV2/commit/6e0444ca496427e1aa07711797866197202d4d53">6e0444c</a>)</li>
+</ul>
+<h3 id="reverts_1">Reverts</h3>
+<ul>
+<li>Remove immich-ml domain from caddyfile (<a href="https://github.com/Evanlab02/HomePortalV2/commit/692bdf644e286d5c1f384b15461d6fb371c678be">692bdf6</a>)</li>
+</ul>
+<h2 id="031-2025-10-25"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.3.0...v0.3.1">0.3.1</a> (2025-10-25)</h2>
+<h3 id="bug-fixes_28">Bug Fixes</h3>
+<ul>
+<li>Small setup and compose fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/6e44554cd8b345d76364256353b8c8dd5545424d">6e44554</a>)</li>
+</ul>
+<h2 id="030-2025-10-25"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.2.1...v0.3.0">0.3.0</a> (2025-10-25)</h2>
+<h3 id="breaking-changes_7">⚠ BREAKING CHANGES</h3>
+<ul>
+<li>Add all modules to home portal</li>
+</ul>
+<h3 id="features_10">Features</h3>
+<ul>
+<li>Add all modules to home portal (<a href="https://github.com/Evanlab02/HomePortalV2/commit/2f42bfc0237690bcfd3fcd7855c540ce9874df06">2f42bfc</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_10">Miscellaneous Chores</h3>
+<ul>
+<li>Add modules from previous HomePortal (<a href="https://github.com/Evanlab02/HomePortalV2/commit/9135be3d9c5e726a6c762f7a98d34ba45d955c98">9135be3</a>)</li>
+<li>Fix some setup mk issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b979ec3f52b4c753910eb6660399896990a89486">b979ec3</a>)</li>
+</ul>
+<h2 id="021-2025-10-25"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.2.0...v0.2.1">0.2.1</a> (2025-10-25)</h2>
+<h3 id="bug-fixes_29">Bug Fixes</h3>
+<ul>
+<li>Authentik versions in compose reference file (<a href="https://github.com/Evanlab02/HomePortalV2/commit/6ddb730a4d015abd6f9e410b04e0fdbbcd61497b">6ddb730</a>)</li>
+</ul>
+<h3 id="documentation_3">Documentation</h3>
+<ul>
+<li>Updated documentation guide for setup with authentik (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3e9288033eee005c0bd91018afdc9d4bed1031bd">3e92880</a>)</li>
+</ul>
+<h2 id="020-2025-10-25"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.1.4...v0.2.0">0.2.0</a> (2025-10-25)</h2>
+<h3 id="breaking-changes_8">⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>Authentik:</strong> Authentik integration into home portal</li>
+</ul>
+<h3 id="features_11">Features</h3>
+<ul>
+<li><strong>Authentik:</strong> Authentik integration into home portal (<a href="https://github.com/Evanlab02/HomePortalV2/commit/e117c278014cf4284710e9454490f6d4875781c5">e117c27</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_11">Miscellaneous Chores</h3>
+<ul>
+<li>Small typo fixes (<a href="https://github.com/Evanlab02/HomePortalV2/commit/a770a86c73c6bfa9d8cb6bca686b568a3c90ccb8">a770a86</a>)</li>
+</ul>
+<h2 id="014-2025-10-25"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.1.3...v0.1.4">0.1.4</a> (2025-10-25)</h2>
+<h3 id="features_12">Features</h3>
+<ul>
+<li>Simplified the setup process signifcantly (<a href="https://github.com/Evanlab02/HomePortalV2/commit/f934ca132e37fc4c372cb2cfacb14f1a420b548b">f934ca1</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_12">Miscellaneous Chores</h3>
+<ul>
+<li>Fix release please config issue (<a href="https://github.com/Evanlab02/HomePortalV2/commit/50957a3c07a2549ec16c36785f2dce1c79684fcb">50957a3</a>)</li>
+<li>Fix some linting issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/068f9847b5fb4103fd7be18f724153300e41e816">068f984</a>)</li>
+</ul>
+<h3 id="continuous-integration">Continuous Integration</h3>
+<ul>
+<li>Removed some old build steps (<a href="https://github.com/Evanlab02/HomePortalV2/commit/bab3ee711ef514b55cf11fc61b13e8f7a2b05add">bab3ee7</a>)</li>
+</ul>
+<h2 id="013-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.1.2...v0.1.3">0.1.3</a> (2025-10-24)</h2>
+<h3 id="bug-fixes_30">Bug Fixes</h3>
+<ul>
+<li>Fix CSRF issue in django app (<a href="https://github.com/Evanlab02/HomePortalV2/commit/5e7b6ecb566615ed671292242c108b1afa1a285a">5e7b6ec</a>)</li>
+</ul>
+<h2 id="012-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.1.1...v0.1.2">0.1.2</a> (2025-10-24)</h2>
+<h3 id="bug-fixes_31">Bug Fixes</h3>
+<ul>
+<li>Various docker, script and compose issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/b6e6b839bbd0560217a83ddbb3084a87d0087c95">b6e6b83</a>)</li>
+</ul>
+<h2 id="011-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.1.0...v0.1.1">0.1.1</a> (2025-10-24)</h2>
+<h3 id="bug-fixes_32">Bug Fixes</h3>
+<ul>
+<li>Add missing compose and caddyfile configuration (<a href="https://github.com/Evanlab02/HomePortalV2/commit/79a4e362f906eb5854a9a2eb541ce9162a9b4557">79a4e36</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_13">Miscellaneous Chores</h3>
+<ul>
+<li>Add some hosts to maintenance file (<a href="https://github.com/Evanlab02/HomePortalV2/commit/fc29d6fc14d667caa07ddd0e0f39168c7c0754c3">fc29d6f</a>)</li>
+<li>Makefile commands (<a href="https://github.com/Evanlab02/HomePortalV2/commit/34dab639dcbbfcb5c8aa4e2aff6c4becc4a88620">34dab63</a>)</li>
+</ul>
+<h2 id="010-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.8...v0.1.0">0.1.0</a> (2025-10-24)</h2>
+<h3 id="breaking-changes_9">⚠ BREAKING CHANGES</h3>
+<ul>
+<li>Integrate django app and start utilizing fixed hosts in caddy</li>
+</ul>
+<h3 id="features_13">Features</h3>
+<ul>
+<li>Integrate django app and start utilizing fixed hosts in caddy (<a href="https://github.com/Evanlab02/HomePortalV2/commit/123215a411835b90cdee58e1221812aa12893f8a">123215a</a>)</li>
+</ul>
+<h3 id="bug-fixes_33">Bug Fixes</h3>
+<ul>
+<li>Add static files from django (<a href="https://github.com/Evanlab02/HomePortalV2/commit/f36f3d5d8b0882233e384da5da8ff0c9bf2888d7">f36f3d5</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_14">Miscellaneous Chores</h3>
+<ul>
+<li>Add static files to caddyfile (<a href="https://github.com/Evanlab02/HomePortalV2/commit/17ee5f6330fa3edc6ddbb735a49133c33d3f262b">17ee5f6</a>)</li>
+</ul>
+<h3 id="continuous-integration_1">Continuous Integration</h3>
+<ul>
+<li>Remove build steps for dockerfiles that no longer exist (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3d304d412ab653f5fe578f4a7d16ff60a726840a">3d304d4</a>)</li>
+</ul>
+<h2 id="008-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.7...v0.0.8">0.0.8</a> (2025-10-24)</h2>
+<h3 id="bug-fixes_34">Bug Fixes</h3>
+<ul>
+<li>Add redis to packages to homeportal app packages (<a href="https://github.com/Evanlab02/HomePortalV2/commit/13f5c7736bc5ddd6284c338f310c5fd06bfc0876">13f5c77</a>)</li>
+<li>Remove expected timeline from maintenance page (<a href="https://github.com/Evanlab02/HomePortalV2/commit/dd6fa912f051b98dc1fc6743301014d023c789c0">dd6fa91</a>)</li>
+</ul>
+<h3 id="continuous-integration_2">Continuous Integration</h3>
+<ul>
+<li>Add linting workflows (<a href="https://github.com/Evanlab02/HomePortalV2/commit/8b02acbb68db8e6fb22396bc192c47bfbb3ad5ee">8b02acb</a>)</li>
+<li>Fix a release please workflow typo (<a href="https://github.com/Evanlab02/HomePortalV2/commit/a52acd49e727b5b1c5ac9cf992b40336abade072">a52acd4</a>)</li>
+</ul>
+<h2 id="007-2025-10-24"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.6...v0.0.7">0.0.7</a> (2025-10-24)</h2>
+<h3 id="features_14">Features</h3>
+<ul>
+<li><strong>Django:</strong> Add django app to HomePortalV2 (<a href="https://github.com/Evanlab02/HomePortalV2/commit/90e2c3eb61de48dfd00890036c1480dfc73444a7">90e2c3e</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_15">Miscellaneous Chores</h3>
+<ul>
+<li>Additional files release please (<a href="https://github.com/Evanlab02/HomePortalV2/commit/ec813a588577564cb9409f9ede6f79219e34bb9d">ec813a5</a>)</li>
+<li>Fix admin dockerfile issue (<a href="https://github.com/Evanlab02/HomePortalV2/commit/94f08800f46c18ac91bf85a33bfb40a4fd75e990">94f0880</a>)</li>
+</ul>
+<h3 id="continuous-integration_3">Continuous Integration</h3>
+<ul>
+<li>Fix docker build issues (<a href="https://github.com/Evanlab02/HomePortalV2/commit/e5c9336d6a84f5fcdcafd4fdce1ab0b822063320">e5c9336</a>)</li>
+</ul>
+<h2 id="006-2025-10-23"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.5...v0.0.6">0.0.6</a> (2025-10-23)</h2>
+<h3 id="bug-fixes_35">Bug Fixes</h3>
+<ul>
+<li>Actually copy maintenance frontend assets for production caddy containers (<a href="https://github.com/Evanlab02/HomePortalV2/commit/a577422f4cb4413c6933fd2d606d27b2631c3b54">a577422</a>)</li>
+</ul>
+<h2 id="005-2025-10-23"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.4...v0.0.5">0.0.5</a> (2025-10-23)</h2>
+<h3 id="features_15">Features</h3>
+<ul>
+<li>Automated version bumping (<a href="https://github.com/Evanlab02/HomePortalV2/commit/09f5e10c8c88f27120c933eea227c3059502f95d">09f5e10</a>)</li>
+</ul>
+<h2 id="004-2025-10-23"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.3...v0.0.4">0.0.4</a> (2025-10-23)</h2>
+<h3 id="features_16">Features</h3>
+<ul>
+<li><strong>Maintenance:</strong> Add naintenance mode and commands (<a href="https://github.com/Evanlab02/HomePortalV2/commit/2b4f8d5a74cfb30ea0660dc5fe585892b9bbb521">2b4f8d5</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_16">Miscellaneous Chores</h3>
+<ul>
+<li>Fix small volume issue in maintenance compose file (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3afb37c4a3880623a1eab04a0c54abfc1a3d8229">3afb37c</a>)</li>
+</ul>
+<h3 id="continuous-integration_4">Continuous Integration</h3>
+<ul>
+<li>Add more image build commands to build workflows (<a href="https://github.com/Evanlab02/HomePortalV2/commit/4ec21a0bd759ce5d439bd21963e77d4e381244e6">4ec21a0</a>)</li>
+</ul>
+<h2 id="003-2025-10-23"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.2...v0.0.3">0.0.3</a> (2025-10-23)</h2>
+<h3 id="bug-fixes_36">Bug Fixes</h3>
+<ul>
+<li><strong>Docker:</strong> Fix dockerfile labels to remove warnings (<a href="https://github.com/Evanlab02/HomePortalV2/commit/8df0aabaf45bd76fedf628419821f68d2f59df41">8df0aab</a>)</li>
+</ul>
+<h3 id="documentation_4">Documentation</h3>
+<ul>
+<li>Proper first implementation documentation (<a href="https://github.com/Evanlab02/HomePortalV2/commit/c6e9755fb93fab2ed9a1dfd5ef21025701c4b161">c6e9755</a>)</li>
+</ul>
+<h3 id="miscellaneous-chores_17">Miscellaneous Chores</h3>
+<ul>
+<li>Add prod compose file (<a href="https://github.com/Evanlab02/HomePortalV2/commit/14aee04e6da58586c09b9f03820707f254e386d9">14aee04</a>)</li>
+<li>Fix documentation build workflows (<a href="https://github.com/Evanlab02/HomePortalV2/commit/c6337a8e99d02e31fbaef2a51a940a679f49f27f">c6337a8</a>)</li>
+</ul>
+<h3 id="continuous-integration_5">Continuous Integration</h3>
+<ul>
+<li>Add workflows to check docker builds are all correct (<a href="https://github.com/Evanlab02/HomePortalV2/commit/ee07aed46b448f96718212ed5ca2afb51a38cb72">ee07aed</a>)</li>
+</ul>
+<h2 id="002-2025-10-23"><a href="https://github.com/Evanlab02/HomePortalV2/compare/v0.0.1...v0.0.2">0.0.2</a> (2025-10-23)</h2>
+<h3 id="features_17">Features</h3>
+<ul>
+<li><strong>Documentation:</strong> Initial documentation and caddy setup (<a href="https://github.com/Evanlab02/HomePortalV2/commit/0935e1bee799d763902d871db4d0a9862113498b">0935e1b</a>)</li>
+</ul>
+<h3 id="continuous-integration_6">Continuous Integration</h3>
+<ul>
+<li>release please workflows (<a href="https://github.com/Evanlab02/HomePortalV2/commit/3fee2da5c159811c285129bbc5c90a007414bcd9">3fee2da</a>)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.path", "navigation.top"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
