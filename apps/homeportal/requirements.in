@@ -15,3 +15,4 @@ redis[hiredis]
 celery[redis]
 requests
 pydantic
+tenacity

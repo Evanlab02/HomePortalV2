@@ -121,6 +121,8 @@ sqlparse==0.5.3
     # via django
 tablib==3.9.0
     # via django-import-export
+tenacity==9.1.2
+    # via -r requirements.in
 typing-extensions==4.15.0
     # via
     #   cron-descriptor
