@@ -8,6 +8,7 @@
         "compose.prod.yml",
         "apps/homeportal/api/urls.py"
     ],
+    "changelog-path": "documentation/docs/CHANGELOG.md",
     "changelog-sections": [
         {
             "type": "feat",
@@ -61,7 +62,8 @@
     "packages": {
         ".": {
             "release-type": "simple",
-            "include-component-in-tag": false
+            "include-component-in-tag": false,
+            "changelog-path": "documentation/docs/CHANGELOG.md"
         }
     },
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
