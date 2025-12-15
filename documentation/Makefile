@@ -1,7 +1,3 @@
-.PHONY: cp-readme
-cp-readme:
-	cp ../README.md docs/index.md
-
 .PHONY: deps
 deps:
 	uv venv
@@ -9,9 +5,9 @@ deps:
 	uv pip install -r requirements.txt
 
 .PHONY: serve
-serve: cp-readme
+serve:
 	mkdocs serve
 
 .PHONY: build
-build: cp-readme
+build:
 	mkdocs build
