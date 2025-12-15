@@ -28,7 +28,7 @@ billiard==4.2.2
     #   celery
 black==25.9.0
     # via -r requirements.dev.in
-celery==5.3.1
+celery[redis]==5.3.1
     # via
     #   -r requirements.txt
     #   django-celery-beat
@@ -65,7 +65,7 @@ click-repl==0.3.0
     # via
     #   -r requirements.txt
     #   celery
-coverage==7.11.0
+coverage[toml]==7.11.0
     # via
     #   -r requirements.dev.in
     #   pytest-cov
@@ -77,7 +77,7 @@ diff-match-patch==20241021
     # via
     #   -r requirements.txt
     #   django-import-export
-django==5.2.7
+django==5.2.9
     # via
     #   -r requirements.txt
     #   django-celery-beat
@@ -132,7 +132,9 @@ flake8-docstrings==1.7.0
 gunicorn==23.0.0
     # via -r requirements.txt
 hiredis==3.3.0
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   redis
 idna==3.11
     # via
     #   -r requirements.txt
@@ -174,12 +176,16 @@ prompt-toolkit==3.0.52
     # via
     #   -r requirements.txt
     #   click-repl
-psycopg==3.2.12
+psycopg[binary,pool]==3.2.12
     # via -r requirements.txt
 psycopg-binary==3.2.12
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   psycopg
 psycopg-pool==3.2.7
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   psycopg
 py-moneyed==3.0
     # via
     #   -r requirements.txt
@@ -228,14 +234,12 @@ python-dateutil==2.9.0.post0
     #   celery
 pytokens==0.2.0
     # via black
-redis==7.0.0
-    # via -r requirements.txt
-requests==2.32.5
-    # via -r requirements.txt
-setuptools==80.9.0
+redis[hiredis]==7.0.0
     # via
     #   -r requirements.txt
-    #   django-money
+    #   celery
+requests==2.32.5
+    # via -r requirements.txt
 six==1.17.0
     # via
     #   -r requirements.txt
