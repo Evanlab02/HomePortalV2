@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.10.3](https://github.com/Evanlab02/HomePortalV2/compare/v0.10.2...v0.10.3) (2025-12-15)
+
+
+### Dependencies
+
+* Add tenacity 9.1.2 ([39a6a0a](https://github.com/Evanlab02/HomePortalV2/commit/39a6a0aaaffec74cb033e4f6efc382f4203e5ca5))
+* Upgrade to django==5.2.9 & urllib3==2.6.2 ([007e511](https://github.com/Evanlab02/HomePortalV2/commit/007e5119659c425095e48cbdc18a0d7d7acf25ed))
+
+
+### Documentation
+
+* Further blank document additions in prep for future updates ([4143832](https://github.com/Evanlab02/HomePortalV2/commit/4143832bf29c1cfa40df8b27c48abaaa5baf9f66))
+* Update release please config changelog path, to enable changelog inclusion in docs ([5e07ae6](https://github.com/Evanlab02/HomePortalV2/commit/5e07ae61299aaecbcdbad5ddf741a6056c3f003f))
+* Update structure and create empty pages for future use ([70be8a4](https://github.com/Evanlab02/HomePortalV2/commit/70be8a4e2e37d8fc2eec5bbc47b169a76d0129d4))
+
+
+### Miscellaneous Chores
+
+* Add mypy and implement several mypy fixes ([d359bba](https://github.com/Evanlab02/HomePortalV2/commit/d359bba971f02ae209bb9f2fc605660cd62034e3))
+
 ## [0.10.2](https://github.com/Evanlab02/HomePortalV2/compare/v0.10.1...v0.10.2) (2025-11-22)
 
 
