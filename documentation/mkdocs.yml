@@ -45,8 +45,24 @@ theme:
 
 nav:
   - Home Portal: index.md
-  - Pre-requisities:
-    - Tailscale: dependencies/tailscale.md
-    - Cloudflare: dependencies/cloudflare.md
-    - acme.sh: dependencies/acme.md
-  - Getting started: installation.md
+  - Features:
+    - General: features/general.md
+    - Cloudflare Integration: features/cloudflare.md
+    - QBittorrent Integration: features/qbittorrent.md
+    - Celery: features/celery.md
+    - Permissions: features/permissions.md
+    - History: features/history.md
+    - Importing/Exporting: features/import_export.md
+  - Architecture:
+    - Overview: architecture/overview.md
+    - Home Portal V2 Applications: architecture/hp_apps.md
+    - Home Portal V2 Database Schemas: architecture/hp_db_schemas.md
+    - Home Portal V2 Code: architecture/hp_code.md
+  - Releases:
+    - V1: releases/v1.md
+  - Other:
+    - Pre-requisities:
+      - Tailscale: dependencies/tailscale.md
+      - Cloudflare: dependencies/cloudflare.md
+      - acme.sh: dependencies/acme.md
+  - Changelog: CHANGELOG.md
