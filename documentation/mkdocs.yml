@@ -60,6 +60,16 @@ nav:
     - Home Portal V2 Code: architecture/hp_code.md
   - Releases:
     - V1: releases/v1.md
+  - Development/Contributing:
+    - Important user documentation or architecture documentation for developers: development/index.md
+    - Factory Boy: development/factory_boy.md
+    - Linting and Type Checking: development/linting_type_checking.md
+    - Unit Testing: development/unit_testing.md
+    - Retries (Tenacity): development/tenacity.md
+    - Django Admin:
+      - Overview: development/admin/overview.md
+      - Permissions: development/admin/permissions.md
+      - Actions: development/admin/actions.md
   - Other:
     - Pre-requisities:
       - Tailscale: dependencies/tailscale.md
