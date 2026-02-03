@@ -14,7 +14,7 @@ babel==2.17.0
     # via py-moneyed
 billiard==4.2.2
     # via celery
-celery==5.3.1
+celery[redis]==5.3.1
     # via
     #   -r requirements.in
     #   django-celery-beat
@@ -41,7 +41,7 @@ cron-descriptor==2.0.6
     # via django-celery-beat
 diff-match-patch==20241021
     # via django-import-export
-django==5.2.9
+django==5.2.11
     # via
     #   -r requirements.in
     #   django-celery-beat
@@ -87,7 +87,7 @@ packaging==25.0
     #   kombu
 prompt-toolkit==3.0.52
     # via click-repl
-psycopg==3.2.12
+psycopg[binary,pool]==3.2.12
     # via -r requirements.in
 psycopg-binary==3.2.12
     # via psycopg
@@ -107,14 +107,12 @@ python-crontab==3.3.0
     # via django-celery-beat
 python-dateutil==2.9.0.post0
     # via celery
-redis==7.0.0
+redis[hiredis]==7.0.0
     # via
     #   -r requirements.in
     #   celery
 requests==2.32.5
     # via -r requirements.in
-setuptools==80.9.0
-    # via django-money
 six==1.17.0
     # via python-dateutil
 sqlparse==0.5.3
