@@ -26,7 +26,7 @@ billiard==4.2.2
     # via
     #   -r requirements.txt
     #   celery
-black==25.9.0
+black==26.3.1
     # via -r requirements.dev.in
 celery==5.3.1
     # via
@@ -65,7 +65,7 @@ click-repl==0.3.0
     # via
     #   -r requirements.txt
     #   celery
-coverage==7.11.0
+coverage[toml]==7.11.0
     # via
     #   -r requirements.dev.in
     #   pytest-cov
@@ -160,7 +160,7 @@ packaging==25.0
     #   gunicorn
     #   kombu
     #   pytest
-pathspec==0.12.1
+pathspec==1.0.4
     # via
     #   black
     #   mypy
@@ -226,16 +226,12 @@ python-dateutil==2.9.0.post0
     # via
     #   -r requirements.txt
     #   celery
-pytokens==0.2.0
+pytokens==0.4.1
     # via black
 redis==7.0.0
     # via -r requirements.txt
 requests==2.32.5
     # via -r requirements.txt
-setuptools==80.9.0
-    # via
-    #   -r requirements.txt
-    #   django-money
 six==1.17.0
     # via
     #   -r requirements.txt
